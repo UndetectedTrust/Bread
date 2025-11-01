@@ -1,0 +1,81 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Loader Hub",
+   LoadingTitle = "Loading Loader Hub",
+   LoadingSubtitle = "by UndetectedTrust",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "LoaderHub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "Loader Hub",
+      Subtitle = "Key System",
+      Note = "No key required",
+      FileName = "Key",
+      SaveKey = false,
+      GrabKeyFromSite = false,
+      Key = {""}
+   }
+})
+
+local MainTab = Window:CreateTab("Loader", 4483362458)
+
+local Section = MainTab:CreateSection("Script Loader")
+
+local ProButton = MainTab:CreateButton({
+   Name = "Pro",
+   Callback = function()
+      local success, err = pcall(function()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/UndetectedTrust/Bread/refs/heads/main/lua.file"))()
+      end)
+      
+      if success then
+         Rayfield:Notify({
+            Title = "Success",
+            Content = "Pro script executed successfully!",
+            Duration = 3,
+            Image = 4483362458,
+         })
+      else
+         Rayfield:Notify({
+            Title = "Error",
+            Content = "Failed to execute Pro script",
+            Duration = 5,
+            Image = 4483362458,
+         })
+      end
+   end,
+})
+
+local PeakButton = MainTab:CreateButton({
+   Name = "Peak and Useful",
+   Callback = function()
+      local success, err = pcall(function()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/UndetectedTrust/Bread/refs/heads/main/luau.txt"))()
+      end)
+      
+      if success then
+         Rayfield:Notify({
+            Title = "Success",
+            Content = "Peak and Useful script executed successfully!",
+            Duration = 3,
+            Image = 4483362458,
+         })
+      else
+         Rayfield:Notify({
+            Title = "Error",
+            Content = "Failed to execute Peak and Useful script",
+            Duration = 5,
+            Image = 4483362458,
+         })
+      end
+   end,
+})
