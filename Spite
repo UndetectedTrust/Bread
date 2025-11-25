@@ -1,0 +1,19 @@
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+
+local placeId = game.PlaceId
+
+local badPlaces = {
+    [7709344486] = true,
+    [109983668079237] = true,
+    [126884695634066] = true,
+    [127742093697776] = true
+}
+
+if badPlaces[placeId] then
+    Players.LocalPlayer:Kick("Physically and mentally dependent on a particular substance, and unable to stop taking it without incurring adverse effects. And/or enthusiastically devoted to a particular thing or activity.")
+else
+    local targetPlaceId = 133609342474444
+    task.wait(0.1)
+    TeleportService:Teleport(targetPlaceId, Players.LocalPlayer)
+end
