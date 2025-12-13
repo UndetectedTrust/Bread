@@ -109,7 +109,7 @@ local function updateghost(dt)
         end
         ghost.CFrame = ghost.CFrame:Lerp(targetcf, math.clamp(dt * 18 * stable, 0, 1))
         box.Color3 = Color3.new(1,1,1)
-        box.Transparency = 0.75
+        box.Transparency = 0.85
     end
 end
 
