@@ -20,7 +20,7 @@ local ghostparts = {}
 local framelog = {}
 
 local function rgb(t)
-    return Color3.new(1,1,1)
+    return Color3.fromHSV((t%5)/5,1,1)
 end
 
 local function makeghost(part)
@@ -35,8 +35,7 @@ local function makeghost(part)
 
     local box = Instance.new('SelectionBox')
     box.Adornee = g
-    box.LineThickness = 0.6
-    box.SurfaceTransparency = 1
+    box.LineThickness = 0.04
     box.Parent = g
 
     return {real=part, ghost=g, box=box}
@@ -109,11 +108,8 @@ local function updateghost(dt)
             targetcf = CFrame.new(predcf.Position + dir * maxdist) * CFrame.Angles(rx, ry, rz)
         end
         ghost.CFrame = ghost.CFrame:Lerp(targetcf, math.clamp(dt * 18 * stable, 0, 1))
-        if getgenv().ghostrgb  then
-            box.Color3 = rgb(tick())
-        else
-            box.Color3 = Color3.new(1,1,1)
-        end
+        box.Color3 = Color3.new(1,1,1)
+        box.Transparency = 0.75
     end
 end
 
