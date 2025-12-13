@@ -1,0 +1,129 @@
+getgenv().ghostrgb = true
+
+local rs = game:GetService('RunService')
+local players = game:GetService('Players')
+local stats = game:GetService('Stats')
+local plr = players.LocalPlayer
+plr.Archivable = true
+local char = plr.Character
+
+local parts = {
+    'HumanoidRootPart','Head','Left Arm','Right Arm','Left Leg','Right Leg',
+    'LeftUpperArm','RightUpperArm','LeftLowerArm','RightLowerArm',
+    'LeftHand','RightHand','LeftUpperLeg','RightUpperLeg',
+    'LeftLowerLeg','RightLowerLeg','LeftFoot','RightFoot'
+}
+
+local mindelay,maxdelay,maxdist = 0.02,0.12,6
+local avgping,pingsmooth = 120,0.12
+local ghostparts = {}
+local framelog = {}
+
+local function rgb(t)
+    -- changed: always return white
+    return Color3.new(1,1,1)
+end
+
+local function makeghost(part)
+    local g = Instance.new('Part')
+    g.Name = part.Name..'_ghost'
+    g.Size = part.Size
+    g.Anchored = true
+    g.CanCollide = false
+    g.Transparency = 1
+    g.CFrame = part.CFrame
+    g.Parent = workspace
+
+    local box = Instance.new('SelectionBox')
+    box.Adornee = g
+    -- changed: outline thickness to 0.6 and make highlight (surface) fully transparent
+    box.LineThickness = 0.6
+    box.SurfaceTransparency = 1
+    box.Parent = g
+
+    return {real=part, ghost=g, box=box}
+end
+
+local function getping()
+    local p = stats.Network and (stats.Network.ServerStatsItem['Data Ping'] or stats.Network.ServerStatsItem['Data Ping (ms)'])
+    return tonumber((p and p:GetValue()) or avgping) or avgping
+end
+
+local function initghost()
+    char = plr.Character
+    if not char then return end
+
+    for _,v in ipairs(workspace:GetChildren()) do
+        if v:IsA('Part') and v.Name:find('_ghost$') then v:Destroy() end
+    end
+
+    local hrp = char:FindFirstChild('HumanoidRootPart')
+    if not hrp then return end
+
+    ghostparts = {}
+    for _,n in ipairs(parts) do
+        local p = char:FindFirstChild(n)
+        if p and p:IsA('BasePart') then
+            ghostparts[n] = makeghost(p)
+        end
+    end
+end
+
+local function updateghost(dt)
+    char = plr.Character
+    if not char then return end
+    local hrp = char:FindFirstChild('HumanoidRootPart')
+    if not hrp then return end
+
+    local raw = getping()
+    avgping = raw*pingsmooth + avgping*(1-pingsmooth)
+    local delay = math.clamp(avgping/2000, mindelay, maxdelay)
+
+    local rel = {}
+    for n,g in pairs(ghostparts) do
+        if g.real and g.real.Parent then rel[n] = hrp.CFrame:ToObjectSpace(g.real.CFrame) end
+    end
+    framelog[#framelog+1] = {t=tick(), cf=hrp.CFrame, pos=hrp.Position, vel=hrp.Velocity, rel=rel}
+    if #framelog>300 then for i=1,80 do table.remove(framelog,1) end end
+
+    local targett = tick()-delay
+    local f
+    for i=#framelog,1,-1 do
+        if framelog[i].t <= targett then f = framelog[i] break end
+    end
+    f = f or framelog[1]
+    if not f then return end
+
+    local tdiff = math.clamp(targett - f.t, 0, 0.06)
+    local predpos = f.pos + f.vel * tdiff * 0.9
+    local predcf = CFrame.new(predpos) * (f.cf - f.cf.Position)
+    local stable = math.clamp(1 - math.abs(raw - avgping)/300, 0.25, 1)
+
+    for n,g in pairs(ghostparts) do
+        local ghost = g.ghost
+        local box = g.box
+        if not ghost then continue end
+        local relcf = f.rel[n]
+        local targetcf = relcf and predcf * relcf or (g.real and g.real.CFrame or ghost.CFrame)
+        if (targetcf.Position - predcf.Position).Magnitude > maxdist then
+            local dir = (targetcf.Position - predcf.Position).Unit
+            local rx, ry, rz = targetcf:ToEulerAnglesXYZ()
+            targetcf = CFrame.new(predcf.Position + dir * maxdist) * CFrame.Angles(rx, ry, rz)
+        end
+        ghost.CFrame = ghost.CFrame:Lerp(targetcf, math.clamp(dt * 18 * stable, 0, 1))
+        if getgenv().ghostrgb  then
+            box.Color3 = rgb(tick())
+        else
+            box.Color3 = Color3.new(1,1,1)
+        end
+    end
+end
+
+initghost()
+rs.Heartbeat:Connect(function(dt)
+    updateghost(dt)
+end)
+plr.CharacterAdded:Connect(function()
+    task.wait(0.2)
+    initghost()
+end)
