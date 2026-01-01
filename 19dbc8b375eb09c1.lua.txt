@@ -1,0 +1,8273 @@
+-- discord.gg/rTw5M8dRXN
+
+-- discord.gg/rTw5M8dRXN
+
+local g;
+g = {
+	cache = {},
+	load = function(a)
+		if not g.cache[a] then
+			g.cache[a] = {
+				c = g[a]()
+			}
+		end;
+		return g.cache[a].c
+	end
+}
+do
+	function g.a()
+		local b, c, d = '8.0', cloneref or function(a)
+			return a
+		end, {
+			Theme = {
+				Syntax = {
+					Text = Color3.fromRGB(204, 204, 204),
+					Background = Color3.fromRGB(20, 20, 20),
+					Selection = Color3.fromRGB(255, 255, 255),
+					SelectionBack = Color3.fromRGB(102, 161, 255),
+					Operator = Color3.fromRGB(204, 204, 204),
+					Number = Color3.fromRGB(255, 198, 0),
+					String = Color3.fromRGB(172, 240, 148),
+					Comment = Color3.fromRGB(102, 102, 102),
+					Keyword = Color3.fromRGB(248, 109, 124),
+					BuiltIn = Color3.fromRGB(132, 214, 247),
+					LocalMethod = Color3.fromRGB(253, 251, 172),
+					LocalProperty = Color3.fromRGB(97, 161, 241),
+					Nil = Color3.fromRGB(255, 198, 0),
+					Bool = Color3.fromRGB(255, 198, 0),
+					Function = Color3.fromRGB(248, 109, 124),
+					Local = Color3.fromRGB(248, 109, 124),
+					Self = Color3.fromRGB(248, 109, 124),
+					FunctionName = Color3.fromRGB(253, 251, 172),
+					Bracket = Color3.fromRGB(204, 204, 204)
+				}
+			}
+		}
+		local e, f = setmetatable({}, {
+			__index = function(a, a)
+				local a = game:GetService(a)
+				return c(a)
+			end
+		}), {
+			StartAndEnd = {
+				Enum.UserInputType.MouseButton1,
+				Enum.UserInputType.Touch
+			},
+			Movement = {
+				Enum.UserInputType.MouseMovement,
+				Enum.UserInputType.Touch
+			}
+		}
+		local e, g, h, i = e.Players, e.UserInputService, e.RunService, e.TweenService;
+		local e = c(e.LocalPlayer)
+		local c, e, f, j = c(e:GetMouse()), function(a, b)
+			for b, c in next, b do
+				a[b] = c
+			end;
+			return a
+		end, function(a, b)
+			local a = a.UserInputType;
+			return table.find(f[b], a)
+		end, function(...)
+			return c(Instance.new(...))
+		end;
+		local k, l, m = function(a, b)
+			local a = j(a)
+			for b, c in next, b do
+				a[b] = c
+			end;
+			return a
+		end, {}, j'Frame'
+		l.CheckMouseInGui = function(a)
+			if a == nil then
+				return false
+			end;
+			local a, b = a.AbsolutePosition, a.AbsoluteSize;
+			return c.X >= a.X and c.X < a.X + b.X and c.Y >= a.Y and c.Y < a.Y + b.Y
+		end;
+		l.Signal = (function()
+			local a, b = {}, function(a)
+				local b = table.find(a.Signal.Connections, a)
+				if b then
+					table.remove(a.Signal.Connections, b)
+				end
+			end;
+			a.Connect = function(a, c)
+				if type(c) ~= 'function' then
+					error'Attempt to connect a non-function'
+				end;
+				local b = {
+					Signal = a,
+					Func = c,
+					Disconnect = b
+				}
+				a.Connections[# a.Connections + 1] = b;
+				return b
+			end;
+			a.Fire = function(a, ...)
+				for a, a in next, a.Connections do
+					xpcall(coroutine.wrap(a.Func), function(a)
+						warn(a .. '\n' .. debug.traceback())
+					end, ...)
+				end
+			end;
+			local a = {
+				__index = a,
+				__tostring = function(a)
+					return 'Signal: ' .. tostring(# a.Connections) .. ' Connections'
+				end
+			}
+			local a = function()
+				local b = {}
+				b.Connections = {}
+				return setmetatable(b, a)
+			end;
+			return {
+				new = a
+			}
+		end)()
+		l.CreateArrow = function(a, b, c)
+			local d, e = b, k('Frame', {
+				BackgroundTransparency = 1,
+				Name = 'Arrow',
+				Size = UDim2.new(0, a, 0, a)
+			})
+			if c == 'up' then
+				for b = 1, b do
+					k('Frame', {
+						BackgroundColor3 = Color3.new(0.8627450980392157, 0.8627450980392157, 0.8627450980392157),
+						BorderSizePixel = 0,
+						Position = UDim2.new(0, math.floor(a / 2) - (b - 1), 0, math.floor(a / 2) + b - math.floor(d / 2) - 1),
+						Size = UDim2.new(0, b + (b - 1), 0, 1),
+						Parent = e
+					})
+				end;
+				return e
+			elseif c == 'down' then
+				for b = 1, b do
+					k('Frame', {
+						BackgroundColor3 = Color3.new(0.8627450980392157, 0.8627450980392157, 0.8627450980392157),
+						BorderSizePixel = 0,
+						Position = UDim2.new(0, math.floor(a / 2) - (b - 1), 0, math.floor(a / 2) - b + math.floor(d / 2) + 1),
+						Size = UDim2.new(0, b + (b - 1), 0, 1),
+						Parent = e
+					})
+				end;
+				return e
+			elseif c == 'left' then
+				for b = 1, b do
+					k('Frame', {
+						BackgroundColor3 = Color3.new(0.8627450980392157, 0.8627450980392157, 0.8627450980392157),
+						BorderSizePixel = 0,
+						Position = UDim2.new(0, math.floor(a / 2) + b - math.floor(d / 2) - 1, 0, math.floor(a / 2) - (b - 1)),
+						Size = UDim2.new(0, 1, 0, b + (b - 1)),
+						Parent = e
+					})
+				end;
+				return e
+			elseif c == 'right' then
+				for b = 1, b do
+					k('Frame', {
+						BackgroundColor3 = Color3.new(0.8627450980392157, 0.8627450980392157, 0.8627450980392157),
+						BorderSizePixel = 0,
+						Position = UDim2.new(0, math.floor(a / 2) - b + math.floor(d / 2) + 1, 0, math.floor(a / 2) - (b - 1)),
+						Size = UDim2.new(0, 1, 0, b + (b - 1)),
+						Parent = e
+					})
+				end;
+				return e
+			end;
+			error''
+		end;
+		l.FastWait = (function(a)
+			task.wait(a)
+		end)
+		l.ScrollBar = (function()
+			local a, b, d, e = {}, l.CheckMouseInGui, l.CreateArrow, function(a)
+				local b, c, d, e = a.TotalSpace, a.VisibleSpace, a.GuiElems.ScrollThumb, a.GuiElems.ScrollThumbFrame;
+				if not(a:CanScrollUp() or a:CanScrollDown()) then
+					d.Visible = false
+				else
+					d.Visible = true
+				end;
+				if a.Horizontal then
+					d.Size = UDim2.new(c / b, 0, 1, 0)
+					if d.AbsoluteSize.X < 10 then
+						d.Size = UDim2.new(0, 10, 1, 0)
+					end;
+					local b, c = e.AbsoluteSize.X, d.AbsoluteSize.X;
+					d.Position = UDim2.new(a:GetScrollPercent() * (b - c) / b, 0, 0, 0)
+				else
+					d.Size = UDim2.new(1, 0, c / b, 0)
+					if d.AbsoluteSize.Y < 10 then
+						d.Size = UDim2.new(1, 0, 0, 10)
+					end;
+					local b, c = e.AbsoluteSize.Y, d.AbsoluteSize.Y;
+					d.Position = UDim2.new(0, 0, a:GetScrollPercent() * (b - c) / b, 0)
+				end
+			end;
+			local b = function(a)
+				local e, h, i = (k('Frame', {
+					Style = 0,
+					Active = true,
+					AnchorPoint = Vector2.new(0, 0),
+					BackgroundColor3 = Color3.new(0.35294118523598, 0.35294118523598, 0.35294118523598),
+					BackgroundTransparency = 0,
+					BorderColor3 = Color3.new(0.10588236153126, 0.16470588743687, 0.20784315466881),
+					BorderSizePixel = 0,
+					ClipsDescendants = false,
+					Draggable = false,
+					Position = UDim2.new(1, -10, 0, 0),
+					Rotation = 0,
+					Selectable = false,
+					Size = UDim2.new(0, 10, 1, 0),
+					SizeConstraint = 0,
+					Visible = true,
+					ZIndex = 1,
+					Name = 'ScrollBar'
+				}))
+				if a.Horizontal then
+					e.Size = UDim2.new(1, 0, 0, 10)
+					h = k('ImageButton', {
+						Parent = e,
+						Name = 'Left',
+						Size = UDim2.new(0, 10, 0, 10),
+						BackgroundTransparency = 1,
+						BorderSizePixel = 0,
+						AutoButtonColor = false
+					})
+					d(10, 4, 'left').Parent = h;
+					i = k('ImageButton', {
+						Parent = e,
+						Name = 'Right',
+						Position = UDim2.new(1, -10, 0, 0),
+						Size = UDim2.new(0, 10, 0, 10),
+						BackgroundTransparency = 1,
+						BorderSizePixel = 0,
+						AutoButtonColor = false
+					})
+					d(10, 4, 'right').Parent = i
+				else
+					e.Size = UDim2.new(0, 10, 1, 0)
+					h = k('ImageButton', {
+						Parent = e,
+						Name = 'Up',
+						Size = UDim2.new(0, 10, 0, 10),
+						BackgroundTransparency = 1,
+						BorderSizePixel = 0,
+						AutoButtonColor = false
+					})
+					d(10, 4, 'up').Parent = h;
+					i = k('ImageButton', {
+						Parent = e,
+						Name = 'Down',
+						Position = UDim2.new(0, 0, 1, -10),
+						Size = UDim2.new(0, 10, 0, 10),
+						BackgroundTransparency = 1,
+						BorderSizePixel = 0,
+						AutoButtonColor = false
+					})
+					d(10, 4, 'down').Parent = i
+				end;
+				local d = k('Frame', {
+					BackgroundTransparency = 1,
+					Parent = e
+				})
+				if a.Horizontal then
+					d.Position = UDim2.new(0, 10, 0, 0)
+					d.Size = UDim2.new(1, -20, 1, 0)
+				else
+					d.Position = UDim2.new(0, 0, 0, 10)
+					d.Size = UDim2.new(1, 0, 1, -20)
+				end;
+				local j, k, l, m, n = k('Frame', {
+					BackgroundColor3 = Color3.new(0.47058823529411764, 0.47058823529411764, 0.47058823529411764),
+					BorderSizePixel = 0,
+					Parent = d
+				}), k('Frame', {
+					BackgroundTransparency = 1,
+					Name = 'Markers',
+					Size = UDim2.new(1, 0, 1, 0),
+					Parent = d
+				}), false, false, false;
+				h.InputBegan:Connect(function(c)
+					if f(c, 'Movement') and not l and a:CanScrollUp() then
+						h.BackgroundTransparency = 0.8
+					end;
+					if not f(c, 'StartAndEnd') or not a:CanScrollUp() then
+						return
+					end;
+					l = true;
+					h.BackgroundTransparency = 0.5;
+					if a:CanScrollUp() then
+						a:ScrollUp()
+						a.Scrolled:Fire()
+					end;
+					local c, d = (tick())
+					d = g.InputEnded:Connect(function(c)
+						if not f(c, 'StartAndEnd') then
+							return
+						end;
+						d:Disconnect()
+						if b(h) and a:CanScrollUp() then
+							h.BackgroundTransparency = 0.8
+						else
+							h.BackgroundTransparency = 1
+						end;
+						l = false
+					end)
+					while l do
+						if tick() - c >= 0.3 and a:CanScrollUp() then
+							a:ScrollUp()
+							a.Scrolled:Fire()
+						end;
+						wait()
+					end
+				end)
+				h.InputEnded:Connect(function(a)
+					if f(a, 'Movement') and not l then
+						h.BackgroundTransparency = 1
+					end
+				end)
+				i.InputBegan:Connect(function(c)
+					if f(c, 'Movement') and not l and a:CanScrollDown() then
+						i.BackgroundTransparency = 0.8
+					end;
+					if not f(c, 'StartAndEnd') or not a:CanScrollDown() then
+						return
+					end;
+					l = true;
+					i.BackgroundTransparency = 0.5;
+					if a:CanScrollDown() then
+						a:ScrollDown()
+						a.Scrolled:Fire()
+					end;
+					local c, d = (tick())
+					d = g.InputEnded:Connect(function(c)
+						if not f(c, 'StartAndEnd') then
+							return
+						end;
+						d:Disconnect()
+						if b(i) and a:CanScrollDown() then
+							i.BackgroundTransparency = 0.8
+						else
+							i.BackgroundTransparency = 1
+						end;
+						l = false
+					end)
+					while l do
+						if tick() - c >= 0.3 and a:CanScrollDown() then
+							a:ScrollDown()
+							a.Scrolled:Fire()
+						end;
+						wait()
+					end
+				end)
+				i.InputEnded:Connect(function(a)
+					if f(a, 'Movement') and not l then
+						i.BackgroundTransparency = 1
+					end
+				end)
+				j.InputBegan:Connect(function(e)
+					if f(e, 'Movement') and not m then
+						j.BackgroundTransparency = 0.2;
+						j.BackgroundColor3 = a.ThumbSelectColor
+					end;
+					if not f(e, 'StartAndEnd') then
+						return
+					end;
+					local e, h = a.Horizontal and 'X' or 'Y'
+					l = false;
+					n = false;
+					m = true;
+					j.BackgroundTransparency = 0;
+					local i, k, l = (c[e] - j.AbsolutePosition[e])
+					k = g.InputEnded:Connect(function(c)
+						if not f(c, 'StartAndEnd') then
+							return
+						end;
+						k:Disconnect()
+						if l then
+							l:Disconnect()
+						end;
+						if b(j) then
+							j.BackgroundTransparency = 0.2
+						else
+							j.BackgroundTransparency = 0;
+							j.BackgroundColor3 = a.ThumbColor
+						end;
+						m = false
+					end)
+					a:Update()
+					l = g.InputChanged:Connect(function(b)
+						if f(b, 'Movement') and m and k.Connected then
+							local b, c = d.AbsoluteSize[e] - j.AbsoluteSize[e], c[e] - d.AbsolutePosition[e] - i;
+							if c > b then
+								c = b
+							elseif c < 0 then
+								c = 0
+							end;
+							if h ~= c then
+								h = c;
+								a:ScrollTo(math.floor(0.5 + c / b * (a.TotalSpace - a.VisibleSpace)))
+							end;
+							wait()
+						end
+					end)
+				end)
+				j.InputEnded:Connect(function(b)
+					if f(b, 'Movement') and not m then
+						j.BackgroundTransparency = 0;
+						j.BackgroundColor3 = a.ThumbColor
+					end
+				end)
+				d.InputBegan:Connect(function(e)
+					if not f(e, 'StartAndEnd') or b(j) then
+						return
+					end;
+					local e, h = a.Horizontal and 'X' or 'Y', 0;
+					if c[e] >= j.AbsolutePosition[e] + j.AbsoluteSize[e] then
+						h = 1
+					end;
+					local a = function()
+						local b = a.VisibleSpace - 1;
+						if h == 0 and c[e] < j.AbsolutePosition[e] then
+							a:ScrollTo(a.Index - b)
+						elseif h == 1 and c[e] >= j.AbsolutePosition[e] + j.AbsoluteSize[e] then
+							a:ScrollTo(a.Index + b)
+						end
+					end;
+					m = false;
+					n = true;
+					a()
+					local c, e = (tick())
+					e = g.InputEnded:Connect(function(a)
+						if not f(a, 'StartAndEnd') then
+							return
+						end;
+						e:Disconnect()
+						n = false
+					end)
+					while n do
+						if tick() - c >= 0.3 and b(d) then
+							a()
+						end;
+						wait()
+					end
+				end)
+				e.MouseWheelForward:Connect(function()
+					a:ScrollTo(a.Index - a.WheelIncrement)
+				end)
+				e.MouseWheelBackward:Connect(function()
+					a:ScrollTo(a.Index + a.WheelIncrement)
+				end)
+				a.GuiElems.ScrollThumb = j;
+				a.GuiElems.ScrollThumbFrame = d;
+				a.GuiElems.Button1 = h;
+				a.GuiElems.Button2 = i;
+				a.GuiElems.MarkerFrame = k;
+				return e
+			end;
+			a.Update = function(a, b)
+				local b, c, d, f = a.TotalSpace, a.VisibleSpace, a.GuiElems.Button1, a.GuiElems.Button2;
+				a.Index = math.clamp(a.Index, 0, math.max(0, b - c))
+				if a.LastTotalSpace ~= a.TotalSpace then
+					a.LastTotalSpace = a.TotalSpace;
+					a:UpdateMarkers()
+				end;
+				if a:CanScrollUp() then
+					for a, a in pairs(d.Arrow:GetChildren()) do
+						a.BackgroundTransparency = 0
+					end
+				else
+					d.BackgroundTransparency = 1;
+					for a, a in pairs(d.Arrow:GetChildren()) do
+						a.BackgroundTransparency = 0.5
+					end
+				end;
+				if a:CanScrollDown() then
+					for a, a in pairs(f.Arrow:GetChildren()) do
+						a.BackgroundTransparency = 0
+					end
+				else
+					f.BackgroundTransparency = 1;
+					for a, a in pairs(f.Arrow:GetChildren()) do
+						a.BackgroundTransparency = 0.5
+					end
+				end;
+				e(a)
+			end;
+			a.UpdateMarkers = function(a)
+				local b = a.GuiElems.MarkerFrame;
+				b:ClearAllChildren()
+				for c, d in pairs(a.Markers) do
+					if c < a.TotalSpace then
+						k('Frame', {
+							BackgroundTransparency = 0,
+							BackgroundColor3 = d,
+							BorderSizePixel = 0,
+							Position = a.Horizontal and UDim2.new(c / a.TotalSpace, 0, 1, -6) or UDim2.new(1, -6, c / a.TotalSpace, 0),
+							Size = a.Horizontal and UDim2.new(0, 1, 0, 6) or UDim2.new(0, 6, 0, 1),
+							Name = 'Marker' .. tostring(c),
+							Parent = b
+						})
+					end
+				end
+			end;
+			a.AddMarker = function(a, b, c)
+				a.Markers[b] = c or Color3.new(0, 0, 0)
+			end;
+			a.ScrollTo = function(a, b, c)
+				a.Index = b;
+				a:Update()
+				if not c then
+					a.Scrolled:Fire()
+				end
+			end;
+			a.ScrollUp = function(a)
+				a.Index = a.Index - a.Increment;
+				a:Update()
+			end;
+			a.ScrollDown = function(a)
+				a.Index = a.Index + a.Increment;
+				a:Update()
+			end;
+			a.CanScrollUp = function(a)
+				return a.Index > 0
+			end;
+			a.CanScrollDown = function(a)
+				return a.Index + a.VisibleSpace < a.TotalSpace
+			end;
+			a.GetScrollPercent = function(a)
+				return a.Index / (a.TotalSpace - a.VisibleSpace)
+			end;
+			a.SetScrollPercent = function(a, b)
+				a.Index = math.floor(b * (a.TotalSpace - a.VisibleSpace))
+				a:Update()
+			end;
+			a.Texture = function(a, b)
+				a.ThumbColor = b.ThumbColor or Color3.new(0, 0, 0)
+				a.ThumbSelectColor = b.ThumbSelectColor or Color3.new(0, 0, 0)
+				a.GuiElems.ScrollThumb.BackgroundColor3 = b.ThumbColor or Color3.new(0, 0, 0)
+				a.Gui.BackgroundColor3 = b.FrameColor or Color3.new(0, 0, 0)
+				a.GuiElems.Button1.BackgroundColor3 = b.ButtonColor or Color3.new(0, 0, 0)
+				a.GuiElems.Button2.BackgroundColor3 = b.ButtonColor or Color3.new(0, 0, 0)
+				for a, a in pairs(a.GuiElems.Button1.Arrow:GetChildren()) do
+					a.BackgroundColor3 = b.ArrowColor or Color3.new(0, 0, 0)
+				end;
+				for a, a in pairs(a.GuiElems.Button2.Arrow:GetChildren()) do
+					a.BackgroundColor3 = b.ArrowColor or Color3.new(0, 0, 0)
+				end
+			end;
+			a.SetScrollFrame = function(a, b)
+				if a.ScrollUpEvent then
+					a.ScrollUpEvent:Disconnect()
+					a.ScrollUpEvent = nil
+				end;
+				if a.ScrollDownEvent then
+					a.ScrollDownEvent:Disconnect()
+					a.ScrollDownEvent = nil
+				end;
+				a.ScrollUpEvent = b.MouseWheelForward:Connect(function()
+					a:ScrollTo(a.Index - a.WheelIncrement)
+				end)
+				a.ScrollDownEvent = b.MouseWheelBackward:Connect(function()
+					a:ScrollTo(a.Index + a.WheelIncrement)
+				end)
+			end;
+			local c = {}
+			c.__index = a;
+			local a = function(a)
+				local a = setmetatable({
+					Index = 0,
+					VisibleSpace = 0,
+					TotalSpace = 0,
+					Increment = 1,
+					WheelIncrement = 1,
+					Markers = {},
+					GuiElems = {},
+					Horizontal = a,
+					LastTotalSpace = 0,
+					Scrolled = l.Signal.new()
+				}, c)
+				a.Gui = b(a)
+				a:Texture{
+					ThumbColor = Color3.fromRGB(60, 60, 60),
+					ThumbSelectColor = Color3.fromRGB(75, 75, 75),
+					ArrowColor = Color3.new(1, 1, 1),
+					FrameColor = Color3.fromRGB(40, 40, 40),
+					ButtonColor = Color3.fromRGB(75, 75, 75)
+				}
+				return a
+			end;
+			return {
+				new = a
+			}
+		end)()
+		l.CodeFrame = (function()
+			local k, n, o, p, q, r, s, t = {}, {
+				[1] = 'String',
+				[2] = 'String',
+				[3] = 'String',
+				[4] = 'Comment',
+				[5] = 'Operator',
+				[6] = 'Number',
+				[7] = 'Keyword',
+				[8] = 'BuiltIn',
+				[9] = 'LocalMethod',
+				[10] = 'LocalProperty',
+				[11] = 'Nil',
+				[12] = 'Bool',
+				[13] = 'Function',
+				[14] = 'Local',
+				[15] = 'Self',
+				[16] = 'FunctionName',
+				[17] = 'Bracket'
+			}, {
+				['nil'] = 11,
+				['true'] = 12,
+				['false'] = 12,
+				['function'] = 13,
+				['local'] = 14,
+				self = 15
+			}, {
+				['and'] = true,
+				['break'] = true,
+				['do'] = true,
+				['else'] = true,
+				['elseif'] = true,
+				['end'] = true,
+				['false'] = true,
+				['for'] = true,
+				['function'] = true,
+				['if'] = true,
+				['in'] = true,
+				['local'] = true,
+				['nil'] = true,
+				['not'] = true,
+				['or'] = true,
+				['repeat'] = true,
+				['return'] = true,
+				['then'] = true,
+				['true'] = true,
+				['until'] = true,
+				['while'] = true,
+				plugin = true
+			}, {delay = true,elapsedTime = true,require = true,spawn = true,tick = true,time = true,typeof = true,UserSettings = true,wait = true,warn = true,game = true,shared = true,script = true,workspace = true,assert = true,collectgarbage = true,error = true,getfenv = true,getmetatable = true,ipairs = true,loadstring = true,newproxy = true,next = true,pairs = true,pcall = true,print = true,rawequal = true,rawget = true,rawset = true,select = true,setfenv = true,setmetatable = true,tonumber = true,tostring = true,type = true,unpack = true,xpcall = true,_G = true,_VERSION = true,coroutine = true,debug = true,math = true,os = true,string = true,table = true,bit32 = true,utf8 = true,Axes = true,BrickColor = true,CFrame = true,Color3 = true,ColorSequence = true,ColorSequenceKeypoint = true,DockWidgetPluginGuiInfo = true,Enum = true,Faces = true,Instance = true,NumberRange = true,NumberSequence = true,NumberSequenceKeypoint = true,PathWaypoint = true,PhysicalProperties = true,Random = true,Ray = true,Rect = true,Region3 = true,Region3int16 = true,TweenInfo = true,UDim = true,UDim2 = true,Vector2 = true,Vector2int16 = true,Vector3 = true,Vector3int16 = true,Drawing = true,syn = true,crypt = true,cache = true,bit = true,readfile = true,writefile = true,isfile = true,appendfile = true,listfiles = true,loadfile = true,isfolder = true,makefolder = true,delfolder = true,delfile = true,setclipboard = true,setfflag = true,getnamecallmethod = true,isluau = true,setnonreplicatedproperty = true,getspecialinfo = true,saveinstance = true,rconsoleprint = true,rconsoleinfo = true,rconsolewarn = true,rconsoleerr = true,rconsoleclear = true,rconsolename = true,rconsoleinput = true,rconsoleinputasync = true,printconsole = true,checkcaller = true,islclosure = true,iscclosure = true,dumpstring = true,decompile = true,hookfunction = true,newcclosure = true,isrbxactive = true,keypress = true,keyrelease = true,mouse1click = true,mouse1press = true,mouse1release = true,mouse2click = true,mouse2press = true,mouse2release = true,mousescroll = true,mousemoveabs = true,mousemoverel = true,getrawmetatable = true,setrawmetatable = true,setreadonly = true,isreadonly = true,getsenv = true,getcallingscript = true,getgenv = true,getrenv = true,getreg = true,getgc = true,getinstances = true,getnilinstances = true,getscripts = true,getloadedmodules = true,getconnections = true,firesignal = true,fireclickdetector = true,firetouchinterest = true,fireproximityprompt = true}, false, {
+				["'"] = '&apos;',
+				['"'] = '&quot;',
+				['<'] = '&lt;',
+				['>'] = '&gt;',
+				['&'] = '&amp;'
+			}, '\u{cd}'
+			local c, h, u, v, w, x = (' %s%s '):format(t, t), {
+				[('[^%s] %s'):format(t, t)] = 0,
+				[(' %s%s'):format(t, t)] = -1,
+				[('%s%s '):format(t, t)] = 2,
+				[('%s [^%s]'):format(t, t)] = 1
+			}, {}, function()
+				local a, b, c = getfenv(), type, tostring;
+				for c, d in next, q do
+					local a = a[c]
+					if b(a) == 'table' then
+						local b = {}
+						for a, c in next, a do
+							b[a] = true
+						end;
+						q[c] = b
+					end
+				end;
+				local a, b = {}, Enum:GetEnums()
+				for d = 1, # b do
+					a[c(b[d])] = true
+				end;
+				q.Enum = a;
+				r = true
+			end, function(a)
+				local b = a.GuiElems.EditBox;
+				b.Focused:Connect(function()
+					a:ConnectEditBoxEvent()
+					a.Editing = true
+				end)
+				b.FocusLost:Connect(function()
+					a:DisconnectEditBoxEvent()
+					a.Editing = false
+				end)
+				b:GetPropertyChangedSignal'Text':Connect(function()
+					local c = b.Text;
+					if # c == 0 or a.EditBoxCopying then
+						return
+					end;
+					c = c:gsub('\t', '    ')
+					b.Text = ''
+					a:AppendText(c)
+				end)
+			end, function(a)
+				local b, d = a.GuiElems.LinesFrame, a.Lines;
+				b.InputBegan:Connect(function(e)
+					if f(e, 'StartAndEnd') then
+						local e, i, j, k = math.ceil(a.FontSize / 2), a.FontSize, c.X - b.AbsolutePosition.X, c.Y - b.AbsolutePosition.Y;
+						local j, k, l, m, n, o, p = math.round(j / e) + a.ViewX, math.floor(k / i) + a.ViewY, 0, 0;
+						k = math.min(# d - 1, k)
+						local q = d[k + 1] or ''
+						j = math.min(# q, j + a:TabAdjust(j, k))
+						a.SelectionRange = {
+							{
+								-1,
+								-1
+							},
+							{
+								-1,
+								-1
+							}
+						}
+						a:MoveCursor(j, k)
+						a.FloatCursorX = j;
+						local d = function()
+							local b, c = c.X - b.AbsolutePosition.X, c.Y - b.AbsolutePosition.Y;
+							local b, c = math.max(0, math.round(b / e) + a.ViewX), math.max(0, math.floor(c / i) + a.ViewY)
+							c = math.min(# d - 1, c)
+							local d = d[c + 1] or ''
+							b = math.min(# d, b + a:TabAdjust(b, c))
+							if c < k or (c == k and b < j) then
+								a.SelectionRange = {
+									{
+										b,
+										c
+									},
+									{
+										j,
+										k
+									}
+								}
+							else
+								a.SelectionRange = {
+									{
+										j,
+										k
+									},
+									{
+										b,
+										c
+									}
+								}
+							end;
+							a:MoveCursor(b, c)
+							a.FloatCursorX = b;
+							a:Refresh()
+						end;
+						n = g.InputEnded:Connect(function(b)
+							if f(b, 'StartAndEnd') then
+								n:Disconnect()
+								o:Disconnect()
+								p:Disconnect()
+								a:SetCopyableSelection()
+							end
+						end)
+						o = g.InputChanged:Connect(function(a)
+							if f(a, 'Movement') then
+								local a, b, c, e = c.Y - b.AbsolutePosition.Y, c.Y - b.AbsolutePosition.Y - b.AbsoluteSize.Y, c.X - b.AbsolutePosition.X, c.X - b.AbsolutePosition.X - b.AbsoluteSize.X;
+								l = 0;
+								m = 0;
+								if b > 0 then
+									l = math.floor(b * 0.05) + 1
+								elseif a < 0 then
+									l = math.ceil(a * 0.05) - 1
+								end;
+								if e > 0 then
+									m = math.floor(e * 0.05) + 1
+								elseif c < 0 then
+									m = math.ceil(c * 0.05) - 1
+								end;
+								d()
+							end
+						end)
+						p = h.RenderStepped:Connect(function()
+							if l ~= 0 or m ~= 0 then
+								a:ScrollDelta(m, l)
+								d()
+							end
+						end)
+						a:Refresh()
+					end
+				end)
+			end;
+			function k.MakeEditorFrame(a)
+				local b = j'TextButton'
+				b.BackgroundTransparency = 1;
+				b.TextTransparency = 1;
+				b.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				b.BorderSizePixel = 0;
+				b.Size = UDim2.fromOffset(100, 100)
+				b.Visible = true;
+				local c, d = {}, j'Frame'
+				d.Name = 'Lines'
+				d.BackgroundTransparency = 1;
+				d.Size = UDim2.new(1, 0, 1, 0)
+				d.ClipsDescendants = true;
+				d.Parent = b;
+				local e = j'TextLabel'
+				e.Name = 'LineNumbers'
+				e.BackgroundTransparency = 1;
+				e.FontFace = a.FontFace;
+				e.TextXAlignment = Enum.TextXAlignment.Right;
+				e.TextYAlignment = Enum.TextYAlignment.Top;
+				e.ClipsDescendants = true;
+				e.RichText = true;
+				e.Parent = b;
+				m.Name = 'Cursor'
+				m.BackgroundColor3 = Color3.fromRGB(220, 220, 220)
+				m.BorderSizePixel = 0;
+				m.Parent = b;
+				local g = j'TextBox'
+				g.Name = 'EditBox'
+				g.MultiLine = true;
+				g.Visible = false;
+				g.Parent = b;
+				g.TextSize = a.FontSize;
+				g.FontFace = a.FontFace;
+				u.Invis = i:Create(m, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+					BackgroundTransparency = 1
+				})
+				u.Vis = i:Create(m, TweenInfo.new(0, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+					BackgroundTransparency = 0
+				})
+				local h = j'Frame'
+				h.BackgroundColor3 = Color3.new(0.15686275064945, 0.15686275064945, 0.15686275064945)
+				h.BorderSizePixel = 0;
+				h.Name = 'ScrollCorner'
+				h.Position = UDim2.new(1, -10, 1, -10)
+				h.Size = UDim2.new(0, 10, 0, 10)
+				h.Visible = false;
+				c.ScrollCorner = h;
+				c.LinesFrame = d;
+				c.LineNumbersLabel = e;
+				c.Cursor = m;
+				c.EditBox = g;
+				c.ScrollCorner.Parent = b;
+				d.InputBegan:Connect(function(b)
+					if f(b, 'StartAndEnd') then
+						a:SetEditing(true, b)
+					end
+				end)
+				a.Frame = b;
+				a.Gui = b;
+				a.GuiElems = c;
+				w(a)
+				x(a)
+				return b
+			end;
+			k.GetSelectionText = function(a)
+				if not a:IsValidRange() then
+					return ''
+				end;
+				local b = a.SelectionRange;
+				local b, c, d, e = b[1][1], b[1][2], b[2][1], b[2][2]
+				local f, g = e - c, a.Lines;
+				if not g[c + 1] or not g[e + 1] then
+					return ''
+				end;
+				if f == 0 then
+					return a:ConvertText(g[c + 1]:sub(b + 1, d), false)
+				end;
+				local b, d = g[c + 1]:sub(b + 1), g[e + 1]:sub(1, d)
+				local b = b .. '\n'
+				for a = c + 1, e - 1 do
+					b = b .. g[a + 1] .. '\n'
+				end;
+				b = b .. d;
+				return a:ConvertText(b, false)
+			end;
+			k.SetCopyableSelection = function(a)
+				local b, c = a:GetSelectionText(), a.GuiElems.EditBox;
+				a.EditBoxCopying = true;
+				c.Text = b;
+				c.SelectionStart = 1;
+				c.CursorPosition = # c.Text + 1;
+				a.EditBoxCopying = false
+			end;
+			k.ConnectEditBoxEvent = function(a)
+				if a.EditBoxEvent then
+					a.EditBoxEvent:Disconnect()
+				end;
+				a.EditBoxEvent = g.InputBegan:Connect(function(b)
+					if b.UserInputType ~= Enum.UserInputType.Keyboard then
+						return
+					end;
+					local b, d, e = Enum.KeyCode, b.KeyCode, function(a, b)
+						local c, d;
+						c = g.InputEnded:Connect(function(b)
+							if b.KeyCode ~= a then
+								return
+							end;
+							c:Disconnect()
+							d = true
+						end)
+						b()
+						l.FastWait(0.5)
+						while not d do
+							b()
+							l.FastWait(0.03)
+						end
+					end;
+					if d == b.Down then
+						e(b.Down, function()
+							a.CursorX = a.FloatCursorX;
+							a.CursorY = a.CursorY + 1;
+							a:UpdateCursor()
+							a:JumpToCursor()
+						end)
+					elseif d == b.Up then
+						e(b.Up, function()
+							a.CursorX = a.FloatCursorX;
+							a.CursorY = a.CursorY - 1;
+							a:UpdateCursor()
+							a:JumpToCursor()
+						end)
+					elseif d == b.Left then
+						e(b.Left, function()
+							local b = a.Lines[a.CursorY + 1] or ''
+							a.CursorX = a.CursorX - 1 - (b:sub(a.CursorX - 3, a.CursorX) == c and 3 or 0)
+							if a.CursorX < 0 then
+								a.CursorY = a.CursorY - 1;
+								local b = a.Lines[a.CursorY + 1] or ''
+								a.CursorX = # b
+							end;
+							a.FloatCursorX = a.CursorX;
+							a:UpdateCursor()
+							a:JumpToCursor()
+						end)
+					elseif d == b.Right then
+						e(b.Right, function()
+							local b = a.Lines[a.CursorY + 1] or ''
+							a.CursorX = a.CursorX + 1 + (b:sub(a.CursorX + 1, a.CursorX + 4) == c and 3 or 0)
+							if a.CursorX > # b then
+								a.CursorY = a.CursorY + 1;
+								a.CursorX = 0
+							end;
+							a.FloatCursorX = a.CursorX;
+							a:UpdateCursor()
+							a:JumpToCursor()
+						end)
+					elseif d == b.Backspace then
+						e(b.Backspace, function()
+							local b, d;
+							if a:IsValidRange() then
+								b = a.SelectionRange[1]
+								d = a.SelectionRange[2]
+							else
+								d = {
+									a.CursorX,
+									a.CursorY
+								}
+							end;
+							if not b then
+								local d = a.Lines[a.CursorY + 1] or ''
+								a.CursorX = a.CursorX - 1 - (d:sub(a.CursorX - 3, a.CursorX) == c and 3 or 0)
+								if a.CursorX < 0 then
+									a.CursorY = a.CursorY - 1;
+									local b = a.Lines[a.CursorY + 1] or ''
+									a.CursorX = # b
+								end;
+								a.FloatCursorX = a.CursorX;
+								a:UpdateCursor()
+								b = b or {
+									a.CursorX,
+									a.CursorY
+								}
+							end;
+							a:DeleteRange({
+								b,
+								d
+							}, false, true)
+							a:ResetSelection(true)
+							a:JumpToCursor()
+						end)
+					elseif d == b.Delete then
+						e(b.Delete, function()
+							local b, d;
+							if a:IsValidRange() then
+								b = a.SelectionRange[1]
+								d = a.SelectionRange[2]
+							else
+								b = {
+									a.CursorX,
+									a.CursorY
+								}
+							end;
+							if not d then
+								local b = a.Lines[a.CursorY + 1] or ''
+								local c, e = a.CursorX + 1 + (b:sub(a.CursorX + 1, a.CursorX + 4) == c and 3 or 0), a.CursorY;
+								if c > # b then
+									e = e + 1;
+									c = 0
+								end;
+								a:UpdateCursor()
+								d = d or {
+									c,
+									e
+								}
+							end;
+							a:DeleteRange({
+								b,
+								d
+							}, false, true)
+							a:ResetSelection(true)
+							a:JumpToCursor()
+						end)
+					elseif g:IsKeyDown(Enum.KeyCode.LeftControl) then
+						if d == b.A then
+							a.SelectionRange = {
+								{
+									0,
+									5
+								},
+								{
+									# a.Lines[# a.Lines],
+									# a.Lines - 1
+								}
+							}
+							a:SetCopyableSelection()
+							a:Refresh()
+						end
+					end
+				end)
+			end;
+			k.DisconnectEditBoxEvent = function(a)
+				if a.EditBoxEvent then
+					a.EditBoxEvent:Disconnect()
+					m.BackgroundTransparency = 1;
+					k.CursorAnim(a, false)
+				end
+			end;
+			k.ResetSelection = function(a, b)
+				a.SelectionRange = {
+					{
+						-1,
+						-1
+					},
+					{
+						-1,
+						-1
+					}
+				}
+				if not b then
+					a:Refresh()
+				end
+			end;
+			k.IsValidRange = function(a, b)
+				local a = b or a.SelectionRange;
+				local a, b, c, d = a[1][1], a[1][2], a[2][1], a[2][2]
+				if a == -1 or (a == c and b == d) then
+					return false
+				end;
+				return true
+			end;
+			k.DeleteRange = function(a, b, c, d)
+				b = b or a.SelectionRange;
+				if not a:IsValidRange(b) then
+					return
+				end;
+				local e, f, g, h, i = a.Lines, b[1][1], b[1][2], b[2][1], b[2][2]
+				local j = i - g;
+				if not e[g + 1] or not e[i + 1] then
+					return
+				end;
+				local h, i = e[g + 1]:sub(1, f), e[i + 1]:sub(h + 1)
+				e[g + 1] = h .. i;
+				local h = table.remove;
+				for a = 1, j do
+					h(e, g + 2)
+				end;
+				if b == a.SelectionRange then
+					a.SelectionRange = {
+						{
+							-1,
+							-1
+						},
+						{
+							-1,
+							-1
+						}
+					}
+				end;
+				if d then
+					a.CursorX = f;
+					a.CursorY = g;
+					a:UpdateCursor()
+				end;
+				if not c then
+					a:ProcessTextChange()
+				end
+			end;
+			k.AppendText = function(a, b)
+				a:DeleteRange(nil, true, true)
+				local c, d, e = a.Lines, a.CursorX, a.CursorY;
+				local f = c[e + 1]
+				local f, g = f:sub(1, d), f:sub(d + 1)
+				b = b:gsub('\r\n', '\n')
+				b = a:ConvertText(b, true)
+				local b, h = b:split'\n', table.insert;
+				for a = 1, # b do
+					local d = e + a;
+					if a > 1 then
+						h(c, d, '')
+					end;
+					local a, b, e = b[a], (a == 1 and f or ''), (a == # b and g or '')
+					c[d] = b .. a .. e
+				end;
+				if # b > 1 then
+					d = 0
+				end;
+				a:ProcessTextChange()
+				a.CursorX = d + # b[# b]
+				a.CursorY = e + # b - 1;
+				a:UpdateCursor()
+			end;
+			k.ScrollDelta = function(a, b, c)
+				a.ScrollV:ScrollTo(a.ScrollV.Index + c)
+				a.ScrollH:ScrollTo(a.ScrollH.Index + b)
+			end;
+			k.TabAdjust = function(a, b, c)
+				local a = a.Lines;
+				local a = a[c + 1]
+				b = b + 1;
+				if a then
+					local a, b, c = a:sub(b - 1, b - 1), a:sub(b, b), a:sub(b + 1, b + 1)
+					local a = (# a > 0 and a or ' ') .. (# b > 0 and b or ' ') .. (# c > 0 and c or ' ')
+					for b, c in pairs(h) do
+						if a:find(b) then
+							return c
+						end
+					end
+				end;
+				return 0
+			end;
+			k.SetEditing = function(a, b, c)
+				if c then
+					a:UpdateCursor(c)
+				end;
+				if b then
+					if a.Editable then
+						a.GuiElems.EditBox.Text = ''
+						a.GuiElems.EditBox:CaptureFocus()
+					end
+				else
+					a.GuiElems.EditBox:ReleaseFocus()
+				end
+			end;
+			k.CursorAnim = function(a, b)
+				local c, d = a.GuiElems.Cursor, tick()
+				a.LastAnimTime = d;
+				if not b then
+					return
+				end;
+				u.Invis:Cancel()
+				u.Vis:Cancel()
+				c.BackgroundTransparency = 0;
+				coroutine.wrap(function()
+					while a.Editable do
+						l.FastWait(0.5)
+						if a.LastAnimTime ~= d then
+							return
+						end;
+						u.Invis:Play()
+						l.FastWait(0.5)
+						if a.LastAnimTime ~= d then
+							return
+						end;
+						u.Vis:Play()
+					end
+				end)()
+			end;
+			k.MoveCursor = function(a, b, c)
+				a.CursorX = b;
+				a.CursorY = c;
+				a:UpdateCursor()
+				a:JumpToCursor()
+			end;
+			k.JumpToCursor = function(a)
+				a:Refresh()
+			end;
+			k.UpdateCursor = function(a, b)
+				local c, d = a.GuiElems.LinesFrame, a.GuiElems.Cursor;
+				local c, e = math.max(0, c.AbsoluteSize.X), math.max(0, c.AbsoluteSize.Y)
+				local c, e, f, g, h, i = math.ceil(e / a.FontSize), math.ceil(c / math.ceil(a.FontSize / 2)), a.ViewX, a.ViewY, tostring(# a.Lines), math.ceil(a.FontSize / 2)
+				local h = # h * i + 4 * i;
+				if b then
+					local c = a.GuiElems.LinesFrame;
+					local b, c, d, e, f, g = c.AbsolutePosition.X, c.AbsolutePosition.Y, b.Position.X, b.Position.Y, math.ceil(a.FontSize / 2), a.FontSize;
+					a.CursorX = a.ViewX + math.round((d - b) / f)
+					a.CursorY = a.ViewY + math.floor((e - c) / g)
+				end;
+				local b, i = a.CursorX, a.CursorY;
+				local j = a.Lines[i + 1] or ''
+				if b > # j then
+					b = # j
+				elseif b < 0 then
+					b = 0
+				end;
+				if i >= # a.Lines then
+					i = math.max(0, # a.Lines - 1)
+				elseif i < 0 then
+					i = 0
+				end;
+				b = b + a:TabAdjust(b, i)
+				a.CursorX = b;
+				a.CursorY = i;
+				local c = (b >= f) and (i >= g) and (b <= f + e) and (i <= g + c)
+				if c then
+					local b, c = (b - f), (i - g)
+					d.Position = UDim2.new(0, h + b * math.ceil(a.FontSize / 2) - 1, 0, c * a.FontSize)
+					d.Size = UDim2.new(0, 1, 0, a.FontSize + 2)
+					d.Visible = true;
+					a:CursorAnim(true)
+				else
+					d.Visible = false
+				end
+			end;
+			k.MapNewLines = function(a)
+				local b, c, d, e, f = {}, 1, a.Text, string.find, 1;
+				local g = e(d, '\n', f, true)
+				while g do
+					b[c] = g;
+					c = c + 1;
+					f = g + 1;
+					g = e(d, '\n', f, true)
+				end;
+				a.NewLines = b
+			end;
+			k.PreHighlight = function(b)
+				local c = b.Text:gsub('\\\\', '  ')
+				local d, e, f, g, h, i = # c, {}, {}, {}, string.find, string.sub;
+				b.ColoredLines = {}
+				local j = function(a, b, c, d)
+					local i, j = # e + 1, 1;
+					local k, l, m = h(a, b, j, d)
+					while k do
+						e[i] = k;
+						f[k] = c;
+						if m then
+							g[k] = m
+						end;
+						i = i + 1;
+						j = l + 1;
+						k, l, m = h(a, b, j, d)
+					end
+				end;
+				j(c, '"', 1, true)
+				j(c, "'", 2, true)
+				j(c, '%[(=*)%[', 3)
+				j(c, '--', 4, true)
+				table.sort(e)
+				local j, k, l, m, n = b.NewLines, 0, 0, 0, {}
+				for b = 1, # e do
+					local b = e[b]
+					if b <= m then
+						continue
+					end;
+					local e, o = b, f[b]
+					if o == 1 then
+						e = h(c, '"', b + 1, true)
+						while e and i(c, e - 1, e - 1) == '\\' do
+							e = h(c, '"', e + 1, true)
+						end;
+						if not e then
+							e = d
+						end
+					elseif o == 2 then
+						e = h(c, "'", b + 1, true)
+						while e and i(c, e - 1, e - 1) == '\\' do
+							e = h(c, "'", e + 1, true)
+						end;
+						if not e then
+							e = d
+						end
+					elseif o == 3 then
+						a, e = h(c, ']' .. g[b] .. ']', b + 1, true)
+						if not e then
+							e = d
+						end
+					elseif o == 4 then
+						local f = f[b + 2]
+						if f == 3 then
+							a, e = h(c, ']' .. g[b + 2] .. ']', b + 1, true)
+							if not e then
+								e = d
+							end
+						else
+							e = h(c, '\n', b + 1, true) or d
+						end
+					end;
+					while b > l do
+						k = k + 1;
+						l = j[k] or d + 1
+					end;
+					while true do
+						local a = n[k]
+						if not a then
+							a = {}
+							n[k] = a
+						end;
+						a[b] = {
+							o,
+							e
+						}
+						if e > l then
+							k = k + 1;
+							l = j[k] or d + 1
+						else
+							break
+						end
+					end;
+					m = e
+				end;
+				b.PreHighlights = n
+			end;
+			k.HighlightLine = function(a, b)
+				local c = a.ColoredLines[b]
+				if c then
+					return c
+				end;
+				local c, d, e, f, g, h, i, j, k, l, m, n, r = string.sub, string.find, string.match, {}, a.PreHighlights[b] or {}, a.Lines[b] or '', 0, 0, false, 0, a.NewLines[b - 1] or 0, {}
+				for a, b in next, g do
+					local a = a - m;
+					if a < 1 then
+						j = b[1]
+						i = b[2] - m
+					else
+						n[a] = {
+							b[1],
+							b[2] - m
+						}
+					end
+				end;
+				for a = 1, # h do
+					if a <= i then
+						f[a] = j;
+						continue
+					end;
+					local b = n[a]
+					if b then
+						j = b[1]
+						i = b[2]
+						f[a] = j;
+						k = false;
+						r = nil;
+						l = 0
+					else
+						local b = c(h, a, a)
+						if d(b, '[%a_]') then
+							local b = e(h, '[%a%d_]+', a)
+							local c = (p[b] and 7) or (q[b] and 8)
+							i = a + # b - 1;
+							if c ~= 7 then
+								if k then
+									local a = r and q[r]
+									c = (a and type(a) == 'table' and a[b] and 8) or 10
+								end;
+								if c ~= 8 then
+									local a, b, b = d(h, '^%s*([%({"\'])', i + 1)
+									if a then
+										c = (l > 0 and b == '(' and 16) or 9;
+										l = 0
+									end
+								end
+							else
+								c = o[b] or c;
+								l = (b == 'function' and 1 or 0)
+							end;
+							r = b;
+							k = false;
+							if l > 0 then
+								l = 1
+							end;
+							if c then
+								j = c;
+								f[a] = j
+							else
+								j = nil
+							end
+						elseif d(b, '%p') then
+							local g = (b == '.')
+							local c = g and d(c(h, a + 1, a + 1), '%d')
+							f[a] = (c and 6 or 5)
+							if not c then
+								local c = g and e(h, '%.%.?%.?', a)
+								if c and # c > 1 then
+									j = 5;
+									i = a + # c - 1;
+									k = false;
+									r = nil;
+									l = 0
+								else
+									if g then
+										if k then
+											r = nil
+										else
+											k = true
+										end
+									else
+										k = false;
+										r = nil
+									end;
+									l = ((g or b == ':') and l == 1 and 2) or 0
+								end
+							end
+						elseif d(b, '%d') then
+							local b, b = d(h, '%x+', a)
+							local e = c(h, b, b + 1)
+							if (e == 'e+' or e == 'e-') and d(c(h, b + 2, b + 2), '%d') then
+								b = b + 1
+							end;
+							j = 6;
+							i = b;
+							f[a] = 6;
+							k = false;
+							r = nil;
+							l = 0
+						else
+							f[a] = j;
+							local a, a = d(h, '%s+', a)
+							if a then
+								i = a
+							end
+						end
+					end
+				end;
+				a.ColoredLines[b] = f;
+				return f
+			end;
+			k.Refresh = function(a)
+				local b = a.Frame.Lines;
+				local c, e = math.max(0, b.AbsoluteSize.X), math.max(0, b.AbsoluteSize.Y)
+				local c, e, f, g, h, i, k = math.ceil(e / a.FontSize), math.ceil(c / math.ceil(a.FontSize / 2)), string.gsub, string.sub, a.ViewX, a.ViewY, ''
+				for c = 1, c do
+					local l = a.LineFrames[c]
+					if not l then
+						l = j'Frame'
+						l.Name = 'Line'
+						l.Position = UDim2.new(0, 0, 0, (c - 1) * a.FontSize)
+						l.Size = UDim2.new(1, 0, 0, a.FontSize)
+						l.BorderSizePixel = 0;
+						l.BackgroundTransparency = 1;
+						local e = j'Frame'
+						e.Name = 'SelectionHighlight'
+						e.BorderSizePixel = 0;
+						e.BackgroundColor3 = d.Theme.Syntax.SelectionBack;
+						e.Parent = l;
+						e.BackgroundTransparency = 0.7;
+						local d = j'TextLabel'
+						d.Name = 'Label'
+						d.BackgroundTransparency = 1;
+						d.FontFace = a.FontFace;
+						d.TextSize = a.FontSize;
+						d.Size = UDim2.new(1, 0, 0, a.FontSize)
+						d.RichText = true;
+						d.TextXAlignment = Enum.TextXAlignment.Left;
+						d.TextColor3 = a.Colors.Text;
+						d.ZIndex = 2;
+						d.Parent = l;
+						l.Parent = b;
+						a.LineFrames[c] = l
+					end;
+					local b = i + c;
+					local c, d, i, j, m = a.Lines[b] or '', '', a:HighlightLine(b), h + 1, a.RichTemplates;
+					local o, p, p = m.Text, m.Selection, i[j]
+					local q, r = m[n[p]] or o, a.SelectionRange;
+					local r, t, u = r[1], r[2], b - 1;
+					if u >= r[2] and u <= t[2] then
+						local a, b = math.ceil(a.FontSize / 2), (u == r[2] and r[1] or 0) - h;
+						local c = (u == t[2] and t[1] - b - h or e + h)
+						l.SelectionHighlight.Position = UDim2.new(0, b * a, 0, 0)
+						l.SelectionHighlight.Size = UDim2.new(0, c * a, 1, 0)
+						l.SelectionHighlight.Visible = true
+					else
+						l.SelectionHighlight.Visible = false
+					end;
+					for a = 2, e do
+						local a = h + a;
+						local b = i[a]
+						if b ~= p then
+							local e = m[n[b]] or o;
+							if e ~= q then
+								local b = f(g(c, j, a - 1), '[\'"<>&]', s)
+								d = d .. (q ~= o and (q .. b .. '</font>') or b)
+								j = a;
+								q = e
+							end;
+							p = b
+						end
+					end;
+					local c = f(g(c, j, h + e), '[\'"<>&]', s)
+					if # c > 0 then
+						d = d .. (q ~= o and (q .. c .. '</font>') or c)
+					end;
+					if a.Lines[b] then
+						k = k .. (b - 1 == a.CursorY and ('<b>' .. b .. '</b>\n') or b .. '\n')
+					end;
+					l.Label.Text = d
+				end;
+				for b = c + 1, # a.LineFrames do
+					a.LineFrames[b]:Destroy()
+					a.LineFrames[b] = nil
+				end;
+				a.Frame.LineNumbers.Text = k;
+				a:UpdateCursor()
+			end;
+			k.UpdateView = function(a)
+				local b, c = tostring(# a.Lines), math.ceil(a.FontSize / 2)
+				local d, e = # b * c + 4 * c, a.Frame.Lines;
+				local e, f = e.AbsoluteSize.X, e.AbsoluteSize.Y;
+				local f, g, h, i = math.ceil(f / a.FontSize), a.MaxTextCols * c, a.ScrollV, a.ScrollH;
+				h.VisibleSpace = f;
+				h.TotalSpace = # a.Lines + 1;
+				i.VisibleSpace = math.ceil(e / c)
+				i.TotalSpace = a.MaxTextCols + 1;
+				h.Gui.Visible = # a.Lines + 1 > f;
+				i.Gui.Visible = g > e;
+				local e = a.FrameOffsets;
+				a.FrameOffsets = Vector2.new(h.Gui.Visible and -10 or 0, i.Gui.Visible and -10 or 0)
+				if e ~= a.FrameOffsets then
+					a:UpdateView()
+				else
+					h:ScrollTo(a.ViewY, true)
+					i:ScrollTo(a.ViewX, true)
+					if h.Gui.Visible and i.Gui.Visible then
+						h.Gui.Size = UDim2.new(0, 10, 1, -10)
+						i.Gui.Size = UDim2.new(1, -10, 0, 10)
+						a.GuiElems.ScrollCorner.Visible = true
+					else
+						h.Gui.Size = UDim2.new(0, 10, 1, 0)
+						i.Gui.Size = UDim2.new(1, 0, 0, 10)
+						a.GuiElems.ScrollCorner.Visible = false
+					end;
+					a.ViewY = h.Index;
+					a.ViewX = i.Index;
+					a.Frame.Lines.Position = UDim2.new(0, d, 0, 0)
+					a.Frame.Lines.Size = UDim2.new(1, - d + e.X, 1, e.Y)
+					a.Frame.LineNumbers.Position = UDim2.new(0, c, 0, 0)
+					a.Frame.LineNumbers.Size = UDim2.new(0, # b * c, 1, e.Y)
+					a.Frame.LineNumbers.TextSize = a.FontSize
+				end
+			end;
+			k.ProcessTextChange = function(a)
+				local b, c = 0, a.Lines;
+				for a = 1, # c do
+					local a = # c[a]
+					if a > b then
+						b = a
+					end
+				end;
+				a.MaxTextCols = b;
+				a:UpdateView()
+				a.Text = table.concat(a.Lines, '\n')
+				a:MapNewLines()
+				a:PreHighlight()
+				a:Refresh()
+			end;
+			k.ConvertText = function(a, a, b)
+				if b then
+					local a = a:gsub('\t', '    ')
+					return a:gsub('\t', (' %s%s '):format(t, t))
+				else
+					return a:gsub((' %s%s '):format(t, t), '\t')
+				end
+			end;
+			k.GetText = function(a)
+				local b = table.concat(a.Lines, '\n')
+				return a:ConvertText(b, false)
+			end;
+			k.SetText = function(a, b)
+				b = a:ConvertText(b, true)
+				local c = a.Lines;
+				table.clear(c)
+				local d = 1;
+				for a in b:gmatch'([^\n\r]*)[\n\r]?' do
+					c[d] = a;
+					d = d + 1
+				end;
+				a:ProcessTextChange()
+			end;
+			k.ClearText = function(a)
+				local b, c = a:ConvertText('', true), a.Lines;
+				table.clear(c)
+				local d = 1;
+				for a in b:gmatch'([^\n\r]*)[\n\r]?' do
+					c[d] = a;
+					d = d + 1
+				end;
+				a:ProcessTextChange()
+			end;
+			k.CompileText = function(a)
+				local a = pcall(function()
+					local b = table.concat(a.Lines, '\n')
+					local a = a:ConvertText(b, false)
+					loadstring(a)()
+				end)
+				return a
+			end;
+			k.ReturnErrors = function(a)
+				local a, b = pcall(function()
+					local b = table.concat(a.Lines, '\n')
+					local a = a:ConvertText(b, false)
+					loadstring(a)()
+				end)
+				return not a and b or nil
+			end;
+			k.GetVersion = function(a)
+				return b
+			end;
+			k.MakeRichTemplates = function(a)
+				local b, c = math.floor, {}
+				for a, d in pairs(a.Colors) do
+					c[a] = ('<font color="rgb(%s,%s,%s)">'):format(b(d.r * 255), b(d.g * 255), b(d.b * 255))
+				end;
+				a.RichTemplates = c
+			end;
+			k.ApplyTheme = function(a)
+				local b = d.Theme.Syntax;
+				a.Colors = b;
+				a.Frame.LineNumbers.TextColor3 = b.Text;
+				a.Frame.BackgroundColor3 = b.Background
+			end;
+			local a = {
+				__index = k
+			}
+			local a = function(b)
+				b = b or {}
+				if not r then
+					v()
+				end;
+				local c, f = l.ScrollBar.new(), l.ScrollBar.new(true)
+				f.Gui.Position = UDim2.new(0, 0, 1, -10)
+				local d = {
+					FontFace = Font.fromEnum(Enum.Font.Code),
+					FontSize = 14,
+					ViewX = 0,
+					ViewY = 0,
+					Colors = d.Theme.Syntax,
+					ColoredLines = {},
+					Lines = {
+						''
+					},
+					LineFrames = {},
+					Editable = true,
+					Editing = false,
+					CursorX = 0,
+					CursorY = 0,
+					FloatCursorX = 0,
+					Text = '',
+					PreHighlights = {},
+					SelectionRange = {
+						{
+							-1,
+							-1
+						},
+						{
+							-1,
+							-1
+						}
+					},
+					NewLines = {},
+					FrameOffsets = Vector2.new(0, 0),
+					MaxTextCols = 0,
+					ScrollV = c,
+					ScrollH = f
+				}
+				local b = e(d, b)
+				local a = setmetatable(b, a)
+				k.SetTextMultiplier = (function(b)
+					a.FontSize = b
+				end)
+				k.GetTextMultiplier = (function()
+					return a.FontSize
+				end)
+				c.WheelIncrement = 3;
+				f.Increment = 2;
+				f.WheelIncrement = 7;
+				c.Scrolled:Connect(function()
+					a.ViewY = c.Index;
+					a:Refresh()
+				end)
+				f.Scrolled:Connect(function()
+					a.ViewX = f.Index;
+					a:Refresh()
+				end)
+				a:MakeEditorFrame(a)
+				a:MakeRichTemplates()
+				a:ApplyTheme()
+				c:SetScrollFrame(a.Frame.Lines)
+				c.Gui.Parent = a.Frame;
+				f.Gui.Parent = a.Frame;
+				a:UpdateView()
+				a:SetText(b.Text)
+				a.Frame:GetPropertyChangedSignal'AbsoluteSize':Connect(function()
+					a:UpdateView()
+					a:Refresh()
+				end)
+				return a
+			end;
+			return {
+				new = a
+			}
+		end)()
+		return l
+	end;
+	function g.b()
+		local a, b, c = {
+			Services = {},
+			OnInitConnections = {}
+		}, get_hidden_gui or gethui, cloneref or function(...)
+			return ...
+		end;
+		local d = a.Services;
+		setmetatable(d, {
+			__index = function(a, a)
+				local a = game:GetService(a)
+				return c(a)
+			end
+		})
+		local d, e = (d.CoreGui)
+		function a:AddOnInit(a)
+			local b = self.OnInitConnections;
+			table.insert(b, a)
+		end;
+		function a:NewReference(a)
+			return c(a)
+		end;
+		function a:CallOnInitConnections(a, ...)
+			local b = self.OnInitConnections;
+			e = a;
+			for a, a in next, b do
+				a(e, ...)
+			end
+		end;
+		function a:SetProperties(a, b)
+			for b, c in next, b do
+				pcall(function()
+					a[b] = c
+				end)
+			end
+		end;
+		function a:NewClass(a, b)
+			b = b or {}
+			a.__index = a;
+			return setmetatable(b, a)
+		end;
+		function a:CheckConfig(a, b, c, d)
+			if not a then
+				return
+			end;
+			for b, e in next, b do
+				if a[b] ~= nil then
+					continue
+				end;
+				if d then
+					if table.find(d, b) then
+						continue
+					end
+				end;
+				if c then
+					e = e()
+				end;
+				a[b] = e
+			end;
+			return a
+		end;
+		function a:ResolveUIParent()
+			local a, c = e.PlayerGui, e.Debug;
+			local a, b = {
+				[1] = function()
+					local a = b()
+					if a.Parent == d then
+						return
+					end;
+					return a
+				end,
+				[2] = function()
+					return d
+				end,
+				[3] = function()
+					return a
+				end
+			}, e:CreateInstance'ScreenGui'
+			for a, a in next, a do
+				local a, d = pcall(a)
+				if not a or not d then
+					continue
+				end;
+				local a = pcall(function()
+					b.Parent = d
+				end)
+				if not a then
+					continue
+				end;
+				if c then
+					e:Warn("-211731200")
+				end;
+				return d
+			end;
+			e:Warn'The ReGui container does not have a parent defined'
+			return nil
+		end;
+		function a:GetChildOfClass(a, b)
+			local c = a:FindFirstChildOfClass(b)
+			if not c then
+				c = e:CreateInstance(b, a)
+			end;
+			return c
+		end;
+		function a:CheckAssetUrl(a)
+			if tonumber(a) then
+				return "-120048154"
+			end;
+			return a
+		end;
+		function a:SetPadding(a, b)
+			if not a then
+				return
+			end;
+			self:SetProperties(a, {
+				PaddingBottom = b,
+				PaddingLeft = b,
+				PaddingRight = b,
+				PaddingTop = b
+			})
+		end;
+		return a
+	end;
+	function g.c()
+		local a, b = g.load'b', {
+			DefaultTweenInfo = TweenInfo.new(0.08)
+		}
+		local c = a.Services;
+		local c = c.TweenService;
+		function b:Tween(b)
+			local d, e, f = self.DefaultTweenInfo, b.Object, b.NoAnimation;
+			local b, d, g, h = b.Tweeninfo or d, b.EndProperties, b.StartProperties, b.Completed;
+			if g then
+				a:SetProperties(e, g)
+			end;
+			if f then
+				a:SetProperties(e, d)
+				if h then
+					h()
+				end;
+				return
+			end;
+			local f;
+			for d, g in next, d do
+				local d = {
+					[d] = g
+				}
+				local b, c = pcall(function()
+					return c:Create(e, b, d)
+				end)
+				if not b then
+					a:SetProperties(e, d)
+					continue
+				end;
+				if not f then
+					f = c
+				end;
+				c:Play()
+			end;
+			if h then
+				if f then
+					f.Completed:Connect(h)
+				else
+					h()
+				end
+			end;
+			return f
+		end;
+		function b:Animate(a)
+			local a, b, c, d, e = a.NoAnimation, a.Objects, a.Tweeninfo, (a.Completed)
+			for b, d in next, b do
+				local a = self:Tween{
+					NoAnimation = a,
+					Object = b,
+					Tweeninfo = c,
+					EndProperties = d
+				}
+				if not e then
+					e = a
+				end
+			end;
+			if d then
+				e.Completed:Connect(d)
+			end;
+			return e
+		end;
+		function b:HeaderCollapseToggle(b)
+			a:CheckConfig(b, {
+				Rotations = {
+					Open = 90,
+					Closed = 0
+				}
+			})
+			local a, b, c, d, e = b.Toggle, b.NoAnimation, b.Rotations, b.Collapsed, b.Tweeninfo;
+			local c = d and c.Closed or c.Open;
+			self:Tween{
+				Tweeninfo = e,
+				NoAnimation = b,
+				Object = a,
+				EndProperties = {
+					Rotation = c
+				}
+			}
+		end;
+		function b:HeaderCollapse(a)
+			local a, b, c, d, e, f, g, h, i, j, k = a.Tweeninfo, a.Collapsed, a.ClosedSize, a.OpenSize, a.Toggle, a.Resize, a.Hide, a.NoAnimation, a.NoAutomaticSize, a.IconRotations, a.Completed;
+			if not i then
+				f.AutomaticSize = Enum.AutomaticSize.None
+			end;
+			if not b then
+				g.Visible = true
+			end;
+			self:HeaderCollapseToggle{
+				Tweeninfo = a,
+				Collapsed = b,
+				NoAnimation = h,
+				Toggle = e,
+				Rotations = j
+			}
+			local a = self:Tween{
+				Tweeninfo = a,
+				NoAnimation = h,
+				Object = f,
+				StartProperties = {
+					Size = b and d or c
+				},
+				EndProperties = {
+					Size = b and c or d
+				},
+				Completed = function()
+					g.Visible = not b;
+					if k then
+						k()
+					end;
+					if b then
+						return
+					end;
+					if i then
+						return
+					end;
+					f.Size = UDim2.fromScale(1, 0)
+					f.AutomaticSize = Enum.AutomaticSize.Y
+				end
+			}
+			return a
+		end;
+		return b
+	end;
+	function g.d()
+		local a = {}
+		a.__index = a;
+		local b = g.load'b'
+		function a:Fire(...)
+			local a = self:GetConnections()
+			if # a <= 0 then
+				return
+			end;
+			for a, a in next, a do
+				a(...)
+			end
+		end;
+		function a:GetConnections()
+			local a = self.Connections;
+			return a
+		end;
+		function a:Connect(a)
+			local b = self:GetConnections()
+			table.insert(b, a)
+		end;
+		function a:DisconnectConnections()
+			local a = self:GetConnections()
+			table.clear(a)
+		end;
+		function a:NewSignal()
+			return b:NewClass(a, {
+				Connections = {}
+			})
+		end;
+		return a
+	end;
+	function g.e()
+		return function(a)
+			local b = a:Window{
+				Title = 'Configuration saving',
+				Size = UDim2.fromOffset(300, 200)
+			}
+			local c, d = (b:Row())
+			c:Button{
+				Text = 'Dump Ini',
+				Callback = function()
+					print(a:DumpIni(true))
+				end
+			}
+			c:Button{
+				Text = 'Save Ini',
+				Callback = function()
+					d = a:DumpIni(true)
+				end
+			}
+			c:Button{
+				Text = 'Load Ini',
+				Callback = function()
+					if not d then
+						warn'No save data!'
+						return
+					end;
+					a:LoadIni(d, true)
+				end
+			}
+			b:Separator()
+			b:SliderInt{
+				IniFlag = 'MySlider',
+				Value = 5,
+				Minimum = 1,
+				Maximum = 32
+			}
+			b:Checkbox{
+				IniFlag = 'MyCheckbox',
+				Value = true
+			}
+			b:InputText{
+				IniFlag = 'MyInput',
+				Value = 'Hello world!'
+			}
+			b:Keybind{
+				IniFlag = 'MyKeybind',
+				Label = 'Keybind (w/ Q & Left-Click blacklist)',
+				KeyBlacklist = {
+					Enum.UserInputType.MouseButton1,
+					Enum.KeyCode.Q
+				}
+			}
+			local c = a:TabsWindow{
+				Title = 'Tabs window!',
+				Visible = false,
+				Size = UDim2.fromOffset(300, 200)
+			}
+			for a, a in {
+				'Avocado',
+				'Broccoli',
+				'Cucumber'
+			} do
+				local a = c:CreateTab{
+					Name = a
+				}
+				a:Label{
+					Text = "2948062250"
+				}
+			end;
+			local d = a.Elements:Label{
+				Parent = a.Container.Windows,
+				Visible = false,
+				UiPadding = UDim.new(0, 8),
+				CornerRadius = UDim.new(0, 2),
+				Position = UDim2.fromOffset(10, 10),
+				Size = UDim2.fromOffset(250, 50),
+				Border = true,
+				BorderThickness = 1,
+				BorderColor = a.Accent.Gray,
+				BackgroundTransparency = 0.4,
+				BackgroundColor3 = a.Accent.Black
+			}
+			game:GetService'RunService'.RenderStepped:Connect(function(a)
+				local a, a, a = math.round(1 / a), DateTime.now():FormatLocalTime('dddd h:mm:ss A', 'en-us'), "253801675"
+				a ..= "1750048802"
+				a ..= "1087805154"
+				d.Text = a
+			end)
+			local e = a:Window{
+				Title = 'Dear ReGui Demo',
+				Size = UDim2.new(0, 400, 0, 300),
+				NoScroll = true
+			}:Center()
+			local f = e:MenuBar()
+			local g = f:MenuItem{
+				Text = 'Menu'
+			}
+			g:Selectable{
+				Text = 'New'
+			}
+			g:Selectable{
+				Text = 'Open'
+			}
+			g:Selectable{
+				Text = 'Save'
+			}
+			g:Selectable{
+				Text = 'Save as'
+			}
+			g:Selectable{
+				Text = 'Exit',
+				Callback = function()
+					e:Close()
+				end
+			}
+			local f = f:MenuItem{
+				Text = 'Examples'
+			}
+			f:Selectable{
+				Text = 'Print hello world',
+				Callback = function()
+					print'Hello world!'
+				end
+			}
+			f:Selectable{
+				Text = 'Tabs window',
+				Callback = function()
+					c:ToggleVisibility()
+				end
+			}
+			f:Selectable{
+				Text = 'Configuration saving',
+				Callback = function()
+					b:ToggleVisibility()
+				end
+			}
+			f:Selectable{
+				Text = 'Watermark',
+				Callback = function()
+					d.Visible = not d.Visible
+				end
+			}
+			e:Label{
+				Text = "678719910"
+			}
+			local b = e:ScrollingCanvas{
+				Fill = true,
+				UiPadding = UDim.new(0, 0)
+			}
+			local c = b:CollapsingHeader{
+				Title = 'Help'
+			}
+			c:Separator{
+				Text = 'ABOUT THIS DEMO:'
+			}
+			c:BulletText{
+				Rows = {
+					[[Sections below are demonstrating many aspects of the library.]]
+				}
+			}
+			c:Separator{
+				Text = 'PROGRAMMER GUIDE:'
+			}
+			c:BulletText{
+				Rows = {
+					[[See example FAQ, examples, and documentation at https://depso.gitbook.io/regui]]
+				}
+			}
+			c:Indent():BulletText{
+				Rows = {
+					'See example applications in the /demo folder.'
+				}
+			}
+			local c = b:CollapsingHeader{
+				Title = 'Configuration'
+			}
+			local d = c:TreeNode{
+				Title = 'Backend Flags'
+			}
+			d:Checkbox{
+				Label = 'ReGui:IsMobileDevice',
+				Disabled = true,
+				Value = a:IsMobileDevice()
+			}
+			d:Checkbox{
+				Label = 'ReGui:IsConsoleDevice',
+				Disabled = true,
+				Value = a:IsConsoleDevice()
+			}
+			local c = c:TreeNode{
+				Title = 'Style'
+			}
+			c:Combo{
+				Selected = 'DarkTheme',
+				Label = 'Colors',
+				Items = a.ThemeConfigs,
+				Callback = function(a, a)
+					e:SetTheme(a)
+				end
+			}
+			local c, d = b:CollapsingHeader{
+				Title = 'Window options'
+			}:Table{
+				MaxColumns = 3
+			}:NextRow(), {
+				NoResize = false,
+				NoTitleBar = false,
+				NoClose = false,
+				NoCollapse = false,
+				OpenOnDoubleClick = true,
+				NoBringToFrontOnFocus = false,
+				NoMove = false,
+				NoSelect = false,
+				NoScrollBar = false,
+				NoBackground = false
+			}
+			for a, b in pairs(d) do
+				local c = c:NextColumn()
+				c:Checkbox{
+					Value = b,
+					Label = a,
+					Callback = function(b, b)
+						e:UpdateConfig{
+							[a] = b
+						}
+					end
+				}
+			end;
+			local a, c, d = b:CollapsingHeader{
+				Title = 'Widgets'
+			}, {
+				'Basic',
+				'Tooltips',
+				'Tree Nodes',
+				'Collapsing Headers',
+				'Bullets',
+				'Text',
+				'Images',
+				'Videos',
+				'Combo',
+				'Tabs',
+				'Plot widgets',
+				'Multi-component Widgets',
+				'Progress Bars',
+				'Picker Widgets',
+				'Code editor',
+				'Console',
+				'List layout',
+				'Indent',
+				'Viewport',
+				'Keybinds',
+				'Input',
+				'Text Input'
+			}, {
+				Basic = function(b)
+					b:Separator{
+						Text = 'General'
+					}
+					local c = b:Row()
+					local d = c:Label{
+						Text = 'Thanks for clicking me!',
+						Visible = false,
+						LayoutOrder = 2
+					}
+					c:Button{
+						Callback = function()
+							d.Visible = not d.Visible
+						end
+					}
+					b:Checkbox()
+					local c = b:Row()
+					c:Radiobox{
+						Label = 'radio a'
+					}
+					c:Radiobox{
+						Label = 'radio b'
+					}
+					c:Radiobox{
+						Label = 'radio c'
+					}
+					local c = b:Row()
+					for a = 1, 7 do
+						local a = a / 7;
+						c:Button{
+							Text = 'Click',
+							BackgroundColor3 = Color3.fromHSV(a, 0.6, 0.6)
+						}
+					end;
+					local c = b:Button{
+						Text = 'Tooltip'
+					}
+					a:SetItemTooltip(c, function(a)
+						a:Label{
+							Text = 'I am a tooltip'
+						}
+					end)
+					b:Separator{
+						Text = 'Inputs'
+					}
+					b:InputText{
+						Value = 'Hello world!'
+					}
+					b:InputText{
+						Placeholder = 'Enter text here',
+						Label = 'Input text (w/ hint)',
+						Value = ''
+					}
+					b:InputInt{
+						Value = 50
+					}
+					b:InputInt{
+						Label = 'Input Int (w/ limit)',
+						Value = 5,
+						Maximum = 10,
+						Minimum = 1
+					}
+					b:Separator{
+						Text = 'Drags'
+					}
+					b:DragInt()
+					b:DragInt{
+						Maximum = 100,
+						Minimum = 0,
+						Label = 'Drag Int 0..100',
+						Format = '%d%%'
+					}
+					b:DragFloat{
+						Maximum = 1,
+						Minimum = 0,
+						Value = 0.5
+					}
+					b:Separator{
+						Text = 'Sliders'
+					}
+					b:SliderInt{
+						Format = '%.d/%s',
+						Value = 5,
+						Minimum = 1,
+						Maximum = 32,
+						ReadOnly = false
+					}:SetValue(8)
+					b:SliderInt{
+						Label = 'Slider Int (w/ snap)',
+						Value = 1,
+						Minimum = 1,
+						Maximum = 8,
+						Type = 'Snap'
+					}
+					b:SliderFloat{
+						Label = 'Slider Float',
+						Minimum = 0,
+						Maximum = 1,
+						Format = 'Ratio = %.3f'
+					}
+					b:SliderFloat{
+						Label = 'Slider Angle',
+						Minimum = -360,
+						Maximum = 360,
+						Format = '%.f deg'
+					}
+					b:SliderEnum{
+						Items = {
+							'Fire',
+							'Earth',
+							'Air',
+							'Water'
+						},
+						Value = 2
+					}
+					b:SliderEnum{
+						Items = {
+							'Fire',
+							'Earth',
+							'Air',
+							'Water'
+						},
+						Value = 2,
+						Disabled = true,
+						Label = 'Disabled Enum'
+					}
+					b:SliderProgress{
+						Label = 'Progress Slider',
+						Value = 8,
+						Minimum = 1,
+						Maximum = 32
+					}
+					b:Separator{
+						Text = 'Selectors/Pickers'
+					}
+					b:InputColor3{
+						Value = a.Accent.Light,
+						Label = 'Color 1'
+					}
+					b:SliderColor3{
+						Value = a.Accent.Light,
+						Label = 'Color 2'
+					}
+					b:InputCFrame{
+						Value = CFrame.new(1, 1, 1),
+						Minimum = CFrame.new(0, 0, 0),
+						Maximum = CFrame.new(200, 100, 50),
+						Label = 'CFrame 1'
+					}
+					b:SliderCFrame{
+						Value = CFrame.new(1, 1, 1),
+						Minimum = CFrame.new(0, 0, 0),
+						Maximum = CFrame.new(200, 100, 50),
+						Label = 'CFrame 2'
+					}
+					b:Combo{
+						Selected = 1,
+						Items = {
+							'AAAA',
+							'BBBB',
+							'CCCC',
+							'DDDD',
+							'EEEE',
+							'FFFF',
+							'GGGG',
+							'HHHH',
+							'IIIIIII',
+							'JJJJ',
+							'KKKKKKK'
+						}
+					}
+				end,
+				Tooltips = function(b)
+					b:Separator{
+						Text = 'General'
+					}
+					local c = b:Button{
+						Text = 'Basic',
+						Size = UDim2.fromScale(1, 0)
+					}
+					a:SetItemTooltip(c, function(a)
+						a:Label{
+							Text = 'I am a tooltip'
+						}
+					end)
+					local c = b:Button{
+						Text = 'Fancy',
+						Size = UDim2.fromScale(1, 0)
+					}
+					a:SetItemTooltip(c, function(a)
+						a:Label{
+							Text = 'I am a fancy tooltip'
+						}
+						a:Image{
+							Image = 18395893036
+						}
+						local a = a:Label()
+						while wait() do
+							a.Text = "198043516"
+						end
+					end)
+					local b = b:Button{
+						Text = 'Double tooltip',
+						Size = UDim2.fromScale(1, 0)
+					}
+					for c = 1, 3 do
+						a:SetItemTooltip(b, function(a)
+							a:Label{
+								Text = "-1018188271"
+							}
+						end)
+					end
+				end,
+				Videos = function(a)
+					local b = a:VideoPlayer{
+						Video = 5608327482,
+						Looped = true,
+						Ratio = 1.7777777777777777,
+						RatioAspectType = Enum.AspectType.FitWithinMaxSize,
+						RatioAxis = Enum.DominantAxis.Width,
+						Size = UDim2.fromScale(1, 1)
+					}
+					b:Play()
+					local a = a:Row{
+						Expanded = true
+					}
+					a:Button{
+						Text = 'Pause',
+						Callback = function()
+							b:Pause()
+						end
+					}
+					a:Button{
+						Text = 'Play',
+						Callback = function()
+							b:Play()
+						end
+					}
+					if not b.IsLoaded then
+						b.Loaded:Wait()
+					end;
+					local a = a:SliderInt{
+						Format = '%.f',
+						Value = 0,
+						Minimum = 0,
+						Maximum = b.TimeLength,
+						Callback = function(a, a)
+							b.TimePosition = a
+						end
+					}
+					game:GetService'RunService'.RenderStepped:Connect(function(c)
+						a:SetValue(b.TimePosition)
+					end)
+				end,
+				['Tree Nodes'] = function(b)
+					for a = 1, 5 do
+						local a = b:TreeNode{
+							Title = "1806603841",
+							Collapsed = a ~= 1
+						}
+						local a = a:Row()
+						a:Label{
+							Text = 'Blah blah'
+						}
+						a:SmallButton{
+							Text = 'Button'
+						}
+					end;
+					b:TreeNode{
+						Title = "2843818201",
+						NoArrow = true,
+						Icon = a.Icons.Image
+					}
+				end,
+				['Collapsing Headers'] = function(a)
+					local b;
+					a:Checkbox{
+						Value = true,
+						Label = 'Show 2nd header',
+						Callback = function(a, a)
+							if b then
+								b:SetVisible(a)
+							end
+						end
+					}
+					a:Checkbox{
+						Value = true,
+						Label = '2nd has arrow',
+						Callback = function(a, a)
+							if b then
+								b:SetArrowVisible(a)
+							end
+						end
+					}
+					local c = a:CollapsingHeader{
+						Title = 'Header'
+					}
+					for a = 1, 5 do
+						c:Label{
+							Text = "-511592027"
+						}
+					end;
+					b = a:CollapsingHeader{
+						Title = 'Second Header'
+					}
+					for a = 1, 5 do
+						b:Label{
+							Text = "-208559659"
+						}
+					end
+				end,
+				Bullets = function(a)
+					a:BulletText{
+						Rows = {
+							'Bullet point 1',
+							'Bullet point 2\nOn multiple lines'
+						}
+					}
+					a:TreeNode():BulletText{
+						Rows = {
+							'Another bullet point'
+						}
+					}
+					a:Bullet():Label{
+						Text = 'Bullet point 3 (two calls)'
+					}
+					a:Bullet():SmallButton()
+				end,
+				Text = function(a)
+					local b = a:TreeNode{
+						Title = 'Colorful Text'
+					}
+					b:Label{
+						TextColor3 = Color3.fromRGB(255, 0, 255),
+						Text = 'Pink',
+						NoTheme = true
+					}
+					b:Label{
+						TextColor3 = Color3.fromRGB(255, 255, 0),
+						Text = 'Yellow',
+						NoTheme = true
+					}
+					b:Label{
+						TextColor3 = Color3.fromRGB(59, 59, 59),
+						Text = 'Disabled',
+						NoTheme = true
+					}
+					local a = a:TreeNode{
+						Title = 'Word Wrapping'
+					}
+					a:Label{
+						Text = [[This text should automatically wrap on the edge of the window. The current implementation for text wrapping follows simple rules suitable for English and possibly other languages.]],
+						TextWrapped = true
+					}
+					local b;
+					a:SliderInt{
+						Label = 'Wrap width',
+						Value = 400,
+						Minimum = 20,
+						Maximum = 600,
+						Callback = function(a, a)
+							if not b then
+								return
+							end;
+							b.Size = UDim2.fromOffset(a, 0)
+						end
+					}
+					a:Label{
+						Text = 'Test paragraph:'
+					}
+					b = a:Label{
+						Text = [[The lazy dog is a good dog. This paragraph should fit. Testing a 1 character word. The quick brown fox jumps over the lazy dog.]],
+						TextWrapped = true,
+						Border = true,
+						BorderColor = Color3.fromRGB(255, 255, 0),
+						AutomaticSize = Enum.AutomaticSize.Y,
+						Size = UDim2.fromOffset(400, 0)
+					}
+				end,
+				Images = function(b)
+					b:Label{
+						TextWrapped = true,
+						Text = [[Below we are displaying the icons (which are the ones builtin to ReGui in this demo). Hover the texture for a zoomed view!]]
+					}
+					b:Label{
+						TextWrapped = true,
+						Text = "2010601050"
+					}
+					local b, c, d = (b:List{
+						Border = true
+					})
+					a:SetItemTooltip(b, function(a)
+						c = a:Label()
+						d = a:Image{
+							Size = UDim2.fromOffset(50, 50)
+						}
+					end)
+					for e, f in a.Icons do
+						local b = b:Image{
+							Image = f,
+							Size = UDim2.fromOffset(30, 30)
+						}
+						a:DetectHover(b, {
+							MouseEnter = true,
+							OnInput = function()
+								c.Text = e;
+								d.Image = f
+							end
+						})
+					end
+				end,
+				Tabs = function(a)
+					local b = a:TreeNode{
+						Title = 'Basic'
+					}
+					local b, c = b:TabSelector(), {
+						'Avocado',
+						'Broccoli',
+						'Cucumber'
+					}
+					for a, a in next, c do
+						b:CreateTab{
+							Name = a
+						}:Label{
+							Text = "130071822"
+						}
+					end;
+					local a = a:TreeNode{
+						Title = 'Advanced & Close Button'
+					}
+					local b, c = a:TabSelector(), {
+						'Artichoke',
+						'Beetroot',
+						'Celery',
+						'Daikon'
+					}
+					for a, a in next, c do
+						local a = b:CreateTab{
+							Name = a,
+							Closeable = true
+						}
+						a:Label{
+							Text = "1755132678"
+						}
+					end;
+					a:Button{
+						Text = 'Add tab',
+						Callback = function()
+							b:CreateTab{
+								Closeable = true
+							}:Label{
+								Text = 'I am an odd tab.'
+							}
+						end
+					}
+				end,
+				['Plot widgets'] = function(a)
+					local b = a:PlotHistogram{
+						Points = {
+							0.6,
+							0.1,
+							1,
+							0.5,
+							0.92,
+							0.1,
+							0.2
+						}
+					}
+					a:Button{
+						Text = 'Generate new graph',
+						Callback = function()
+							local a = {}
+							for b = 1, math.random(5, 10) do
+								table.insert(a, math.random(1, 10))
+							end;
+							b:PlotGraph(a)
+						end
+					}
+				end,
+				['Multi-component Widgets'] = function(a)
+					a:Separator{
+						Text = '2-wide'
+					}
+					a:InputInt2{
+						Value = {
+							10,
+							50
+						},
+						Minimum = {
+							0,
+							0
+						},
+						Maximum = {
+							20,
+							100
+						},
+						Callback = function(a, a)
+							print('1:', a[1], '2:', a[2])
+						end
+					}
+					a:SliderInt2()
+					a:SliderFloat2()
+					a:DragInt2()
+					a:DragFloat2()
+					a:Separator{
+						Text = '3-wide'
+					}
+					a:InputInt3()
+					a:SliderInt3()
+					a:SliderFloat3()
+					a:DragInt3()
+					a:DragFloat3()
+					a:Separator{
+						Text = '4-wide'
+					}
+					a:InputInt4()
+					a:SliderInt4()
+					a:SliderFloat4()
+					a:DragInt4()
+					a:DragFloat4()
+				end,
+				['Progress Bars'] = function(a)
+					local a = a:ProgressBar{
+						Label = 'Loading...',
+						Value = 80
+					}
+					spawn(function()
+						local b = 0;
+						while wait(0.02) do
+							b += 1;
+							a:SetPercentage(b % 100)
+						end
+					end)
+				end,
+				['Picker Widgets'] = function(b)
+					b:Separator{
+						Text = 'Color pickers'
+					}
+					b:DragColor3{
+						Value = a.Accent.Light
+					}
+					b:SliderColor3{
+						Value = a.Accent.Red
+					}
+					b:InputColor3{
+						Value = a.Accent.Green
+					}
+					b:Separator{
+						Text = 'CFrame pickers'
+					}
+					b:DragCFrame{
+						Value = CFrame.new(1, 1, 1),
+						Minimum = CFrame.new(0, 0, 0),
+						Maximum = CFrame.new(200, 100, 50)
+					}
+					b:SliderCFrame()
+					b:InputCFrame()
+				end,
+				['Code editor'] = function(a)
+					a:CodeEditor{
+						Text = 'print("Hello from ReGui\'s editor!")',
+						Editable = true
+					}
+				end,
+				Console = function(a)
+					local b = a:TreeNode{
+						Title = 'Basic'
+					}
+					local b, c = b:Console{
+						ReadOnly = true,
+						AutoScroll = true,
+						MaxLines = 50
+					}, a:TreeNode{
+						Title = 'Advanced & RichText'
+					}
+					local a, c = c:Console{
+						ReadOnly = true,
+						AutoScroll = true,
+						RichText = true,
+						MaxLines = 50
+					}, a:TreeNode{
+						Title = 'Editor'
+					}
+					c:Console{
+						Value = "print('Hello world!')",
+						LineNumbers = true
+					}
+					coroutine.wrap(function()
+						while wait() do
+							local c = DateTime.now():FormatLocalTime('h:mm:ss A', 'en-us')
+							a:AppendText("2645547282", math.random())
+							b:AppendText("-1389573925")
+						end
+					end)()
+				end,
+				Combo = function(a)
+					a:Combo{
+						WidthFitPreview = true,
+						Label = 'WidthFitPreview',
+						Selected = 1,
+						Items = {
+							'AAAAAAAAAAAA',
+							'BBBBBBBB',
+							'CCCCC',
+							'DDD'
+						}
+					}
+					a:Separator{
+						Text = 'One-liner variants'
+					}
+					a:Combo{
+						Label = 'Combo 1 (array)',
+						Selected = 1,
+						Items = {
+							'AAAA',
+							'BBBB',
+							'CCCC',
+							'DDDD',
+							'EEEE',
+							'FFFF',
+							'GGGG',
+							'HHHH',
+							'IIIIIII',
+							'JJJJ',
+							'KKKKKKK'
+						}
+					}
+					a:Combo{
+						Label = 'Combo 1 (dict)',
+						Selected = 'AAA',
+						Items = {
+							AAA = 'Apple',
+							BBB = 'Banana',
+							CCC = 'Orange'
+						},
+						Callback = print
+					}
+					a:Combo{
+						Label = 'Combo 2 (function)',
+						Selected = 1,
+						GetItems = function()
+							return {
+								'aaa',
+								'bbb',
+								'ccc'
+							}
+						end
+					}
+				end,
+				Indent = function(a)
+					a:Label{
+						Text = 'This is not indented'
+					}
+					local a = a:Indent{
+						Offset = 30
+					}
+					a:Label{
+						Text = 'This is indented by 30 pixels'
+					}
+					local a = a:Indent{
+						Offset = 30
+					}
+					a:Label{
+						Text = 'This is indented by 30 more pixels'
+					}
+				end,
+				Viewport = function(b)
+					local a = a:InsertPrefab'R15 Rig'
+					local a = b:Viewport{
+						Size = UDim2.new(1, 0, 0, 200),
+						Clone = true,
+						Model = a
+					}
+					local a = a.Model;
+					a:PivotTo(CFrame.new(0, -2.5, -5))
+					local b = game:GetService'RunService'
+					b.RenderStepped:Connect(function(b)
+						local b = CFrame.Angles(0, math.rad(30 * b), 0)
+						local b = a:GetPivot() * b;
+						a:PivotTo(b)
+					end)
+				end,
+				['List layout'] = function(a)
+					local a = a:List()
+					for b = 1, 10 do
+						a:Button{
+							Text = "3238776810"
+						}
+					end
+				end,
+				Keybinds = function(a)
+					local b = a:Checkbox{
+						Value = true
+					}
+					a:Keybind{
+						Label = 'Toggle checkbox',
+						IgnoreGameProcessed = false,
+						OnKeybindSet = function(a, a)
+							warn('[OnKeybindSet] .Value ->', a)
+						end,
+						Callback = function(a, a)
+							print(a)
+							b:Toggle()
+						end
+					}
+					a:Keybind{
+						Label = 'Keybind (w/ Q & Left-Click blacklist)',
+						KeyBlacklist = {
+							Enum.UserInputType.MouseButton1,
+							Enum.KeyCode.Q
+						}
+					}
+					a:Keybind{
+						Label = 'Toggle UI visibility',
+						Value = Enum.KeyCode.E,
+						Callback = function()
+							e:ToggleVisibility()
+						end
+					}
+				end,
+				Input = function(a)
+					a:InputText{
+						Label = 'One Line Text'
+					}
+					a:InputTextMultiline{
+						Label = 'Multiline Text'
+					}
+					a:InputInt{
+						Label = 'Input int'
+					}
+				end,
+				['Text Input'] = function(a)
+					local a = a:TreeNode{
+						Title = 'Multiline'
+					}
+					a:InputTextMultiline{
+						Size = UDim2.new(1, 0, 0, 117),
+						Value = '/*The Pentium FOOF bug, shorthand for FO OF C7 C8,\r\n    the hexadecimal encoding of one offending instruction,\r\n    more formally, the invalid operand with locked CMPXCHG8B\r\n    instruction bug, is a design flaw in the majority of\r\n    Intel Pentium, Pentium MMX, and Pentium OverDrive\r\n    processors (all in the P5 microarchitecture).#\r\n    */'
+					}
+				end
+			}
+			for b, b in c do
+				local a, b = a:TreeNode{
+					Title = b
+				}, d[b]
+				if b then
+					task.spawn(b, a)
+				end
+			end;
+			local a = b:CollapsingHeader{
+				Title = 'Popups & child windows'
+			}
+			local c = a:TreeNode{
+				Title = 'Popups'
+			}
+			local d = c:Row()
+			local e = d:Label{
+				Text = '<None>',
+				LayoutOrder = 2
+			}
+			d:Button{
+				Text = 'Select..',
+				Callback = function(a)
+					local a, b = {
+						'Bream',
+						'Haddock',
+						'Mackerel',
+						'Pollock',
+						'Tilefish'
+					}, c:PopupCanvas{
+						RelativeTo = a,
+						MaxSizeX = 200
+					}
+					b:Separator{
+						Text = 'Aquarium'
+					}
+					for a, a in a do
+						b:Selectable{
+							Text = a,
+							Callback = function(c)
+								e.Text = a;
+								b:ClosePopup()
+							end
+						}
+					end
+				end
+			}
+			local c = a:TreeNode{
+				Title = 'Child windows'
+			}
+			local c = c:Window{
+				Size = UDim2.fromOffset(300, 200),
+				NoMove = true,
+				NoClose = true,
+				NoCollapse = true,
+				NoResize = true
+			}
+			c:Label{
+				Text = 'Hello, world!'
+			}
+			c:Button{
+				Text = 'Save'
+			}
+			c:InputText{
+				Label = 'string'
+			}
+			c:SliderFloat{
+				Label = 'float',
+				Minimum = 0,
+				Maximum = 1
+			}
+			local a = a:TreeNode{
+				Title = 'Modals'
+			}
+			a:Label{
+				Text = [[Modal windows are like popups but the user cannot close them by clicking outside.]],
+				TextWrapped = true
+			}
+			a:Button{
+				Text = 'Delete..',
+				Callback = function()
+					local a = a:PopupModal{
+						Title = 'Delete?'
+					}
+					a:Label{
+						Text = [[All those beautiful files will be deleted.
+This operation cannot be undone!]],
+						TextWrapped = true
+					}
+					a:Separator()
+					a:Checkbox{
+						Value = false,
+						Label = "Don't ask me next time"
+					}
+					local b = a:Row{
+						Expanded = true
+					}
+					b:Button{
+						Text = 'Okay',
+						Callback = function()
+							a:ClosePopup()
+						end
+					}
+					b:Button{
+						Text = 'Cancel',
+						Callback = function()
+							a:ClosePopup()
+						end
+					}
+				end
+			}
+			a:Button{
+				Text = 'Stacked modals..',
+				Callback = function()
+					local b = a:PopupModal{
+						Title = 'Stacked 1'
+					}
+					b:Label{
+						Text = "850103783",
+						TextWrapped = true
+					}
+					b:Combo{
+						Items = {
+							'aaaa',
+							'bbbb',
+							'cccc',
+							'dddd',
+							'eeee'
+						}
+					}
+					b:DragColor3{
+						Value = Color3.fromRGB(102, 178, 0)
+					}
+					b:Button{
+						Text = 'Add another modal..',
+						Callback = function()
+							local a = a:PopupModal{
+								Title = 'Stacked 2'
+							}
+							a:Label{
+								Text = 'Hello from Stacked The Second!',
+								TextWrapped = true
+							}
+							a:DragColor3{
+								Value = Color3.fromRGB(102, 178, 0)
+							}
+							a:Button{
+								Text = 'Close',
+								Callback = function()
+									a:ClosePopup()
+								end
+							}
+						end
+					}
+					b:Button{
+						Text = 'Close',
+						Callback = function()
+							b:ClosePopup()
+						end
+					}
+				end
+			}
+			local a = b:CollapsingHeader{
+				Title = 'Tables & Columns'
+			}
+			local b = a:TreeNode{
+				Title = 'Basic'
+			}
+			local b = b:Table()
+			for a = 1, 3 do
+				local a = b:Row()
+				for b = 1, 3 do
+					local a = a:Column()
+					for b = 1, 4 do
+						a:Label{
+							Text = "86277186"
+						}
+					end
+				end
+			end;
+			local b = a:TreeNode{
+				Title = 'Borders, background'
+			}
+			local b = b:Table{
+				RowBackground = true,
+				Border = true,
+				MaxColumns = 3
+			}
+			for a = 1, 5 do
+				local a = b:NextRow()
+				for b = 1, 3 do
+					local a = a:NextColumn()
+					a:Label{
+						Text = "2017256236"
+					}
+				end
+			end;
+			local a = a:TreeNode{
+				Title = 'With headers'
+			}
+			local a, b = a:Table{
+				Border = true,
+				RowBackground = true,
+				MaxColumns = 3
+			}, {
+				'One',
+				'Two',
+				'Three'
+			}
+			for c = 1, 7 do
+				if c == 1 then
+					d = a:HeaderRow()
+				else
+					d = a:Row()
+				end;
+				for a, a in b do
+					if c == 1 then
+						local b = d:Column()
+						b:Label{
+							Text = a
+						}
+						continue
+					end;
+					local a = d:NextColumn()
+					a:Label{
+						Text = "3441160798"
+					}
+				end
+			end
+		end
+	end;
+	function g.f()
+		return {
+			Dot = 'rbxasset://textures/whiteCircle.png',
+			Arrow = 'rbxasset://textures/ui/AvatarContextMenu_Arrow.png',
+			Close = 'rbxasset://textures/loading/cancelButton.png',
+			Checkmark = 'rbxasset://textures/ui/Lobby/Buttons/nine_slice_button.png',
+			Cat = 'rbxassetid://16211812161',
+			Script = 'rbxassetid://11570895459',
+			Settings = 'rbxassetid://9743465390',
+			Info = 'rbxassetid://18754976792',
+			Move = 'rbxassetid://6710235139',
+			Roblox = 'rbxassetid://7414445494',
+			Warning = 'rbxassetid://11745872910',
+			Audio = 'rbxassetid://302250236',
+			Shop = 'rbxassetid://6473525198',
+			CharacterDance = 'rbxassetid://11932783331',
+			Pants = 'rbxassetid://10098755331',
+			Home = 'rbxassetid://4034483344',
+			Robux = 'rbxassetid://5986143282',
+			Badge = 'rbxassetid://16170504068',
+			SpawnLocation = 'rbxassetid://6400507398',
+			Sword = 'rbxassetid://7485051715',
+			Clover = 'rbxassetid://11999300014',
+			Star = 'rbxassetid://3057073083',
+			Code = 'rbxassetid://11348555035',
+			Paw = 'rbxassetid://13001190533',
+			Shield = 'rbxassetid://7461510428',
+			Shield2 = 'rbxassetid://7169354142',
+			File = 'rbxassetid://7276823330',
+			Book = 'rbxassetid://16061686835',
+			Location = 'rbxassetid://13549782519',
+			Puzzle = 'rbxassetid://8898417863',
+			Discord = 'rbxassetid://84828491431270',
+			Premium = 'rbxassetid://6487178625',
+			Friend = 'rbxassetid://10885655986',
+			User = 'rbxassetid://18854794412',
+			Duplicate = 'rbxassetid://11833749507',
+			ChatBox = 'rbxassetid://15839118471',
+			ChatBox2 = 'rbxassetid://15839116089',
+			Devices = 'rbxassetid://4458812712',
+			Weight = 'rbxassetid://9855685269',
+			Image = 'rbxassetid://123311808092347',
+			Profile = 'rbxassetid://13585614795',
+			Admin = 'rbxassetid://11656483170',
+			PaintBrush = 'rbxassetid://12111879608',
+			Speed = 'rbxassetid://12641434961',
+			NoConnection = 'rbxassetid://9795340967',
+			Connection = 'rbxassetid://119759670842477',
+			Globe = 'rbxassetid://18870359747',
+			Box = 'rbxassetid://140217940575618',
+			Crown = 'rbxassetid://18826490498',
+			Control = 'rbxassetid://18979524646',
+			Send = 'rbxassetid://18940312887',
+			FastForward = 'rbxassetid://112963221295680',
+			Pause = 'rbxassetid://109949100737970',
+			Reload = 'rbxassetid://11570018242',
+			Joystick = 'rbxassetid://18749336354',
+			Controller = 'rbxassetid://11894535915',
+			Lock = 'rbxassetid://17783082088',
+			Calculator = 'rbxassetid://85861816563977',
+			Sun = 'rbxassetid://13492317832',
+			Moon = 'rbxassetid://8498174594',
+			Prohibited = 'rbxassetid://5248916036',
+			Flag = 'rbxassetid://251346532',
+			Website = 'rbxassetid://98455290625865',
+			Telegram = 'rbxassetid://115860270107061',
+			MusicNote = 'rbxassetid://18187351229',
+			Music = 'rbxassetid://253830398',
+			Headphones = 'rbxassetid://1311321471',
+			Phone = 'rbxassetid://8411963035',
+			Smartphone = 'rbxassetid://14040313879',
+			Desktop = 'rbxassetid://3120635703',
+			Desktop2 = 'rbxassetid://4728059490',
+			Laptop = 'rbxassetid://4728059725',
+			Server = 'rbxassetid://9692125126',
+			Wedge = 'rbxassetid://9086583059',
+			Drill = 'rbxassetid://11959189471',
+			Character = 'rbxassetid://13285102351'
+		}
+	end;
+	function g.g()
+		return {
+			Light = Color3.fromRGB(50, 150, 250),
+			Dark = Color3.fromRGB(30, 66, 115),
+			ExtraDark = Color3.fromRGB(28, 39, 53),
+			White = Color3.fromRGB(240, 240, 240),
+			Gray = Color3.fromRGB(172, 171, 175),
+			Black = Color3.fromRGB(15, 19, 24),
+			Yellow = Color3.fromRGB(230, 180, 0),
+			Orange = Color3.fromRGB(230, 150, 0),
+			Green = Color3.fromRGB(130, 188, 91),
+			Red = Color3.fromRGB(255, 69, 69),
+			ImGui = {
+				Light = Color3.fromRGB(66, 150, 250),
+				Dark = Color3.fromRGB(41, 74, 122),
+				Black = Color3.fromRGB(15, 15, 15),
+				Gray = Color3.fromRGB(36, 36, 36)
+			}
+		}
+	end;
+	function g.h()
+		local a, b = g.load'g', {}
+		b.DarkTheme = {
+			Values = {
+				AnimationTweenInfo = TweenInfo.new(0.08),
+				TextFont = Font.fromEnum(Enum.Font.RobotoMono),
+				TextSize = 14,
+				Text = a.White,
+				TextDisabled = a.Gray,
+				ErrorText = a.Red,
+				FrameBg = a.Dark,
+				FrameBgTransparency = 0.4,
+				FrameBgActive = a.Light,
+				FrameBgTransparencyActive = 0.4,
+				FrameRounding = UDim.new(0, 0),
+				SliderGrab = a.Light,
+				ButtonsBg = a.Light,
+				CollapsingHeaderBg = a.Light,
+				CollapsingHeaderText = a.White,
+				CheckMark = a.Light,
+				ResizeGrab = a.Light,
+				HeaderBg = a.Gray,
+				HeaderBgTransparency = 0.7,
+				HistogramBar = a.Yellow,
+				ProgressBar = a.Yellow,
+				RegionBg = a.Dark,
+				RegionBgTransparency = 0.1,
+				Separator = a.Gray,
+				SeparatorTransparency = 0.5,
+				ConsoleLineNumbers = a.White,
+				LabelPaddingTop = UDim.new(0, 0),
+				LabelPaddingBottom = UDim.new(0, 0),
+				MenuBar = a.ExtraDark,
+				MenuBarTransparency = 0.1,
+				PopupCanvas = a.Black,
+				TabTextPaddingTop = UDim.new(0, 3),
+				TabTextPaddingBottom = UDim.new(0, 8),
+				TabText = a.Gray,
+				TabBg = a.Dark,
+				TabTextActive = a.White,
+				TabBgActive = a.Light,
+				TabsBarBg = Color3.fromRGB(36, 36, 36),
+				TabsBarBgTransparency = 1,
+				TabPagePadding = UDim.new(0, 8),
+				ModalWindowDimBg = Color3.fromRGB(230, 230, 230),
+				ModalWindowDimTweenInfo = TweenInfo.new(0.2),
+				WindowBg = a.Black,
+				WindowBgTransparency = 0.05,
+				Border = a.Gray,
+				BorderTransparency = 0.8,
+				BorderTransparencyActive = 0.5,
+				Title = a.White,
+				TitleAlign = Enum.TextXAlignment.Left,
+				TitleBarBg = a.Black,
+				TitleBarTransparency = 0,
+				TitleActive = a.White,
+				TitleBarBgActive = a.Dark,
+				TitleBarTransparencyActive = 0.05,
+				TitleBarBgCollapsed = Color3.fromRGB(0, 0, 0),
+				TitleBarTransparencyCollapsed = 0.6
+			}
+		}
+		b.LightTheme = {
+			BaseTheme = b.DarkTheme,
+			Values = {
+				Text = a.Black,
+				TextFont = Font.fromEnum(Enum.Font.Ubuntu),
+				TextSize = 14,
+				FrameBg = a.Gray,
+				FrameBgTransparency = 0.4,
+				FrameBgActive = a.Light,
+				FrameBgTransparencyActive = 0.6,
+				SliderGrab = a.Light,
+				ButtonsBg = a.Light,
+				CollapsingHeaderText = a.Black,
+				Separator = a.Black,
+				ConsoleLineNumbers = a.Yellow,
+				MenuBar = Color3.fromRGB(219, 219, 219),
+				PopupCanvas = a.White,
+				TabText = a.Black,
+				TabTextActive = a.Black,
+				WindowBg = a.White,
+				Border = a.Gray,
+				ResizeGrab = a.Gray,
+				Title = a.Black,
+				TitleAlign = Enum.TextXAlignment.Center,
+				TitleBarBg = a.Gray,
+				TitleActive = a.Black,
+				TitleBarBgActive = Color3.fromRGB(186, 186, 186),
+				TitleBarBgCollapsed = a.Gray
+			}
+		}
+		b.ImGui = {
+			BaseTheme = b.DarkTheme,
+			Values = {
+				AnimationTweenInfo = TweenInfo.new(0),
+				Text = Color3.fromRGB(255, 255, 255),
+				FrameBg = a.ImGui.Dark,
+				FrameBgTransparency = 0.4,
+				FrameBgActive = a.ImGui.Light,
+				FrameBgTransparencyActive = 0.5,
+				FrameRounding = UDim.new(0, 0),
+				ButtonsBg = a.ImGui.Light,
+				CollapsingHeaderBg = a.ImGui.Light,
+				CollapsingHeaderText = a.White,
+				CheckMark = a.ImGui.Light,
+				ResizeGrab = a.ImGui.Light,
+				MenuBar = a.ImGui.Gray,
+				MenuBarTransparency = 0,
+				PopupCanvas = a.ImGui.Black,
+				TabText = a.Gray,
+				TabBg = a.ImGui.Dark,
+				TabTextActive = a.White,
+				TabBgActive = a.ImGui.Light,
+				WindowBg = a.ImGui.Black,
+				WindowBgTransparency = 0.05,
+				Border = a.Gray,
+				BorderTransparency = 0.7,
+				BorderTransparencyActive = 0.4,
+				Title = a.White,
+				TitleBarBg = a.ImGui.Black,
+				TitleBarTransparency = 0,
+				TitleBarBgActive = a.ImGui.Dark,
+				TitleBarTransparencyActive = 0
+			}
+		}
+		return b
+	end;
+	function g.i()
+		local a, b = (g.load'b')
+		a:AddOnInit(function(a)
+			b = a
+		end)
+		return {
+			{
+				Properties = {
+					'Center'
+				},
+				Callback = function(b, b, c)
+					local d = b.Position;
+					a:SetProperties(b, {
+						Position = UDim2.new(c:find'X' and 0.5 or d.X.Scale, d.X.Offset, c:find'Y' and 0.5 or d.Y.Scale, d.Y.Offset),
+						AnchorPoint = Vector2.new(c:find'X' and 0.5 or 0, c:find'Y' and 0.5 or 0)
+					})
+				end
+			},
+			{
+				Properties = {
+					'ElementStyle'
+				},
+				Callback = function(a, a, c)
+					b:ApplyStyle(a, c)
+				end
+			},
+			{
+				Properties = {
+					'ColorTag'
+				},
+				Callback = function(a, c, d)
+					local a, e = a.Class, a.WindowClass;
+					local a = a.NoAutoTheme;
+					if not e then
+						return
+					end;
+					if a then
+						return
+					end;
+					b:UpdateColors{
+						Object = c,
+						Tag = d,
+						NoAnimation = true,
+						Theme = e.Theme
+					}
+				end
+			},
+			{
+				Properties = {
+					'Animation'
+				},
+				Callback = function(a, c, d)
+					local a = a.Class.NoAnimation;
+					if a then
+						return
+					end;
+					b:SetAnimation(c, d)
+				end
+			},
+			{
+				Properties = {
+					'Image'
+				},
+				Callback = function(c, d, e)
+					local c = c.WindowClass;
+					d.Image = a:CheckAssetUrl(e)
+					b:DynamicImageTag(d, e, c)
+				end
+			},
+			{
+				Properties = {
+					'Icon',
+					'IconSize',
+					'IconRotation',
+					'IconPadding'
+				},
+				Callback = function(c, d, e)
+					local e = d:FindFirstChild('Icon', true)
+					if not e then
+						b:Warn('No icon for', d)
+						return
+					end;
+					local d = c.Class;
+					a:CheckConfig(d, {
+						Icon = '',
+						IconSize = UDim2.fromScale(1, 1),
+						IconRotation = 0,
+						IconPadding = UDim2.new(0, 2)
+					})
+					local f = e.Parent:FindFirstChild'UIPadding'
+					a:SetPadding(f, d.IconPadding)
+					local f = d.Icon;
+					f = a:CheckAssetUrl(f)
+					local c = c.WindowClass;
+					b:DynamicImageTag(e, f, c)
+					a:SetProperties(e, {
+						Visible = e ~= '',
+						Image = a:CheckAssetUrl(f),
+						Size = d.IconSize,
+						Rotation = d.IconRotation
+					})
+				end
+			},
+			{
+				Properties = {
+					'BorderThickness',
+					'Border',
+					'BorderColor'
+				},
+				Callback = function(b, c, d)
+					local d = b.Class;
+					local e = d.Border == true;
+					a:CheckConfig(d, {
+						BorderTransparency = b:GetThemeKey'BorderTransparencyActive',
+						BorderColor = b:GetThemeKey'Border',
+						BorderThickness = 1,
+						BorderStrokeMode = Enum.ApplyStrokeMode.Border
+					})
+					local b = a:GetChildOfClass(c, 'UIStroke')
+					a:SetProperties(b, {
+						Transparency = d.BorderTransparency,
+						Thickness = d.BorderThickness,
+						Color = d.BorderColor,
+						ApplyStrokeMode = d.BorderStrokeMode,
+						Enabled = e
+					})
+				end
+			},
+			{
+				Properties = {
+					'Ratio'
+				},
+				Callback = function(b, c, d)
+					local b = b.Class;
+					a:CheckConfig(b, {
+						Ratio = 1.3333333333333333,
+						RatioAxis = Enum.DominantAxis.Height,
+						RatioAspectType = Enum.AspectType.ScaleWithParentSize
+					})
+					local b, c, d, e = b.Ratio, b.RatioAxis, b.RatioAspectType, a:GetChildOfClass(c, 'UIAspectRatioConstraint')
+					a:SetProperties(e, {
+						DominantAxis = c,
+						AspectType = d,
+						AspectRatio = b
+					})
+				end
+			},
+			{
+				Properties = {
+					'FlexMode'
+				},
+				Callback = function(b, b, c)
+					local a = a:GetChildOfClass(b, 'UIFlexItem')
+					a.FlexMode = c
+				end
+			},
+			{
+				Properties = {
+					'CornerRadius'
+				},
+				Callback = function(b, b, c)
+					local a = a:GetChildOfClass(b, 'UICorner')
+					a.CornerRadius = c
+				end
+			},
+			{
+				Properties = {
+					'Fill'
+				},
+				Callback = function(b, c, d)
+					if d ~= true then
+						return
+					end;
+					local b = b.Class;
+					a:CheckConfig(b, {
+						Size = UDim2.fromScale(1, 1),
+						UIFlexMode = Enum.UIFlexMode.Fill,
+						AutomaticSize = Enum.AutomaticSize.None
+					})
+					local a = a:GetChildOfClass(c, 'UIFlexItem')
+					a.FlexMode = b.UIFlexMode;
+					c.Size = b.Size;
+					c.AutomaticSize = b.AutomaticSize
+				end
+			},
+			{
+				Properties = {
+					'Label'
+				},
+				Callback = function(a, b, c)
+					local a, b = a.Class, b:FindFirstChild'Label'
+					if not b then
+						return
+					end;
+					b.Text = tostring(c)
+					function a:SetLabel(a)
+						b.Text = a;
+						return self
+					end
+				end
+			},
+			{
+				Properties = {
+					'NoGradient'
+				},
+				WindowProperties = {
+					'NoGradients'
+				},
+				Callback = function(a, a, b)
+					local a = a:FindFirstChildOfClass'UIGradient'
+					if not a then
+						return
+					end;
+					a.Enabled = b
+				end
+			},
+			{
+				Properties = {
+					'UiPadding',
+					'PaddingBottom',
+					'PaddingTop',
+					'PaddingRight',
+					'PaddingTop'
+				},
+				Callback = function(b, c, d)
+					d = d or 0;
+					if typeof(d) == 'number' then
+						d = UDim.new(0, d)
+					end;
+					local b = b.Class;
+					local e = b.UiPadding;
+					if e then
+						a:CheckConfig(b, {
+							PaddingBottom = d,
+							PaddingLeft = d,
+							PaddingRight = d,
+							PaddingTop = d
+						})
+					end;
+					local c = a:GetChildOfClass(c, 'UIPadding')
+					a:SetProperties(c, {
+						PaddingBottom = b.PaddingBottom,
+						PaddingLeft = b.PaddingLeft,
+						PaddingRight = b.PaddingRight,
+						PaddingTop = b.PaddingTop
+					})
+				end
+			},
+			{
+				Properties = {
+					'Callback'
+				},
+				Callback = function(a, b)
+					local a = a.Class;
+					function a:SetCallback(a)
+						self.Callback = a;
+						return self
+					end;
+					function a:FireCallback(a)
+						self.Callback(b)
+						return self
+					end
+				end
+			},
+			{
+				Properties = {
+					'Value'
+				},
+				Callback = function(b, c)
+					local b = b.Class;
+					a:CheckConfig(b, {
+						GetValue = function(a)
+							return b.Value
+						end
+					})
+				end
+			}
+		}
+	end;
+	function g.j()
+		local a = {}
+		a.Coloring = {
+			MenuBar = {
+				BackgroundColor3 = 'MenuBar',
+				BackgroundTransparency = 'MenuBarTransparency'
+			},
+			FrameRounding = {
+				CornerRadius = 'FrameRounding'
+			},
+			PopupCanvas = {
+				BackgroundColor3 = 'PopupCanvas'
+			},
+			ModalWindowDim = {
+				BackgroundColor3 = 'ModalWindowDimBg'
+			},
+			Selectable = 'Button',
+			MenuButton = 'Button',
+			Separator = {
+				BackgroundColor3 = 'Separator',
+				BackgroundTransparency = 'SeparatorTransparency'
+			},
+			Region = {
+				BackgroundColor3 = 'RegionBg',
+				BackgroundTransparency = 'RegionBgTransparency'
+			},
+			Label = {
+				TextColor3 = 'Text',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			ImageFollowsText = {
+				ImageColor3 = 'Text'
+			},
+			ConsoleLineNumbers = {
+				TextColor3 = 'ConsoleLineNumbers',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			ConsoleText = 'Label',
+			LabelDisabled = {
+				TextColor3 = 'TextDisabled',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			Plot = {
+				BackgroundColor3 = 'HistogramBar'
+			},
+			Header = {
+				BackgroundColor3 = 'HeaderBg',
+				BackgroundTransparency = 'HeaderBgTransparency'
+			},
+			WindowTitle = {
+				TextXAlignment = 'TitleAlign',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			TitleBar = {
+				BackgroundColor3 = 'TitleBarBgActive'
+			},
+			Window = {
+				BackgroundColor3 = 'WindowBg',
+				BackgroundTransparency = 'WindowBgTransparency'
+			},
+			TitleBarBgCollapsed = {
+				BackgroundColor3 = 'TitleBarBgCollapsed',
+				BackgroundTransparency = 'TitleBarTransparencyCollapsed'
+			},
+			TitleBarBgActive = {
+				BackgroundColor3 = 'TitleBarBgActive',
+				BackgroundTransparency = 'TitleBarTransparencyActive'
+			},
+			TitleBarBg = {
+				BackgroundColor3 = 'TitleBarBg',
+				BackgroundTransparency = 'TitleBarTransparency'
+			},
+			TabsBar = {
+				BackgroundColor3 = 'TabsBarBg',
+				BackgroundTransparency = 'TabsBarBgTransparency'
+			},
+			Border = {
+				Color = 'Border',
+				Transparency = 'BorderTransparency'
+			},
+			ResizeGrab = {
+				TextColor3 = 'ResizeGrab'
+			},
+			BorderActive = {
+				Transparency = 'BorderTransparencyActive'
+			},
+			Frame = {
+				BackgroundColor3 = 'FrameBg',
+				BackgroundTransparency = 'FrameBgTransparency',
+				TextColor3 = 'Text',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			FrameActive = {
+				BackgroundColor3 = 'FrameBgActive',
+				BackgroundTransparency = 'FrameBgTransparencyActive'
+			},
+			SliderGrab = {
+				BackgroundColor3 = 'SliderGrab'
+			},
+			Button = {
+				BackgroundColor3 = 'ButtonsBg',
+				TextColor3 = 'Text',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			},
+			CollapsingHeader = {
+				FontFace = 'TextFont',
+				TextSize = 'TextSize',
+				TextColor3 = 'CollapsingHeaderText',
+				BackgroundColor3 = 'CollapsingHeaderBg'
+			},
+			Checkbox = {
+				BackgroundColor3 = 'FrameBg'
+			},
+			CheckMark = {
+				ImageColor3 = 'CheckMark',
+				BackgroundColor3 = 'CheckMark'
+			},
+			RadioButton = {
+				BackgroundColor3 = 'ButtonsBg',
+				TextColor3 = 'Text',
+				FontFace = 'TextFont',
+				TextSize = 'TextSize'
+			}
+		}
+		a.Styles = {
+			RadioButton = {
+				Animation = 'RadioButtons',
+				CornerRadius = UDim.new(1, 0)
+			},
+			Button = {
+				Animation = 'Buttons'
+			},
+			CollapsingHeader = {
+				Animation = 'Buttons'
+			},
+			TreeNode = {
+				Animation = 'TransparentButtons'
+			},
+			TransparentButton = {
+				Animation = 'TransparentButtons'
+			}
+		}
+		a.Animations = {
+			Invisible = {
+				Connections = {
+					MouseEnter = {
+						Visible = true
+					},
+					MouseLeave = {
+						Visible = false
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			Buttons = {
+				Connections = {
+					MouseEnter = {
+						BackgroundTransparency = 0.3
+					},
+					MouseLeave = {
+						BackgroundTransparency = 0.7
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			TextButtons = {
+				Connections = {
+					MouseEnter = {
+						TextTransparency = 0.3
+					},
+					MouseLeave = {
+						TextTransparency = 0.7
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			TransparentButtons = {
+				Connections = {
+					MouseEnter = {
+						BackgroundTransparency = 0.3
+					},
+					MouseLeave = {
+						BackgroundTransparency = 1
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			RadioButtons = {
+				Connections = {
+					MouseEnter = {
+						BackgroundTransparency = 0.5
+					},
+					MouseLeave = {
+						BackgroundTransparency = 1
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			Inputs = {
+				Connections = {
+					MouseEnter = {
+						BackgroundTransparency = 0
+					},
+					MouseLeave = {
+						BackgroundTransparency = 0.5
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			Plots = {
+				Connections = {
+					MouseEnter = {
+						BackgroundTransparency = 0.3
+					},
+					MouseLeave = {
+						BackgroundTransparency = 0
+					}
+				},
+				Init = 'MouseLeave'
+			},
+			Border = {
+				Connections = {
+					Selected = {
+						Transparency = 0,
+						Thickness = 1
+					},
+					Deselected = {
+						Transparency = 0.7,
+						Thickness = 1
+					}
+				},
+				Init = 'Selected'
+			}
+		}
+		return a
+	end
+end;
+local a, h, i, j, k = {
+	Version = '1.4.7',
+	Author = 'Depso',
+	License = 'MIT',
+	Repository = 'https://github.com/depthso/Dear-ReGui/',
+	Debug = false,
+	PrefabsId = 71968920594655,
+	DefaultTitle = 'ReGui',
+	ContainerName = 'ReGui',
+	DoubleClickThreshold = 0.3,
+	TooltipOffset = 15,
+	IniToSave = {
+		'Value'
+	},
+	ClassIgnored = {
+		'Visible',
+		'Text'
+	},
+	Container = nil,
+	Prefabs = nil,
+	FocusedWindow = nil,
+	HasTouchScreen = false,
+	Services = nil,
+	Elements = {},
+	_FlagCache = {},
+	_ErrorCache = {},
+	Windows = {},
+	ActiveTooltips = {},
+	IniSettings = {},
+	AnimationConnections = {}
+}, g.load'a', g.load'b', g.load'c', g.load'd'
+a.DemoWindow = g.load'e'
+a.Services = i.Services;
+a.Animation = j;
+a.Icons = g.load'f'
+a.Accent = g.load'g'
+a.ThemeConfigs = g.load'h'
+a.ElementFlags = g.load'i'
+local g = g.load'j'
+a.ElementColors = g.Coloring;
+a.Animations = g.Animations;
+a.Styles = g.Styles;
+i:CallOnInitConnections(a)
+a.DynamicImages = {
+	[a.Icons.Arrow] = 'ImageFollowsText',
+	[a.Icons.Close] = 'ImageFollowsText',
+	[a.Icons.Dot] = 'ImageFollowsText'
+}
+local g = a.Services;
+local g, l, m, n, o = g.HttpService, g.Players, g.UserInputService, g.RunService, g.InsertService;
+local l = i:NewReference(l.LocalPlayer)
+a.PlayerGui = i:NewReference(l.PlayerGui)
+a.Mouse = i:NewReference(l:GetMouse())
+local l = function()
+end;
+function b(a, b)
+	local c = b[a]
+	if c then
+		b[a] = nil
+	end;
+	return c
+end;
+function c(a, b, c)
+	local b = table.find(a, b)
+	if not b then
+		return
+	end;
+	local b = table.remove(a, b)
+	table.insert(a, c, b)
+end;
+function d(a, b)
+	for b, c in next, b do
+		a[b] = c
+	end
+end;
+function e(a, b)
+	local a = table.clone(a)
+	if b then
+		d(a, b)
+	end;
+	return a
+end;
+function a:Warn(...)
+	warn('[ReGui]::', ...)
+end;
+function a:Error(...)
+	local a = a:Concat({
+		...
+	}, ' ')
+	local a = "1117925265"
+	coroutine.wrap(error)(a)
+end;
+function a:IsDoubleClick(a)
+	local b = self.DoubleClickThreshold;
+	return a < b
+end;
+function a:StyleContainers()
+	local a = self.Container;
+	local a, b = a.Overlays, a.Windows;
+	self:SetProperties(b, {
+		OnTopOfCoreBlur = true
+	})
+	self:SetProperties(a, {
+		OnTopOfCoreBlur = true
+	})
+end;
+function a:Init(b)
+	b = b or {}
+	if self.Initialised then
+		return
+	end;
+	d(self, b)
+	d(self, {
+		Initialised = true,
+		HasGamepad = self:IsConsoleDevice(),
+		HasTouchScreen = self:IsMobileDevice()
+	})
+	self:CheckConfig(self, {
+		ContainerParent = function()
+			return i:ResolveUIParent()
+		end,
+		Prefabs = function()
+			return self:LoadPrefabs()
+		end
+	}, true)
+	self:CheckConfig(self, {
+		Container = function()
+			return self:InsertPrefab('Container', {
+				Parent = self.ContainerParent,
+				Name = self.ContainerName
+			})
+		end
+	}, true)
+	local b, c, d = self.Container, self.TooltipOffset, self.ActiveTooltips;
+	local b, e = b.Overlays, 0;
+	self:StyleContainers()
+	self.TooltipsContainer = self.Elements:Overlay{
+		Parent = b
+	}
+	m.InputBegan:Connect(function(a)
+		if not self:IsMouseEvent(a, true) then
+			return
+		end;
+		local a = tick()
+		local b = a - e;
+		local b = self:IsDoubleClick(b)
+		e = b and 0 or a;
+		self:UpdateWindowFocuses()
+	end)
+	local a = function()
+		local d, e = self.TooltipsContainer, # d > 0;
+		d.Visible = e;
+		if not e then
+			return
+		end;
+		local a, e = a:GetMouseLocation()
+		local b = b.AbsolutePosition;
+		d.Position = UDim2.fromOffset(a - b.X + c, e - b.Y + c)
+	end;
+	n.RenderStepped:Connect(a)
+end;
+function a:CheckImportState()
+	if self.Initialised then
+		return
+	end;
+	local a = self.PrefabsId;
+	local a = i:CheckAssetUrl(a)
+	local a, b = pcall(function()
+		return i:NewReference(o:LoadLocalAsset(a))
+	end)
+	self:Init{
+		Prefabs = a and b or nil
+	}
+end;
+function a:GetVersion()
+	return self.Version
+end;
+function a:IsMobileDevice()
+	return m.TouchEnabled
+end;
+function a:IsConsoleDevice()
+	return m.GamepadEnabled
+end;
+function a:GetScreenSize()
+	return workspace.CurrentCamera.ViewportSize
+end;
+function a:LoadPrefabs()
+	local a, b = self.PlayerGui, 'ReGui-Prefabs'
+	local c = script:WaitForChild(b, 2)
+	if c then
+		return c
+	end;
+	local a = a:WaitForChild(b, 2)
+	if a then
+		return a
+	end;
+	return nil
+end;
+function a:CheckConfig(a, b, c, d)
+	return i:CheckConfig(a, b, c, d)
+end;
+function a:CreateInstance(a, b, c)
+	local a = Instance.new(a, b)
+	if c then
+		local b = c.UsePropertiesList;
+		if not b then
+			self:SetProperties(a, c)
+		else
+			self:ApplyFlags{
+				Object = a,
+				Class = c
+			}
+		end
+	end;
+	return a
+end;
+function a:ConnectMouseEvent(b, c)
+	local c, d, e, f, g = c.Callback, c.DoubleClick, c.OnlyMouseHovering, 0;
+	if e then
+		g = self:DetectHover(e)
+	end;
+	b.Activated:Connect(function(...)
+		local b = tick()
+		local e = b - f;
+		if g and not g.Hovering then
+			return
+		end;
+		if d then
+			if not a:IsDoubleClick(e) then
+				f = b;
+				return
+			end;
+			f = 0
+		end;
+		c(...)
+	end)
+end;
+function a:GetAnimation(a)
+	return a and self.Animation or TweenInfo.new(0)
+end;
+function a:DynamicImageTag(a, b, c)
+	local d = self.DynamicImages;
+	local b = d[b]
+	if not b then
+		return
+	end;
+	if not c then
+		return
+	end;
+	c:TagElements{
+		[a] = b
+	}
+end;
+function a:GetDictSize(a)
+	local b = 0;
+	for a, a in a do
+		b += 1
+	end;
+	return b
+end;
+function a:RemoveAnimations(a)
+	local a = self:GetAnimationData(a)
+	local a = a.Connections;
+	for a, a in next, a do
+		a:Disconnect()
+	end
+end;
+function a:GetAnimationData(a)
+	local b = self.AnimationConnections;
+	local c = b[a]
+	if c then
+		return c
+	end;
+	local c = {
+		Connections = {}
+	}
+	b[a] = c;
+	return c
+end;
+function a:AddAnimationSignal(a, b)
+	local a = self:GetAnimationData(a)
+	local a = a.Connections;
+	table.insert(a, b)
+end;
+function a:SetAnimationsEnabled(a)
+	self.NoAnimations = not a
+end;
+function a:SetAnimation(a, b, c)
+	c = c or a;
+	local d, e, f = self.Animations, self.HasTouchScreen, b;
+	if typeof(b) ~= 'table' then
+		f = d[b]
+	end;
+	assert(f, "2342607033")
+	self:RemoveAnimations(c)
+	local b, d, f, g, h = f.Init, f.Connections, f.Tweeninfo, f.NoAnimation, self:GetAnimationData(a)
+	local i, k, l, m, n, o = h.State, true, {}, {}
+	function m:Reset(a)
+		if not n then
+			return
+		end;
+		n(a)
+	end;
+	function m:FireSignal(a, b)
+		l[a](b)
+	end;
+	function m:Refresh(a)
+		if not o then
+			return
+		end;
+		l[o](a)
+	end;
+	function m:SetEnabled(a)
+		k = a
+	end;
+	for d, i in next, d do
+		local a, f = function(b)
+			b = b == true;
+			o = d;
+			local c = self.NoAnimations;
+			if c then
+				return
+			end;
+			if not k then
+				return
+			end;
+			h.State = d;
+			j:Tween{
+				NoAnimation = b or g,
+				Object = a,
+				Tweeninfo = f,
+				EndProperties = i
+			}
+		end, c[d]
+		if not e then
+			local a = f:Connect(a)
+			self:AddAnimationSignal(c, a)
+		end;
+		l[d] = a;
+		if d == b then
+			n = a
+		end
+	end;
+	if i then
+		m:FireSignal(i)
+	else
+		m:Reset(true)
+	end;
+	return m
+end;
+function a:ConnectDrag(a, b)
+	self:CheckConfig(b, {
+		DragStart = l,
+		DragEnd = l,
+		DragMovement = l,
+		OnDragStateChange = l
+	})
+	local b, c, d, e, f, g = b.DragStart, b.DragEnd, b.DragMovement, b.OnDragStateChange, {
+		StartAndEnd = {
+			Enum.UserInputType.MouseButton1,
+			Enum.UserInputType.Touch
+		},
+		Movement = {
+			Enum.UserInputType.MouseMovement,
+			Enum.UserInputType.Touch
+		}
+	}, false;
+	local e, f, h = function(a, b)
+		local a = a.UserInputType;
+		return table.find(f[b], a)
+	end, function(a)
+		local a = a.Position;
+		return Vector2.new(a.X, a.Y)
+	end, function(a)
+		self._DraggingDisabled = a;
+		g = a;
+		e(a)
+	end;
+	local e = function(a)
+		local b, c, d = a.IsDragging, a.InputType, a.Callback;
+		return function(i)
+			if a.DraggingRequired ~= g then
+				return
+			end;
+			if a.CheckDraggingDisabled and self._DraggingDisabled then
+				return
+			end;
+			if not e(i, c) then
+				return
+			end;
+			if a.UpdateState then
+				h(b)
+			end;
+			local a = f(i)
+			d(a)
+		end
+	end;
+	a.InputBegan:Connect(e{
+		CheckDraggingDisabled = true,
+		DraggingRequired = false,
+		UpdateState = true,
+		IsDragging = true,
+		InputType = 'StartAndEnd',
+		Callback = b
+	})
+	m.InputEnded:Connect(e{
+		DraggingRequired = true,
+		UpdateState = true,
+		IsDragging = false,
+		InputType = 'StartAndEnd',
+		Callback = c
+	})
+	m.InputChanged:Connect(e{
+		DraggingRequired = true,
+		InputType = 'Movement',
+		Callback = d
+	})
+end;
+function a:MakeDraggable(a)
+	local b, c, d, e, f, g = a.Move, a.Grab, a.OnDragStateChange, {}
+	function e:SetEnabled(b)
+		local a = a.StateChanged;
+		self.Enabled = b;
+		if a then
+			a(self)
+		end
+	end;
+	function e:CanDrag(a)
+		return self.Enabled
+	end;
+	local b, f, g, h, i = function(b)
+		if not e:CanDrag() then
+			return
+		end;
+		local a = a.DragBegin;
+		g = b;
+		a(g)
+	end, function(b)
+		if not e:CanDrag() then
+			return
+		end;
+		local a, b = b - g, a.OnUpdate;
+		b(a)
+	end, function(a)
+		f = b.Position
+	end, function(b)
+		local b = UDim2.new(f.X.Scale, f.X.Offset + b.X, f.Y.Scale, f.Y.Offset + b.Y)
+		a:SetPosition(b)
+	end, function(a, a)
+		j:Tween{
+			Object = b,
+			EndProperties = {
+				Position = a
+			}
+		}
+	end;
+	self:CheckConfig(a, {
+		Enabled = true,
+		OnUpdate = h,
+		SetPosition = i,
+		DragBegin = g
+	})
+	self:ConnectDrag(c, {
+		DragStart = b,
+		DragMovement = f,
+		OnDragStateChange = d
+	})
+	local a = a.Enabled;
+	e:SetEnabled(a)
+	return e
+end;
+function a:MakeResizable(b)
+	a:CheckConfig(b, {
+		MinimumSize = Vector2.new(160, 90),
+		MaximumSize = Vector2.new(math.huge, math.huge)
+	})
+	local b, c, d, e, f = b.MaximumSize, b.MinimumSize, b.Resize, (b.OnUpdate)
+	local a = a:InsertPrefab('ResizeGrab', {
+		Parent = d
+	})
+	local b, c, d = function(b)
+		a.Visible = b.Enabled
+	end, function(a)
+		local a = f + a;
+		local a = UDim2.fromOffset(math.clamp(a.X, c.X, b.X), math.clamp(a.Y, c.Y, b.Y))
+		if e then
+			e(a)
+			return
+		end;
+		j:Tween{
+			Object = d,
+			EndProperties = {
+				Size = a
+			}
+		}
+	end, function(a)
+		f = d.AbsoluteSize
+	end;
+	local b = self:MakeDraggable{
+		Grab = a,
+		OnUpdate = c,
+		DragBegin = d,
+		StateChanged = b
+	}
+	b.Grab = a;
+	return b
+end;
+function a:IsMouseEvent(a, b)
+	local a = a.UserInputType.Name;
+	if b and a:find'Movement' then
+		return
+	end;
+	return a:find'Touch' or a:find'Mouse'
+end;
+function a:DetectHover(b, c)
+	local c = c or {}
+	c.Hovering = false;
+	local d, e, f, g, h, i = c.OnInput, c.OnHoverChange, c.Anykey, c.MouseMove, c.MouseEnter, c.MouseOnly;
+	local a = function(b, f, g)
+		if b and i then
+			if not a:IsMouseEvent(b, true) then
+				return
+			end
+		end;
+		if f ~= nil then
+			local a = c.Hovering;
+			c.Hovering = f;
+			if f ~= a and e then
+				e(f)
+			end
+		end;
+		if not h and g then
+			return
+		end;
+		if d then
+			local a = c.Hovering;
+			d(a, b)
+			return
+		end
+	end;
+	local d = {
+		b.MouseEnter:Connect(function()
+			a(nil, true, true)
+		end),
+		b.MouseLeave:Connect(function()
+			a(nil, false, true)
+		end)
+	}
+	if f or i then
+		table.insert(d, m.InputBegan:Connect(function(b)
+			a(b)
+		end))
+	end;
+	if g then
+		local a = b.MouseMoved:Connect(function()
+			a()
+		end)
+		table.insert(d, a)
+	end;
+	function c:Disconnect()
+		for a, a in next, d do
+			a:Disconnect()
+		end
+	end;
+	return c
+end;
+function a:StackWindows()
+	local a, b = self.Windows, 20;
+	for a, c in next, a do
+		local a, b = c.WindowFrame, UDim2.fromOffset(b * a, b * a)
+		c:Center()
+		a.Position += b
+	end
+end;
+function a:GetElementFlags(a)
+	local b = self._FlagCache;
+	return b[a]
+end;
+function a:UpdateColors(a)
+	local a, b, c, d, e, f, g = a.Object, a.Tag, a.NoAnimation, a.TagsList, a.Theme, a.Tweeninfo, self.ElementColors;
+	local h, i, k = self:GetElementFlags(a), self.Debug, g[b]
+	if typeof(k) == 'string' then
+		k = g[k]
+	end;
+	if typeof(b) == 'table' then
+		k = b
+	elseif d then
+		d[a] = b
+	end;
+	if not k then
+		return
+	end;
+	local b = {}
+	for a, c in next, k do
+		local c = self:GetThemeKey(e, c)
+		if h and h[a] then
+			continue
+		end;
+		if not c then
+			if i then
+				self:Warn("-1126444091")
+			end;
+			continue
+		end;
+		b[a] = c
+	end;
+	j:Tween{
+		Tweeninfo = f,
+		Object = a,
+		NoAnimation = c,
+		EndProperties = b
+	}
+end;
+function a:MultiUpdateColors(a)
+	local b = a.Objects;
+	for b, c in next, b do
+		self:UpdateColors{
+			TagsList = a.TagsList,
+			Theme = a.Theme,
+			NoAnimation = not a.Animate,
+			Tweeninfo = a.Tweeninfo,
+			Object = b,
+			Tag = c
+		}
+	end
+end;
+function a:ApplyStyle(a, b)
+	local c = self.Styles;
+	local b = c[b]
+	if not b then
+		return
+	end;
+	self:ApplyFlags{
+		Object = a,
+		Class = b
+	}
+end;
+function a:ClassIgnores(a)
+	local b = self.ClassIgnored;
+	local a = table.find(b, a)
+	return a and true or false
+end;
+function a:MergeMetatables(a, b)
+	local c, d = self.Debug, {}
+	d.__index = function(c, c)
+		local a, d = self:ClassIgnores(c), a[c]
+		if d ~= nil and not a then
+			return d
+		end;
+		local a, b = pcall(function()
+			local a = b[c]
+			return self:PatchSelf(b, a)
+		end)
+		return a and b or nil
+	end;
+	d.__newindex = function(d, d, e)
+		local f, g = self:ClassIgnores(d), typeof(e) == 'function'
+		local g = a[d] ~= nil or g;
+		if g and not f then
+			a[d] = e;
+			return
+		end;
+		xpcall(function()
+			b[d] = e
+		end, function(b)
+			if c then
+				self:Warn("-255082975")
+			end;
+			a[d] = e
+		end)
+	end;
+	return setmetatable({}, d)
+end;
+function a:Concat(a, b)
+	local c = ''
+	for d, e in next, a do
+		c ..= tostring(e) .. (d ~= # a and b or '')
+	end;
+	return c
+end;
+function a:GetValueFromAliases(a, b)
+	for a, a in a do
+		local a = b[a]
+		if a ~= nil then
+			return a
+		end
+	end;
+	return nil
+end;
+function a:RecursiveCall(a, b)
+	for a, a in next, a:GetDescendants() do
+		b(a)
+	end
+end;
+function a:ApplyFlags(b)
+	local c, d, e, f = self.ElementFlags, b.Object, b.Class, b.WindowClass;
+	function b:GetThemeKey(b)
+		if f then
+			return f:GetThemeKey(b)
+		else
+			return a:GetThemeKey(nil, b)
+		end
+	end;
+	self:SetProperties(d, e)
+	for a, a in next, c do
+		local a, c, g, h = a.Properties, a.Callback, a.Recursive, a.WindowProperties;
+		local a = self:GetValueFromAliases(a, e)
+		if f and h and a == nil then
+			a = self:GetValueFromAliases(h, f)
+		end;
+		if a == nil then
+			continue
+		end;
+		c(b, d, a)
+		if g then
+			self:RecursiveCall(d, function(d)
+				c(b, d, a)
+			end)
+		end
+	end
+end;
+function a:SetProperties(a, b)
+	return i:SetProperties(a, b)
+end;
+function a:InsertPrefab(a, b)
+	local c = self.Prefabs;
+	local c = c.Prefabs;
+	local a = i:NewReference(c:WaitForChild(a):Clone())
+	if b then
+		local c = b.UsePropertiesList;
+		if not c then
+			self:SetProperties(a, b)
+		else
+			self:ApplyFlags{
+				Object = a,
+				Class = b
+			}
+		end
+	end;
+	return a
+end;
+function a:GetContentSize(a, b)
+	local c, d, e, f = a:FindFirstChildOfClass'UIListLayout', a:FindFirstChildOfClass'UIPadding', (a:FindFirstChildOfClass'UIStroke')
+	if c and not b then
+		f = c.AbsoluteContentSize
+	else
+		f = a.AbsoluteSize
+	end;
+	if d then
+		local a, b, c, d = d.PaddingTop.Offset, d.PaddingBottom.Offset, d.PaddingLeft.Offset, d.PaddingRight.Offset;
+		f += Vector2.new(c + d, a + b)
+	end;
+	if e then
+		local a = e.Thickness;
+		f += Vector2.new(a / 2, a / 2)
+	end;
+	return f
+end;
+function a:PatchSelf(a, b, ...)
+	if typeof(b) ~= 'function' then
+		return b, ...
+	end;
+	return function(c, ...)
+		return b(a, ...)
+	end
+end;
+function a:MakeCanvas(a)
+	local b, c, d, e, f, g, h = self.Elements, self.Debug, a.Element, a.WindowClass, a.Class, a.OnChildChange, k:NewSignal()
+	if g then
+		h:Connect(g)
+	end;
+	if not e and c then
+		self:Warn("-852182429")
+		self:Warn(a)
+	end;
+	local a = i:NewClass(b, {
+		Class = f,
+		RawObject = d,
+		WindowClass = e or false,
+		OnChildChange = h,
+		Elements = {}
+	})
+	local a = {
+		__index = function(b, b)
+			local c = a[b]
+			if c ~= nil then
+				return self:PatchSelf(a, c)
+			end;
+			local a = f[b]
+			if a ~= nil then
+				return self:PatchSelf(f, a)
+			end;
+			local a = d[b]
+			return self:PatchSelf(d, a)
+		end,
+		__newindex = function(a, a, b)
+			local c = f[a] ~= nil;
+			if c then
+				f[a] = b
+			else
+				d[a] = b
+			end
+		end
+	}
+	return setmetatable({}, a)
+end;
+function a:GetIniData(a)
+	local b, c = self.IniToSave, {}
+	for b, b in next, b do
+		c[b] = a[b]
+	end;
+	return c
+end;
+function a:DumpIni(a)
+	local b, c = self.IniSettings, {}
+	for a, b in next, b do
+		c[a] = self:GetIniData(b)
+	end;
+	if a then
+		return g:JSONEncode(c)
+	end;
+	return c
+end;
+function a:LoadIniIntoElement(a, b)
+	local c = {
+		Value = function(b)
+			a:SetValue(b)
+		end
+	}
+	for b, d in next, b do
+		local c = c[b]
+		if c then
+			c(d)
+			continue
+		end;
+		a[b] = d
+	end
+end;
+function a:LoadIni(a, b)
+	local c = self.IniSettings;
+	assert(a, 'No Ini configuration was passed')
+	if b then
+		a = g:JSONDecode(a)
+	end;
+	for a, b in next, a do
+		local a = c[a]
+		self:LoadIniIntoElement(a, b)
+	end
+end;
+function a:AddIniFlag(a, b)
+	local c = self.IniSettings;
+	c[a] = b
+end;
+function a:OnElementCreate(a)
+	local b, c, d, e, f = self._FlagCache, a.Flags, a.Object, a.Canvas, a.Class;
+	local e, g, h, i, j, k = e.WindowClass, c.NoAutoTag, c.NoAutoFlags, c.ColorTag, c.NoStyle, c.IniFlag;
+	b[d] = c;
+	if k then
+		self:AddIniFlag(k, f)
+	end;
+	if j then
+		return
+	end;
+	if not g and e then
+		e:TagElements{
+			[d] = i
+		}
+	end;
+	if e then
+		e:LoadStylesIntoElement(a)
+	end;
+	if not h then
+		self:ApplyFlags{
+			Object = d,
+			Class = c,
+			WindowClass = e
+		}
+	end
+end;
+function a:VisualError(a, b, c)
+	local d = self.Initialised and a.Error;
+	if not d then
+		self:Error('Class:', c)
+		return
+	end;
+	a:Error{
+		Parent = b,
+		Text = c
+	}
+end;
+function a:WrapGeneration(a, b)
+	local b, c, d = self._ErrorCache, b.Base, b.IgnoreDefaults;
+	return function(e, f, ...)
+		f = f or {}
+		self:CheckConfig(f, c)
+		local c = f.CloneTable;
+		if c then
+			f = table.clone(f)
+		end;
+		local c, g, h = e.RawObject, e.Elements, e.OnChildChange;
+		self:CheckConfig(f, {
+			Parent = c,
+			Name = f.ColorTag
+		}, nil, d)
+		if e == self then
+			e = self.Elements
+		end;
+		local a, d, i = pcall(a, e, f, ...)
+		if a == false then
+			if c then
+				if b[c] then
+					return
+				end;
+				b[c] = d
+			end;
+			self:VisualError(e, c, d)
+			self:Error('Class:', d)
+			self:Error(debug.traceback())
+		end;
+		if i == nil then
+			i = d
+		end;
+		if h then
+			h:Fire(d)
+		end;
+		if i then
+			if g then
+				table.insert(g, i)
+			end;
+			self:OnElementCreate{
+				Object = i,
+				Flags = f,
+				Class = d,
+				Canvas = e
+			}
+		end;
+		return d, i
+	end
+end;
+function a:DefineElement(a, b)
+	local c, e, f = self.Elements, self.ThemeConfigs, self.ElementColors;
+	local e, g, h, i, j, k = e.DarkTheme, b.Base, b.Create, b.Export, b.ThemeTags, b.ColorData;
+	self:CheckConfig(g, {
+		ColorTag = a,
+		ElementStyle = a
+	})
+	if j then
+		d(e, j)
+	end;
+	if k then
+		d(f, k)
+	end;
+	local b = self:WrapGeneration(h, b)
+	if i then
+		self[a] = b
+	end;
+	c[a] = b;
+	return b
+end;
+function a:DefineGlobalFlag(a)
+	local b = self.ElementFlags;
+	table.insert(b, a)
+end;
+function a:DefineTheme(a, c)
+	local d = self.ThemeConfigs;
+	self:CheckConfig(c, {
+		BaseTheme = d.DarkTheme
+	})
+	local b = b('BaseTheme', c)
+	local b = {
+		BaseTheme = b,
+		Values = c
+	}
+	d[a] = b;
+	return b
+end;
+function a:GetMouseLocation()
+	local a = self.Mouse;
+	return a.X, a.Y
+end;
+function a:SetWindowFocusesEnabled(a)
+	self.WindowFocusesEnabled = a
+end;
+function a:UpdateWindowFocuses()
+	local a, b = self.Windows, self.WindowFocusesEnabled;
+	if not b then
+		return
+	end;
+	for a, a in a do
+		local b = a.HoverConnection;
+		if not b then
+			continue
+		end;
+		local b = b.Hovering;
+		if b then
+			self:SetFocusedWindow(a)
+			return
+		end
+	end;
+	self:SetFocusedWindow(nil)
+end;
+function a:WindowCanFocus(a)
+	if a.NoSelect then
+		return false
+	end;
+	if a.Collapsed then
+		return false
+	end;
+	if a._SelectDisabled then
+		return false
+	end;
+	return true
+end;
+function a:GetFocusedWindow()
+	return self.FocusedWindow
+end;
+function a:BringWindowToFront(a)
+	local b, d = self.Windows, a.NoBringToFrontOnFocus;
+	if d then
+		return
+	end;
+	c(b, a, 1)
+end;
+function a:SetFocusedWindow(a)
+	local b, c = self:GetFocusedWindow(), self.Windows;
+	if b == a then
+		return
+	end;
+	self.FocusedWindow = a;
+	if a then
+		local b = self:WindowCanFocus(a)
+		if not b then
+			return
+		end;
+		self:BringWindowToFront(a)
+	end;
+	local b = # c;
+	for c, c in c do
+		local d, e = self:WindowCanFocus(c), c.WindowFrame;
+		if not d then
+			continue
+		end;
+		b -= 1;
+		if b then
+			e.ZIndex = b
+		end;
+		local a = c == a;
+		c:SetFocused(a, b)
+	end
+end;
+function a:SetItemTooltip(b, c)
+	local d, d, e = self.Elements, self.TooltipsContainer, self.ActiveTooltips;
+	local d, f = d:Canvas{
+		Visible = false,
+		UiPadding = UDim.new()
+	}
+	task.spawn(c, d)
+	a:DetectHover(b, {
+		MouseMove = true,
+		MouseEnter = true,
+		OnHoverChange = function(a)
+			if a then
+				table.insert(e, d)
+				return
+			end;
+			local a = table.find(e, d)
+			table.remove(e, a)
+		end,
+		OnInput = function(a, b)
+			f.Visible = a
+		end
+	})
+end;
+function a:CheckFlags(a, b)
+	for a, c in next, a do
+		local a = b[a]
+		if not a then
+			continue
+		end;
+		c(a)
+	end
+end;
+function a:GetThemeKey(a, b)
+	local c = self.ThemeConfigs;
+	if typeof(a) == 'string' then
+		a = c[a]
+	end;
+	local c = c.DarkTheme;
+	a = a or c;
+	local a, c = a.BaseTheme, a.Values;
+	local c = c[b]
+	if c then
+		return c
+	end;
+	if a then
+		return self:GetThemeKey(a, b)
+	end;
+	return
+end;
+function a:SelectionGroup(a)
+	local a, b, c = false, function(b, c)
+		for a, a in next, a do
+			if typeof(a) == 'Instance' then
+				continue
+			end;
+			if a == c then
+				continue
+			end;
+			b(a)
+		end
+	end;
+	local a = function(d)
+		if a then
+			return
+		end;
+		a = true;
+		local e = c;
+		c = d:GetValue()
+		if not e then
+			e = c
+		end;
+		b(function(a)
+			a:SetValue(e)
+		end, d)
+		a = false
+	end;
+	b(function(b)
+		b.Callback = a
+	end)
+end;
+local b = a.Elements;
+b.__index = b;
+function b:GetObject()
+	return self.RawObject
+end;
+function b:ApplyFlags(b, c)
+	local d = self.WindowClass;
+	a:ApplyFlags{
+		WindowClass = d,
+		Object = b,
+		Class = c
+	}
+end;
+function b:Remove()
+	local a, b, c = self.OnChildChange, self:GetObject(), self.Class;
+	local d = c.Remove;
+	if d then
+		return d(c)
+	end;
+	if a then
+		a:Fire(c or self)
+	end;
+	if c then
+		table.clear(c)
+	end;
+	b:Destroy()
+	table.clear(self)
+end;
+function b:GetChildElements()
+	local a = self.Elements;
+	return a
+end;
+function b:ClearChildElements()
+	local a = self:GetChildElements()
+	for a, a in next, a do
+		a:Destroy()
+	end
+end;
+function b:TagElements(b)
+	local c, d = self.WindowClass, a.Debug;
+	if not c then
+		if d then
+			a:Warn('No WindowClass for TagElements:', b)
+		end;
+		return
+	end;
+	c:TagElements(b)
+end;
+function b:GetThemeKey(b)
+	local c = self.WindowClass;
+	if c then
+		return c:GetThemeKey(b)
+	end;
+	return a:GetThemeKey(nil, b)
+end;
+function b:SetColorTags(b, c)
+	local d = self.WindowClass;
+	if not d then
+		return
+	end;
+	local d, e = d.TagsList, d.Theme;
+	a:MultiUpdateColors{
+		Animate = c,
+		Theme = e,
+		TagsList = d,
+		Objects = b
+	}
+end;
+function b:SetElementFocused(b, b)
+	local b, c, d, e = self.WindowClass, a.HasTouchScreen, b.Focused, b.Animation;
+	a:SetAnimationsEnabled(not d)
+	if not d and e then
+		e:Refresh()
+	end;
+	if not b then
+		return
+	end;
+	if not c then
+		return
+	end;
+	local a = b.ContentCanvas;
+	a.Interactable = not d
+end;
+a:DefineElement('Dropdown', {
+	Base = {
+		ColorTag = 'PopupCanvas',
+		Disabled = false,
+		AutoClose = true,
+		OnSelected = l
+	},
+	Create = function(b, c)
+		c.Parent = a.Container.Overlays;
+		local b, d, e, f, g = c.Selected, c.Items, c.OnSelected, b:PopupCanvas(c)
+		local a, e, h = a:MergeMetatables(c, f), {}, function(a)
+			e(a)
+		end;
+		function c:ClearEntries()
+			for a, a in e do
+				a:Remove()
+			end
+		end;
+		function c:SetItems(a, b)
+			local c = a[1]
+			self:ClearEntries()
+			for a, d in a do
+				local a, b = c and d or a, a == b or d == b;
+				local a = f:Selectable{
+					Text = tostring(a),
+					Selected = b,
+					ZIndex = 6,
+					Callback = function()
+						return h(a)
+					end
+				}
+				table.insert(e, a)
+			end
+		end;
+		if d then
+			c:SetItems(d, b)
+		end;
+		return a, g
+	end
+})
+a:DefineElement('OverlayScroll', {
+	Base = {
+		ElementClass = 'OverlayScroll',
+		Spacing = UDim.new(0, 4)
+	},
+	Create = function(b, c)
+		local d, e, f = b.WindowClass, c.ElementClass, c.Spacing;
+		local e = a:InsertPrefab(e, c)
+		local g, h = e:FindFirstChild'ContentFrame' or e, e:FindFirstChild('UIListLayout', true)
+		h.Padding = f;
+		local b = a:MergeMetatables(b, c)
+		local a = a:MakeCanvas{
+			Element = g,
+			WindowClass = d,
+			Class = b
+		}
+		function c:GetCanvasSize()
+			return g.AbsoluteCanvasSize
+		end;
+		return a, e
+	end
+})
+a:DefineElement('Overlay', {
+	Base = {
+		ElementClass = 'Overlay'
+	},
+	Create = b.OverlayScroll
+})
+a:DefineElement('Image', {
+	Base = {
+		Image = '',
+		Callback = l
+	},
+	Create = function(b, b)
+		local a = a:InsertPrefab('Image', b)
+		a.Activated:Connect(function(...)
+			local b = b.Callback;
+			return b(a, ...)
+		end)
+		return a
+	end
+})
+a:DefineElement('VideoPlayer', {
+	Base = {
+		Video = '',
+		Callback = l
+	},
+	Create = function(b, b)
+		local c = b.Video;
+		b.Video = i:CheckAssetUrl(c)
+		local a = a:InsertPrefab('VideoPlayer', b)
+		return a
+	end
+})
+a:DefineElement('Button', {
+	Base = {
+		Text = 'Button',
+		DoubleClick = false,
+		Callback = l
+	},
+	Create = function(b, b)
+		local c = a:InsertPrefab('Button', b)
+		local d, e = a:MergeMetatables(b, c), b.DoubleClick;
+		function b:SetDisabled(a)
+			self.Disabled = a
+		end;
+		a:ConnectMouseEvent(c, {
+			DoubleClick = e,
+			Callback = function(...)
+				if b.Disabled then
+					return
+				end;
+				local a = b.Callback;
+				return a(d, ...)
+			end
+		})
+		return d, c
+	end
+})
+a:DefineElement('Selectable', {
+	Base = {
+		Text = 'Selectable',
+		Callback = l,
+		Selected = false,
+		Disabled = false,
+		Size = UDim2.fromScale(1, 0),
+		AutomaticSize = Enum.AutomaticSize.Y,
+		TextXAlignment = Enum.TextXAlignment.Left,
+		AnimationTags = {
+			Selected = 'Buttons',
+			Unselected = 'TransparentButtons'
+		}
+	},
+	Create = function(b, c)
+		local b, d, e, f = b.Class.AfterClick, c.Selected, c.Disabled, a:InsertPrefab('Button', c)
+		local g = a:MergeMetatables(c, f)
+		f.Activated:Connect(function(...)
+			local a = c.Callback;
+			a(f, ...)
+			if b then
+				b(f, ...)
+			end
+		end)
+		function c:SetSelected(b)
+			local c = self.AnimationTags;
+			local c = b and c.Selected or c.Unselected;
+			self.Selected = b;
+			a:SetAnimation(f, c)
+			return self
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			f.Interactable = not a;
+			return self
+		end;
+		c:SetSelected(d)
+		c:SetDisabled(e)
+		return g, f
+	end
+})
+a:DefineElement('ImageButton', {
+	Base = {
+		ElementStyle = 'Button',
+		Callback = l
+	},
+	Create = b.Image
+})
+a:DefineElement('SmallButton', {
+	Base = {
+		Text = 'Button',
+		PaddingTop = UDim.new(),
+		PaddingBottom = UDim.new(),
+		PaddingLeft = UDim.new(0, 2),
+		PaddingRight = UDim.new(0, 2),
+		ColorTag = 'Button',
+		ElementStyle = 'Button',
+		Callback = l
+	},
+	Create = b.Button
+})
+a:DefineElement('Keybind', {
+	Base = {
+		Label = 'Keybind',
+		ColorTag = 'Frame',
+		Value = nil,
+		DeleteKey = Enum.KeyCode.Backspace,
+		IgnoreGameProcessed = true,
+		Enabled = true,
+		Disabled = false,
+		Callback = l,
+		OnKeybindSet = l,
+		OnBlacklistedKeybindSet = l,
+		KeyBlacklist = {},
+		UiPadding = UDim.new(),
+		AutomaticSize = Enum.AutomaticSize.None,
+		Size = UDim2.new(0.3, 0, 0, 19)
+	},
+	Create = function(b, c)
+		local d, e, f, g, h = c.Value, c.Label, c.Disabled, c.KeyBlacklist, a:InsertPrefab('Button', c)
+		local e, g, i, j = a:MergeMetatables(c, h), b:Label{
+			Parent = h,
+			Text = e,
+			Position = UDim2.new(1, 4, 0.5),
+			AnchorPoint = Vector2.new(0, 0.5)
+		}, function(a, ...)
+			return a(h, ...)
+		end, function(a)
+			return table.find(g, a)
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			h.Interactable = not a;
+			b:SetColorTags({
+				[g] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:SetValue(a)
+			local b, c = self.OnKeybindSet, self.DeleteKey;
+			if a == c then
+				a = nil
+			end;
+			self.Value = a;
+			h.Text = a and a.Name or 'Not set'
+			i(b, a)
+			return self
+		end;
+		function c:WaitForNewKey()
+			self._WaitingForNewKey = true;
+			h.Text = '...'
+			h.Interactable = false
+		end;
+		local b = function(a)
+			local a, b = a.KeyCode, a.UserInputType;
+			if b ~= Enum.UserInputType.Keyboard then
+				return b
+			end;
+			return a
+		end;
+		local g = function(a)
+			local a, b, d = c.OnBlacklistedKeybindSet, c.Value, b(a)
+			if not m.WindowFocused then
+				return
+			end;
+			if j(d) then
+				i(a, d)
+				return
+			end;
+			h.Interactable = true;
+			c._WaitingForNewKey = false;
+			if d.Name == 'Unknown' then
+				return c:SetValue(b)
+			end;
+			c:SetValue(d)
+			return
+		end;
+		local b = function(a, d)
+			local b, e, f, j, k, l = c.IgnoreGameProcessed, c.DeleteKey, c.Enabled, c.Value, c.Callback, b(a)
+			if c._WaitingForNewKey then
+				g(a)
+				return
+			end;
+			if not f and h.Interactable then
+				return
+			end;
+			if not b and d then
+				return
+			end;
+			if not j then
+				return
+			end;
+			if l == e then
+				return
+			end;
+			if l.Name ~= j.Name then
+				return
+			end;
+			i(k, l)
+		end;
+		c:SetValue(d)
+		c:SetDisabled(f)
+		c.Connection = m.InputBegan:Connect(b)
+		h.Activated:Connect(function()
+			c:WaitForNewKey()
+		end)
+		a:SetAnimation(h, 'Inputs')
+		return e, h
+	end
+})
+a:DefineElement('ArrowButton', {
+	Base = {
+		Direction = 'Left',
+		ColorTag = 'Button',
+		Icon = a.Icons.Arrow,
+		Size = UDim2.fromOffset(21, 21),
+		IconSize = UDim2.fromScale(1, 1),
+		IconPadding = UDim.new(0, 4),
+		Rotations = {
+			Left = 180,
+			Right = 0
+		}
+	},
+	Create = function(b, b)
+		local c, d = b.Direction, b.Rotations;
+		local c = d[c]
+		b.IconRotation = c;
+		local a = a:InsertPrefab('ArrowButton', b)
+		a.Activated:Connect(function(...)
+			local b = b.Callback;
+			return b(a, ...)
+		end)
+		return a
+	end
+})
+a:DefineElement('Label', {
+	Base = {
+		Font = 'Inconsolata'
+	},
+	ColorData = {
+		LabelPadding = {
+			PaddingTop = 'LabelPaddingTop',
+			PaddingBottom = 'LabelPaddingBottom'
+		}
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i, j, k = c.Bold, c.Italic, c.Font, c.FontFace, Enum.FontWeight.Medium, Enum.FontWeight.Bold, Enum.FontStyle.Normal, Enum.FontStyle.Italic;
+		local d, e, h = d and i or h, e and k or j, d or e;
+		if not g and h then
+			c.FontFace = Font.fromName(f, d, e)
+		end;
+		local a = a:InsertPrefab('Label', c)
+		local c = a:FindFirstChildOfClass'UIPadding'
+		b:TagElements{
+			[c] = 'LabelPadding'
+		}
+		return a
+	end
+})
+a:DefineElement('Error', {
+	Base = {
+		RichText = true,
+		TextWrapped = true
+	},
+	ColorData = {
+		Error = {
+			TextColor3 = 'ErrorText',
+			FontFace = 'TextFont'
+		}
+	},
+	Create = function(a, b)
+		local c = b.Text;
+		b.Text = "636469644"
+		return a:Label(b)
+	end
+})
+a:DefineElement('CodeEditor', {
+	Base = {
+		Editable = true,
+		Fill = true,
+		Text = ''
+	},
+	Create = function(b, c)
+		local d, e = b.WindowClass, h.CodeFrame.new(c)
+		local f = e.Gui;
+		c.Parent = b:GetObject()
+		a:ApplyFlags{
+			Object = f,
+			WindowClass = d,
+			Class = c
+		}
+		return e, f
+	end
+})
+local c = {
+	Engaged = false
+}
+c.__index = c;
+function c:SetEngaged(a)
+	local b = self.WindowClass;
+	self.Engaged = a;
+	if b then
+		b:SetCanvasInteractable(not a)
+	end
+end;
+function c:IsHovering()
+	local a = false;
+	self:Foreach(function(b)
+		a = b.Popup:IsMouseHovering()
+		return a
+	end)
+	return a
+end;
+function c:Foreach(a)
+	local b = self.Menus;
+	for b, b in next, b do
+		local a = a(b)
+		if a then
+			break
+		end
+	end
+end;
+function c:SetFocusedMenu(a)
+	self:Foreach(function(b)
+		local a = b == a;
+		b:SetActiveState(a)
+	end)
+end;
+function c:Close()
+	self:SetEngaged(false)
+	self:SetFocusedMenu(nil)
+end;
+function c:MenuItem(b)
+	local c, d = self.Canvas, self.Menus;
+	local b = c:MenuButton(b)
+	local c = c:PopupCanvas{
+		RelativeTo = b,
+		MaxSizeX = 210,
+		Visible = false,
+		AutoClose = false,
+		AfterClick = function()
+			self:Close()
+		end
+	}
+	local e = {
+		Popup = c,
+		Button = b
+	}
+	a:DetectHover(b, {
+		MouseEnter = true,
+		OnInput = function()
+			if not self.Engaged then
+				return
+			end;
+			self:SetFocusedMenu(e)
+		end
+	})
+	function e:SetActiveState(a)
+		c:SetPopupVisible(a)
+		b:SetSelected(a)
+	end;
+	b.Activated:Connect(function()
+		self:SetFocusedMenu(e)
+		self:SetEngaged(true)
+	end)
+	table.insert(d, e)
+	return c, e
+end;
+a:DefineElement('MenuBar', {
+	Base = {},
+	Create = function(b, e)
+		local b, f = b.WindowClass, a:InsertPrefab('MenuBar', e)
+		local g = a:MakeCanvas{
+			Element = f,
+			WindowClass = b,
+			Class = e
+		}
+		local b = i:NewClass(c, {
+			WindowClass = b,
+			Canvas = g,
+			Object = f,
+			Menus = {}
+		})
+		d(b, e)
+		a:DetectHover(f, {
+			MouseOnly = true,
+			OnInput = function()
+				if not b.Engaged then
+					return
+				end;
+				if b:IsHovering() then
+					return
+				end;
+				b:Close()
+			end
+		})
+		local a = a:MergeMetatables(b, g)
+		return a, f
+	end
+})
+a:DefineElement('MenuButton', {
+	Base = {
+		Text = 'MenuButton',
+		PaddingLeft = UDim.new(0, 8),
+		PaddingRight = UDim.new(0, 8),
+		Size = UDim2.fromOffset(0, 19),
+		AutomaticSize = Enum.AutomaticSize.XY
+	},
+	Create = b.Selectable
+})
+local c = {
+	ColorTags = {
+		BGSelected = {
+			[true] = 'SelectedTab',
+			[false] = 'DeselectedTab'
+		},
+		LabelSelected = {
+			[true] = 'SelectedTabLabel',
+			[false] = 'DeselectedTabLabel'
+		}
+	}
+}
+function c:SetButtonSelected(b, c)
+	if b.IsSelected == c then
+		return
+	end;
+	b.IsSelected = c;
+	local d, e, f = self.NoAnimation, self.WindowClass, self.ColorTags;
+	local b, e, f, g, h = e.Theme, e.TagsList, f.BGSelected, f.LabelSelected, b.TabButton;
+	local h = h.Button;
+	local i = h.Label;
+	a:MultiUpdateColors{
+		Animate = not d,
+		Theme = b,
+		TagsList = e,
+		Objects = {
+			[h] = f[c],
+			[i] = g[c]
+		}
+	}
+end;
+function c:CompareTabs(a, b)
+	if not a then
+		return false
+	end;
+	return a.MatchBy == b or a == b
+end;
+function c:ForEachTab(a, b)
+	local c, d = typeof(a) == 'string', self.Tabs;
+	for d, e in d do
+		local f, g = e.Name, false;
+		if c then
+			g = f == a
+		else
+			g = self:CompareTabs(e, a)
+		end;
+		b(e, g, d)
+	end
+end;
+function c:RemoveTab(a)
+	local b, c = self.OnTabRemove, self.Tabs;
+	self:ForEachTab(a, function(a, d, e)
+		if not d then
+			return
+		end;
+		local d, f = a.TabButton, a.OnClosure;
+		table.remove(c, e)
+		d:Destroy()
+		b(self, a)
+		f(a)
+	end)
+	return self
+end;
+function c:CreateTab(b)
+	b = b or {}
+	a:CheckConfig(b, {
+		Name = 'Tab',
+		AutoSize = 'Y',
+		Focused = false,
+		OnClosure = l
+	})
+	local c, e, f, g, h, i, j, k, l = self.AutoSelectNewTabs, self.WindowClass, self.ParentCanvas, self.Tabs, self.TabsFrame, self.OnTabCreate, b.Focused, b.Name, b.Icon;
+	local c, j = j or # g <= 0 and c, a:InsertPrefab('TabButton', b)
+	j.Parent = h;
+	local h = j.Button;
+	local l, m = h:FindFirstChildOfClass'UIPadding', h.Label;
+	m.Text = tostring(k)
+	d(b, {
+		TabButton = j
+	})
+	local d, k = function()
+		self:SetActiveTab(b)
+	end, {
+		Closeable = function()
+			local b = f:RadioButton{
+				Parent = h,
+				Visible = not self.NoClose,
+				Icon = a.Icons.Close,
+				IconSize = UDim2.fromOffset(11, 11),
+				LayoutOrder = 3,
+				ZIndex = 2,
+				UsePropertiesList = true,
+				Callback = function()
+					self:RemoveTab(b)
+				end
+			}
+			local b = b.Icon;
+			a:SetAnimation(b, {
+				Connections = {
+					MouseEnter = {
+						ImageTransparency = 0
+					},
+					MouseLeave = {
+						ImageTransparency = 1
+					}
+				},
+				Init = 'MouseLeave'
+			}, j)
+		end
+	}
+	h.Activated:Connect(d)
+	a:CheckFlags(k, b)
+	table.insert(g, b)
+	if e then
+		e:TagElements{
+			[l] = 'TabPadding'
+		}
+	end;
+	a:SetAnimation(h, 'Buttons')
+	self:SetButtonSelected(b, c)
+	f:ApplyFlags(j, b)
+	local a = i(self, b)
+	if c then
+		self:SetActiveTab(b)
+	end;
+	return a or b
+end;
+function c:SetActiveTab(a)
+	local b, b, b, c, d = self.Tabs, self.NoAnimation, self.ActiveTab, self.OnActiveTabChange, typeof(a) == 'string'
+	self:ForEachTab(a, function(a, b, c)
+		if b then
+			f = a
+		end;
+		self:SetButtonSelected(a, b)
+	end)
+	if not f then
+		return self
+	end;
+	if self:CompareTabs(f, b) then
+		return self
+	end;
+	self.ActiveTab = f;
+	c(self, f, b)
+	return self
+end;
+a:DefineElement('TabBar', {
+	Base = {
+		AutoSelectNewTabs = true,
+		OnActiveTabChange = l,
+		OnTabCreate = l,
+		OnTabRemove = l
+	},
+	ColorData = {
+		DeselectedTab = {
+			BackgroundColor3 = 'TabBg'
+		},
+		SelectedTab = {
+			BackgroundColor3 = 'TabBgActive'
+		},
+		DeselectedTabLabel = {
+			FontFace = 'TextFont',
+			TextColor3 = 'TabText'
+		},
+		SelectedTabLabel = {
+			FontFace = 'TextFont',
+			TextColor3 = 'TabTextActive'
+		},
+		TabsBarSeparator = {
+			BackgroundColor3 = 'TabBgActive'
+		},
+		TabPadding = {
+			PaddingTop = 'TabTextPaddingTop',
+			PaddingBottom = 'TabTextPaddingBottom'
+		},
+		TabPagePadding = {
+			PaddingBottom = 'TabPagePadding',
+			PaddingLeft = 'TabPagePadding',
+			PaddingRight = 'TabPagePadding',
+			PaddingTop = 'TabPagePadding'
+		}
+	},
+	Create = function(b, e)
+		local c, f, g = b.WindowClass, a:InsertPrefab('TabsBar', e), i:NewClass(c)
+		local h, i = f.Separator, f.TabsFrame;
+		local j = a:MakeCanvas{
+			Element = i,
+			WindowClass = c,
+			Class = g
+		}
+		d(g, e)
+		d(g, {
+			ParentCanvas = b,
+			Object = f,
+			TabsFrame = i,
+			WindowClass = c,
+			Tabs = {}
+		})
+		b:TagElements{
+			[f] = 'TabsBar',
+			[h] = 'TabsBarSeparator'
+		}
+		local a = a:MergeMetatables(j, f)
+		return a, f
+	end
+})
+a:DefineElement('TabSelector', {
+	Base = {
+		NoTabsBar = false,
+		OnActiveTabChange = l,
+		OnTabCreate = l,
+		OnTabRemove = l
+	},
+	Create = function(b, c)
+		local e, f, g, h = b.WindowClass, c.NoTabsBar, c.NoAnimation, a:InsertPrefab('TabSelector', c)
+		local k = h.Body;
+		local l = k.PageTemplate;
+		l.Visible = false;
+		local d, e = function(f, g, ...)
+			local h, j, l = g.AutoSize, g.Name, l:Clone()
+			local i = i:GetChildOfClass(l, 'UIPadding')
+			a:SetProperties(l, {
+				Parent = k,
+				Name = j,
+				AutomaticSize = Enum.AutomaticSize[h],
+				Size = UDim2.fromScale(h == 'Y' and 1 or 0, h == 'X' and 1 or 0)
+			})
+			b:TagElements{
+				[i] = 'TabPagePadding'
+			}
+			local a = a:MakeCanvas{
+				Element = l,
+				WindowClass = e,
+				Class = g
+			}
+			c.OnTabCreate(f, g, ...)
+			d(g, {
+				Page = l,
+				MatchBy = a
+			})
+			return a
+		end, function(a, d, ...)
+			a:ForEachTab(d, function(a, c, d)
+				local a = a.Page;
+				a.Visible = c;
+				if not c then
+					return
+				end;
+				local b = b:GetThemeKey'AnimationTweenInfo'
+				j:Tween{
+					Object = a,
+					Tweeninfo = b,
+					NoAnimation = g,
+					StartProperties = {
+						Position = UDim2.fromOffset(0, 4)
+					},
+					EndProperties = {
+						Position = UDim2.fromOffset(0, 0)
+					}
+				}
+			end)
+			c.OnActiveTabChange(a, d, ...)
+		end;
+		local b = b:TabBar{
+			Parent = h,
+			Visible = not f,
+			OnTabCreate = d,
+			OnActiveTabChange = e,
+			OnTabRemove = function(a, a, ...)
+				a.Page:Remove()
+				c.OnTabRemove(...)
+			end
+		}
+		local a = a:MergeMetatables(b, h)
+		return a, h
+	end
+})
+a:DefineElement('RadioButton', {
+	Base = {
+		Callback = l
+	},
+	Create = function(b, b)
+		local a = a:InsertPrefab('RadioButton', b)
+		a.Activated:Connect(function(...)
+			local b = b.Callback;
+			return b(a, ...)
+		end)
+		return a
+	end
+})
+a:DefineElement('Checkbox', {
+	Base = {
+		Label = 'Checkbox',
+		IsRadio = false,
+		Value = false,
+		NoAutoTag = true,
+		TickedImageSize = UDim2.fromScale(1, 1),
+		UntickedImageSize = UDim2.fromScale(0, 0),
+		Callback = l,
+		Disabled = false
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, k, l = c.IsRadio, c.Value, c.Label, c.TickedImageSize, c.UntickedImageSize, c.Disabled, a:InsertPrefab('CheckBox', c)
+		local m, n = a:MergeMetatables(c, l), l.Tickbox;
+		local o = n.Tick;
+		o.Image = a.Icons.Checkmark;
+		local f, i, p, q = n:FindFirstChildOfClass'UIPadding', i:GetChildOfClass(n, 'UICorner'), b:Label{
+			Text = f,
+			Parent = l,
+			LayoutOrder = 2
+		}, UDim.new(0, 3)
+		if d then
+			o.ImageTransparency = 1;
+			o.BackgroundTransparency = 0;
+			i.CornerRadius = UDim.new(1, 0)
+		else
+			q = UDim.new(0, 2)
+		end;
+		a:SetProperties(f, {
+			PaddingBottom = q,
+			PaddingLeft = q,
+			PaddingRight = q,
+			PaddingTop = q
+		})
+		local d, f = function(...)
+			local a = c.Callback;
+			return a(m, ...)
+		end, function(a, c)
+			local a, b = b:GetThemeKey'AnimationTweenInfo', a and g or h;
+			j:Tween{
+				Object = o,
+				Tweeninfo = a,
+				NoAnimation = c,
+				EndProperties = {
+					Size = b
+				}
+			}
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			l.Interactable = not a;
+			b:SetColorTags({
+				[p] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:SetValue(a, b)
+			self.Value = a;
+			f(a, b)
+			d(a)
+			return self
+		end;
+		function c:SetTicked(...)
+			a:Warn'Checkbox:SetTicked is deprecated, please use :SetValue'
+			return self:SetValue(...)
+		end;
+		function c:Toggle()
+			local a = not self.Value;
+			self.Value = a;
+			self:SetValue(a)
+			return self
+		end;
+		local d = function()
+			c:Toggle()
+		end;
+		l.Activated:Connect(d)
+		n.Activated:Connect(d)
+		c:SetValue(e, true)
+		c:SetDisabled(k)
+		a:SetAnimation(n, 'Buttons', l)
+		b:TagElements{
+			[o] = 'CheckMark',
+			[n] = 'Checkbox'
+		}
+		return m, l
+	end
+})
+a:DefineElement('Radiobox', {
+	Base = {
+		IsRadio = true,
+		CornerRadius = UDim.new(1, 0)
+	},
+	Create = b.Checkbox
+})
+a:DefineElement('PlotHistogram', {
+	Base = {
+		ColorTag = 'Frame',
+		Label = 'Histogram'
+	},
+	Create = function(b, c)
+		local e, f, g = c.Label, c.Points, a:InsertPrefab('Histogram', c)
+		local h, i = a:MergeMetatables(c, g), g.Canvas;
+		local j = i.PointTemplate;
+		j.Visible = false;
+		b:Label{
+			Text = e,
+			Parent = g,
+			Position = UDim2.new(1, 4)
+		}
+		local e;
+		a:SetItemTooltip(g, function(a)
+			e = a:Label()
+		end)
+		d(c, {
+			_Plots = {},
+			_Cache = {}
+		})
+		function c:GetBaseValues()
+			local a, b = self.Minimum, self.Maximum;
+			if a and b then
+				return a, b
+			end;
+			local c = self._Plots;
+			for c, c in c do
+				local c = c.Value;
+				if not a or c < a then
+					a = c
+				end;
+				if not b or c > b then
+					b = c
+				end
+			end;
+			return a, b
+		end;
+		function c:UpdateGraph()
+			local a, b, c = self._Plots, self:GetBaseValues()
+			if not b or not c then
+				return
+			end;
+			local c = c - b;
+			for a, a in a do
+				local a, d = a.Point, a.Value;
+				local b = (d - b) / c;
+				b = math.clamp(b, 0.05, 1)
+				a.Size = UDim2.fromScale(1, b)
+			end;
+			return self
+		end;
+		function c:Plot(d)
+			local f, g, h = self._Plots, {}, j:Clone()
+			local j = h.Bar;
+			a:SetProperties(h, {
+				Parent = i,
+				Visible = true
+			})
+			local d, i = a:DetectHover(h, {
+				MouseEnter = true,
+				OnInput = function()
+					g:UpdateTooltip()
+				end
+			}), {
+				Object = h,
+				Point = j,
+				Value = d
+			}
+			function g:UpdateTooltip()
+				local a = g:GetPointIndex()
+				e.Text = "-534790528"
+			end;
+			function g:SetValue(a)
+				i.Value = a;
+				c:UpdateGraph()
+				if d.Hovering then
+					self:UpdateTooltip()
+				end
+			end;
+			function g:GetPointIndex()
+				return table.find(f, i)
+			end;
+			function g:Remove(a)
+				table.remove(f, self:GetPointIndex())
+				h:Remove()
+				c:UpdateGraph()
+			end;
+			table.insert(f, i)
+			self:UpdateGraph()
+			a:SetAnimation(j, 'Plots', h)
+			b:TagElements{
+				[j] = 'Plot'
+			}
+			return g
+		end;
+		function c:PlotGraph(a)
+			local b = self._Cache;
+			local c = # b - # a;
+			if c >= 1 then
+				for a = 1, c do
+					local a = table.remove(b, a)
+					if a then
+						a:Remove()
+					end
+				end
+			end;
+			for a, c in a do
+				local d = b[a]
+				if d then
+					d:SetValue(c)
+					continue
+				end;
+				b[a] = self:Plot(c)
+			end;
+			return self
+		end;
+		if f then
+			c:PlotGraph(f)
+		end;
+		return h, g
+	end
+})
+a:DefineElement('Viewport', {
+	Base = {
+		IsRadio = true
+	},
+	Create = function(b, b)
+		local c, e, f = b.Model, b.Camera, a:InsertPrefab('Viewport', b)
+		local g, h = a:MergeMetatables(b, f), f.Viewport;
+		local i = h.WorldModel;
+		if not e then
+			e = a:CreateInstance('Camera', h)
+			e.CFrame = CFrame.new(0, 0, 0)
+		end;
+		d(b, {
+			Camera = e,
+			WorldModel = i,
+			Viewport = h
+		})
+		function b:SetCamera(a)
+			self.Camera = a;
+			h.CurrentCamera = a;
+			return self
+		end;
+		function b:SetModel(a, b)
+			local c = self.Clone;
+			i:ClearAllChildren()
+			if c then
+				a = a:Clone()
+			end;
+			if b then
+				a:PivotTo(b)
+			end;
+			a.Parent = i;
+			self.Model = a;
+			return a
+		end;
+		if c then
+			b:SetModel(c)
+		end;
+		b:SetCamera(e)
+		return g, f
+	end
+})
+a:DefineElement('InputText', {
+	Base = {
+		Value = '',
+		Placeholder = '',
+		Label = 'Input text',
+		Callback = l,
+		MultiLine = false,
+		NoAutoTag = true,
+		Disabled = false
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i = c.MultiLine, c.Placeholder, c.Label, c.Disabled, c.Value, a:InsertPrefab('InputBox', c)
+		local j = i.Frame;
+		local j, k = j.Input, a:MergeMetatables(c, i)
+		b:Label{
+			Parent = i,
+			Text = f,
+			AutomaticSize = Enum.AutomaticSize.X,
+			Size = UDim2.fromOffset(0, 19),
+			Position = UDim2.new(1, 4),
+			LayoutOrder = 2
+		}
+		a:SetProperties(j, {
+			PlaceholderText = e,
+			MultiLine = d
+		})
+		local a = function(...)
+			local a = c.Callback;
+			a(k, ...)
+		end;
+		function c:SetValue(a)
+			j.Text = tostring(a)
+			self.Value = a;
+			return self
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			i.Interactable = not a;
+			b:SetColorTags({
+				[f] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:Clear()
+			j.Text = ''
+			return self
+		end;
+		local a = function()
+			local b = j.Text;
+			c.Value = b;
+			a(b)
+		end;
+		j:GetPropertyChangedSignal'Text':Connect(a)
+		c:SetDisabled(g)
+		c:SetValue(h)
+		b:TagElements{
+			[j] = 'Frame'
+		}
+		return k, i
+	end
+})
+a:DefineElement('InputInt', {
+	Base = {
+		Value = 0,
+		Increment = 1,
+		Placeholder = '',
+		Label = 'Input Int',
+		Callback = l
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i = c.Value, c.Placeholder, c.Label, c.Disabled, c.NoButtons, a:InsertPrefab('InputBox', c)
+		local a, j = a:MergeMetatables(c, i), i.Frame;
+		local k = j.Input;
+		k.PlaceholderText = e;
+		local e, f, h, j = b:Button{
+			Text = '-',
+			Parent = j,
+			LayoutOrder = 2,
+			Ratio = 1,
+			AutomaticSize = Enum.AutomaticSize.None,
+			FlexMode = Enum.UIFlexMode.None,
+			Size = UDim2.fromScale(1, 1),
+			Visible = not h,
+			Callback = function()
+				c:Decrease()
+			end
+		}, b:Button{
+			Text = '+',
+			Parent = j,
+			LayoutOrder = 3,
+			Ratio = 1,
+			AutomaticSize = Enum.AutomaticSize.None,
+			FlexMode = Enum.UIFlexMode.None,
+			Size = UDim2.fromScale(1, 1),
+			Visible = not h,
+			Callback = function()
+				c:Increase()
+			end
+		}, b:Label{
+			Parent = i,
+			Text = f,
+			AutomaticSize = Enum.AutomaticSize.X,
+			Size = UDim2.fromOffset(0, 19),
+			Position = UDim2.new(1, 4),
+			LayoutOrder = 4
+		}, function(...)
+			local b = c.Callback;
+			b(a, ...)
+		end;
+		function c:Increase()
+			local a, b = self.Value, self.Increment;
+			c:SetValue(a + b)
+		end;
+		function c:Decrease()
+			local a, b = self.Value, self.Increment;
+			c:SetValue(a - b)
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			i.Interactable = not a;
+			b:SetColorTags({
+				[h] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:SetValue(a)
+			local b, d, e = self.Value, self.Minimum, self.Maximum;
+			a = tonumber(a)
+			if not a then
+				a = b
+			end;
+			if d and e then
+				a = math.clamp(a, d, e)
+			end;
+			k.Text = a;
+			c.Value = a;
+			j(a)
+			return self
+		end;
+		local h = function()
+			local a = k.Text;
+			c:SetValue(a)
+		end;
+		c:SetValue(d)
+		c:SetDisabled(g)
+		k.FocusLost:Connect(h)
+		b:TagElements{
+			[f] = 'Button',
+			[e] = 'Button',
+			[k] = 'Frame'
+		}
+		return a, i
+	end
+})
+a:DefineElement('InputTextMultiline', {
+	Base = {
+		Label = '',
+		Size = UDim2.new(1, 0, 0, 39),
+		Border = false,
+		ColorTag = 'Frame'
+	},
+	Create = function(a, b)
+		return a:Console(b)
+	end
+})
+a:DefineElement('Console', {
+	Base = {
+		Enabled = true,
+		Value = '',
+		TextWrapped = false,
+		Border = true,
+		MaxLines = 300,
+		LinesFormat = '%s',
+		Callback = l
+	},
+	Create = function(b, c)
+		local d, e, f, g, h = c.ReadOnly, c.LineNumbers, c.Value, c.Placeholder, a:InsertPrefab('Console', c)
+		local i, j, k = a:MergeMetatables(c, h), h.Source, h.Lines;
+		k.Visible = e;
+		function c:CountLines(a)
+			local a = j.Text:split'\n'
+			local b = # a;
+			if b == 1 and a[1] == '' then
+				return 0
+			end;
+			return b
+		end;
+		function c:UpdateLineNumbers()
+			local a, b = self.LineNumbers, self.LinesFormat;
+			if not a then
+				return
+			end;
+			local a = self:CountLines()
+			k.Text = ''
+			for c = 1, a do
+				local a, a = b:format(c), c ~= a and '\n' or ''
+				k.Text ..= "-1687581663"
+			end;
+			local a = k.AbsoluteSize.X;
+			j.Size = UDim2.new(1, - a, 0, 0)
+			return self
+		end;
+		function c:CheckLineCount()
+			local a = c.MaxLines;
+			if not a then
+				return
+			end;
+			local b = j.Text;
+			local c = b:split'\n'
+			if # c > a then
+				local a = "-578451108"
+				local a = b:sub(# a)
+				self:SetValue(a)
+			end;
+			return self
+		end;
+		function c:UpdateScroll()
+			local a = h.AbsoluteCanvasSize;
+			h.CanvasPosition = Vector2.new(0, a.Y)
+			return self
+		end;
+		function c:SetValue(a)
+			if not self.Enabled then
+				return
+			end;
+			j.Text = tostring(a)
+			self:Update()
+			return self
+		end;
+		function c:GetValue()
+			return j.Text
+		end;
+		function c:Clear()
+			j.Text = ''
+			self:Update()
+			return self
+		end;
+		function c:AppendText(...)
+			local a, b = self:CountLines(true), a:Concat({
+				...
+			}, ' ')
+			if a == 0 then
+				return self:SetValue(b)
+			end;
+			local a = self:GetValue()
+			local a = "-462180255"
+			self:SetValue(a)
+			return self
+		end;
+		function c:Update()
+			local a = self.AutoScroll;
+			self:CheckLineCount()
+			self:UpdateLineNumbers()
+			if a then
+				self:UpdateScroll()
+			end
+		end;
+		local e = function()
+			local a = c:GetValue()
+			c:Update()
+			c:Callback(a)
+		end;
+		c:SetValue(f)
+		a:SetProperties(j, c)
+		a:SetProperties(j, {
+			TextEditable = not d,
+			Parent = h,
+			PlaceholderText = g
+		})
+		b:TagElements{
+			[j] = 'ConsoleText',
+			[k] = 'ConsoleLineNumbers'
+		}
+		j:GetPropertyChangedSignal'Text':Connect(e)
+		return i, h
+	end
+})
+a:DefineElement('Table', {
+	Base = {
+		VerticalAlignment = Enum.VerticalAlignment.Top,
+		RowBackground = false,
+		RowBgTransparency = 0.87,
+		Border = false,
+		Spacing = UDim.new(0, 4)
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i, j, k = b.WindowClass, c.RowBgTransparency, c.RowBackground, c.Border, c.VerticalAlignment, c.MaxColumns, c.Spacing, a:InsertPrefab('Table', c)
+		local l, m, n, o, p = a:MergeMetatables(c, k), k.RowTemp, 0, {}, g and f;
+		function c:Row(c)
+			c = c or {}
+			local c, l, m, q = c.IsHeader, 0, {}, m:Clone()
+			a:SetProperties(q, {
+				Name = 'Row',
+				Visible = true,
+				Parent = k
+			})
+			local k = q:FindFirstChildOfClass'UIListLayout'
+			a:SetProperties(k, {
+				VerticalAlignment = h,
+				Padding = not p and j or UDim.new(0, 1)
+			})
+			if c then
+				b:TagElements{
+					[q] = 'Header'
+				}
+			else
+				n += 1
+			end;
+			if f and not c then
+				local a = n % 2 ~= 1 and e or 1;
+				q.BackgroundTransparency = a
+			end;
+			local b = {}
+			local c = a:MergeMetatables(b, q)
+			function b:Column(b)
+				b = b or {}
+				a:CheckConfig(b, {
+					HorizontalAlign = Enum.HorizontalAlignment.Left,
+					VerticalAlignment = Enum.VerticalAlignment.Top
+				})
+				local e = q.ColumnTemp:Clone()
+				local f = e:FindFirstChildOfClass'UIListLayout'
+				a:SetProperties(f, b)
+				local b = e:FindFirstChildOfClass'UIStroke'
+				b.Enabled = g;
+				local b = e:FindFirstChildOfClass'UIPadding'
+				if not p then
+					b:Destroy()
+				end;
+				a:SetProperties(e, {
+					Parent = q,
+					Visible = true,
+					Name = 'Column'
+				})
+				return a:MakeCanvas{
+					Element = e,
+					WindowClass = d,
+					Class = c
+				}
+			end;
+			function b:NextColumn()
+				l += 1;
+				local a = l % i + 1;
+				local b = m[a]
+				if not b then
+					b = self:Column()
+					m[a] = b
+				end;
+				return b
+			end;
+			table.insert(o, b)
+			return c
+		end;
+		function c:NextRow()
+			return self:Row()
+		end;
+		function c:HeaderRow()
+			return self:Row{
+				IsHeader = true
+			}
+		end;
+		function c:ClearRows()
+			n = 0;
+			for a, a in next, k:GetChildren() do
+				if not a:IsA'Frame' then
+					continue
+				end;
+				if a == m then
+					continue
+				end;
+				a:Destroy()
+			end;
+			return c
+		end;
+		return l, k
+	end
+})
+a:DefineElement('List', {
+	Base = {
+		Spacing = 4,
+		HorizontalFlex = Enum.UIFlexAlignment.None,
+		VerticalFlex = Enum.UIFlexAlignment.None,
+		HorizontalAlignment = Enum.HorizontalAlignment.Left,
+		VerticalAlignment = Enum.VerticalAlignment.Top,
+		FillDirection = Enum.FillDirection.Horizontal
+	},
+	Create = function(b, c)
+		local b, d, e, f, g, h, i, j = b.WindowClass, c.Spacing, c.HorizontalFlex, c.VerticalFlex, c.HorizontalAlignment, c.VerticalAlignment, c.FillDirection, a:InsertPrefab('List', c)
+		local c, k = a:MergeMetatables(c, j), j.UIListLayout;
+		a:SetProperties(k, {
+			Padding = UDim.new(0, d),
+			HorizontalFlex = e,
+			VerticalFlex = f,
+			HorizontalAlignment = g,
+			VerticalAlignment = h,
+			FillDirection = i
+		})
+		local a = a:MakeCanvas{
+			Element = j,
+			WindowClass = b,
+			Class = c
+		}
+		return a, j
+	end
+})
+a:DefineElement('CollapsingHeader', {
+	Base = {
+		Title = 'Collapsing Header',
+		CollapseIcon = a.Icons.Arrow,
+		Collapsed = true,
+		Offset = 0,
+		NoAutoTag = true,
+		NoAutoFlags = true,
+		IconPadding = UDim.new(0, 4),
+		Activated = l
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, k, l, m, n, o, p, q = c.Title, c.Collapsed, c.ElementStyle, c.Offset, c.TitleBarProperties, c.OpenOnDoubleClick, c.OpenOnArrow, c.CollapseIcon, c.IconPadding, c.Icon, c.NoArrow, a:InsertPrefab('CollapsingHeader', c)
+		local r = q.TitleBar;
+		local s, t = r.Collapse, r.Icon;
+		b:ApplyFlags(t, {
+			Image = o
+		})
+		local o, s = s.CollapseIcon, s.UIPadding;
+		i:SetPadding(s, n)
+		b:ApplyFlags(o, {
+			Image = m
+		})
+		local b, g, m = b:Label{
+			ColorTag = 'CollapsingHeader',
+			Parent = r,
+			LayoutOrder = 2
+		}, b:Indent{
+			Class = c,
+			Parent = q,
+			Offset = g,
+			LayoutOrder = 2,
+			Size = UDim2.fromScale(1, 0),
+			AutomaticSize = Enum.AutomaticSize.None,
+			PaddingTop = UDim.new(0, 4),
+			PaddingBottom = UDim.new(0, 1)
+		}
+		local n = function()
+			local a = c.Activated;
+			a(g)
+		end;
+		function c:Remove()
+			q:Destroy()
+			table.clear(self)
+		end;
+		function c:SetArrowVisible(a)
+			o.Visible = a
+		end;
+		function c:SetTitle(a)
+			b.Text = a
+		end;
+		function c:SetVisible(a)
+			q.Visible = a
+		end;
+		function c:SetIcon(a)
+			local b = a and a ~= ''
+			t.Visible = b;
+			if b then
+				t.Image = i:CheckAssetUrl(a)
+			end
+		end;
+		function c:SetCollapsed(b)
+			self.Collapsed = b;
+			local a, c, d = a:GetContentSize(m), g:GetThemeKey'AnimationTweenInfo', UDim2.fromScale(1, 0)
+			local a = d + UDim2.fromOffset(0, a.Y)
+			j:HeaderCollapse{
+				Tweeninfo = c,
+				Collapsed = b,
+				Toggle = o,
+				Resize = m,
+				Hide = m,
+				ClosedSize = d,
+				OpenSize = a
+			}
+			return self
+		end;
+		local b = function()
+			c:SetCollapsed(not c.Collapsed)
+		end;
+		if h then
+			g:ApplyFlags(r, h)
+		end;
+		if not l then
+			a:ConnectMouseEvent(r, {
+				DoubleClick = k,
+				Callback = b
+			})
+		end;
+		o.Activated:Connect(b)
+		r.Activated:Connect(n)
+		c:SetCollapsed(e)
+		c:SetTitle(d)
+		c:SetArrowVisible(not p)
+		a:ApplyStyle(r, f)
+		g:TagElements{
+			[r] = 'CollapsingHeader'
+		}
+		return g, q
+	end
+})
+a:DefineElement('TreeNode', {
+	Base = {
+		Offset = 21,
+		IconPadding = UDim.new(0, 2),
+		TitleBarProperties = {
+			Size = UDim2.new(1, 0, 0, 13)
+		}
+	},
+	Create = b.CollapsingHeader
+})
+a:DefineElement('Separator', {
+	Base = {
+		NoAutoTag = true,
+		NoAutoTheme = true
+	},
+	Create = function(b, c)
+		local a, c = c.Text, a:InsertPrefab('SeparatorText', c)
+		b:Label{
+			Text = tostring(a),
+			Visible = a ~= nil,
+			Parent = c,
+			LayoutOrder = 2,
+			Size = UDim2.new(),
+			PaddingLeft = UDim.new(0, 4),
+			PaddingRight = UDim.new(0, 4)
+		}
+		b:TagElements{
+			[c.Left] = 'Separator',
+			[c.Right] = 'Separator'
+		}
+		return c
+	end
+})
+a:DefineElement('Canvas', {
+	Base = {},
+	Create = function(b, c)
+		local b, d, e = b.WindowClass, c.Scroll, c.Class or c;
+		local d = d and 'ScrollingCanvas' or 'Canvas'
+		local c = a:InsertPrefab(d, c)
+		local a = a:MakeCanvas{
+			Element = c,
+			WindowClass = b,
+			Class = e
+		}
+		return a, c
+	end
+})
+a:DefineElement('ScrollingCanvas', {
+	Base = {
+		Scroll = true
+	},
+	Create = b.Canvas
+})
+a:DefineElement('Region', {
+	Base = {
+		Scroll = false,
+		AutomaticSize = Enum.AutomaticSize.Y
+	},
+	Create = function(b, c)
+		local b, d = b.WindowClass, c.Scroll;
+		local d = d and 'ScrollingCanvas' or 'Canvas'
+		local d = a:InsertPrefab(d, c)
+		local a = a:MakeCanvas{
+			Element = d,
+			WindowClass = b,
+			Class = c
+		}
+		return a, d
+	end
+})
+a:DefineElement('Group', {
+	Base = {
+		Scroll = false,
+		AutomaticSize = Enum.AutomaticSize.Y
+	},
+	Create = function(b, c)
+		local b, d = b.WindowClass, a:InsertPrefab('Group', c)
+		local a = a:MakeCanvas{
+			Element = d,
+			WindowClass = b,
+			Class = c
+		}
+		return a, d
+	end
+})
+a:DefineElement('Indent', {
+	Base = {
+		Offset = 15,
+		PaddingTop = UDim.new(),
+		PaddingBottom = UDim.new(),
+		PaddingRight = UDim.new()
+	},
+	Create = function(a, b)
+		local c = b.Offset;
+		b.PaddingLeft = UDim.new(0, c)
+		return a:Canvas(b)
+	end
+})
+a:DefineElement('BulletText', {
+	Base = {},
+	Create = function(a, b)
+		local c = b.Rows;
+		for c, c in next, c do
+			local a = a:Bullet(b)
+			a:Label{
+				Text = tostring(c),
+				LayoutOrder = 2,
+				Size = UDim2.fromOffset(0, 14)
+			}
+		end
+	end
+})
+a:DefineElement('Bullet', {
+	Base = {
+		Padding = 3,
+		Icon = a.Icons.Dot,
+		IconSize = UDim2.fromOffset(5, 5)
+	},
+	Create = function(b, c)
+		local c, d, e = b.WindowClass, c.Padding, a:InsertPrefab('Bullet', c)
+		local a, b = a:MakeCanvas{
+			Element = e,
+			WindowClass = c,
+			Class = b
+		}, e.UIListLayout;
+		b.Padding = UDim.new(0, d)
+		return a, e
+	end
+})
+a:DefineElement('Row', {
+	Base = {
+		Spacing = 4,
+		Expanded = false,
+		HorizontalFlex = Enum.UIFlexAlignment.None,
+		VerticalFlex = Enum.UIFlexAlignment.None
+	},
+	Create = function(b, c)
+		local b, d, e, f, g, h = b.WindowClass, c.Spacing, c.Expanded, c.HorizontalFlex, c.VerticalFlex, a:InsertPrefab('Row', c)
+		local i, j = a:MergeMetatables(c, h), h:FindFirstChildOfClass'UIListLayout'
+		j.Padding = UDim.new(0, d)
+		j.HorizontalFlex = f;
+		j.VerticalFlex = g;
+		local a = a:MakeCanvas{
+			Element = h,
+			WindowClass = b,
+			Class = i
+		}
+		function c:Expand()
+			j.HorizontalFlex = Enum.UIFlexAlignment.Fill;
+			return self
+		end;
+		if e then
+			c:Expand()
+		end;
+		return a, h
+	end
+})
+a:DefineElement('SliderBase', {
+	Base = {
+		Format = '%.f',
+		Label = '',
+		Type = 'Slider',
+		Callback = l,
+		NoGrab = false,
+		NoClick = false,
+		Minimum = 0,
+		Maximum = 100,
+		ColorTag = 'Frame',
+		Disabled = false
+	},
+	Create = function(b, c)
+		local e, f, g, h, i, k, l, m, n = c.Value or c.Minimum, c.Format, c.Label, c.NoAnimation, c.NoGrab, c.NoClick, c.Type, c.Disabled, a:InsertPrefab'Slider'
+		local o = n.Track;
+		local p, q, r = o.Grab, o.ValueText, a:MergeMetatables(c, n)
+		local s, t, u = p.AbsoluteSize, a:SetAnimation(n, 'Inputs'), b:Label{
+			Parent = n,
+			Text = g,
+			Position = UDim2.new(1, 4),
+			Size = UDim2.fromScale(0, 1)
+		}
+		d(c, {
+			Grab = p,
+			Name = g
+		})
+		if l == 'Slider' then
+			o.Position = UDim2.fromOffset(s.X / 2, 0)
+			o.Size = UDim2.new(1, - s.X, 1, 0)
+		end;
+		local d, g = {
+			Slider = function(a)
+				return {
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					Position = UDim2.fromScale(a, 0.5)
+				}
+			end,
+			Progress = function(a)
+				return {
+					Size = UDim2.fromScale(a, 1)
+				}
+			end,
+			Snap = function(a, a, b, c)
+				local a = (math.round(a) - b) / c;
+				return {
+					Size = UDim2.fromScale(1 / c, 1),
+					Position = UDim2.fromScale(a, 0.5)
+				}
+			end
+		}, function(...)
+			local a = c.Callback;
+			return a(r, ...)
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			n.Interactable = not a;
+			b:SetColorTags({
+				[u] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:SetValueText(a)
+			q.Text = tostring(a)
+		end;
+		function c:SetValue(a, e)
+			local b, c, i, k = b:GetThemeKey'AnimationTweenInfo', c.Minimum, c.Maximum, a;
+			local m = i - c;
+			if not e then
+				k = (a - c) / m
+			else
+				a = c + (m * k)
+			end;
+			k = math.clamp(k, 0, 1)
+			local c = d[l](k, a, c, i)
+			j:Tween{
+				Object = p,
+				Tweeninfo = b,
+				NoAnimation = h,
+				EndProperties = c
+			}
+			self.Value = a;
+			self:SetValueText(f:format(a, i))
+			g(a)
+			return self
+		end;
+		local d, f = function(a)
+			b:SetColorTags({
+				[n] = a and 'FrameActive' or 'Frame'
+			}, true)
+			b:SetElementFocused(n, {
+				Focused = a,
+				Animation = t
+			})
+		end, function()
+			if c.Disabled then
+				return
+			end;
+			if c.ReadOnly then
+				return
+			end;
+			return true
+		end;
+		local g = function(a)
+			if not f() then
+				return
+			end;
+			local a, b, d = o.AbsolutePosition.X, o.AbsoluteSize.X, a.X;
+			local a = d - a;
+			local a = math.clamp(a / b, 0, 1)
+			c:SetValue(a, true)
+		end;
+		local d, f = function(...)
+			if not f() then
+				return
+			end;
+			d(true)
+			if not k then
+				g(...)
+			end
+		end, function()
+			d(false)
+		end;
+		p.Visible = not i;
+		c:SetValue(e)
+		c:SetDisabled(m)
+		b:TagElements{
+			[q] = 'Label',
+			[p] = 'SliderGrab'
+		}
+		a:ConnectDrag(o, {
+			DragStart = d,
+			DragMovement = g,
+			DragEnd = f
+		})
+		return r, n
+	end
+})
+a:DefineElement('SliderEnum', {
+	Base = {
+		Items = {},
+		Label = 'Slider Enum',
+		Type = 'Snap',
+		Minimum = 1,
+		Maximum = 10,
+		Value = 1,
+		Callback = l,
+		ColorTag = 'Frame'
+	},
+	Create = function(a, b)
+		local c, d = b.Callback, b.Value;
+		local e = function(a, b)
+			b = math.round(b)
+			local c = a.Items;
+			a.Maximum = # c;
+			return c[b]
+		end;
+		b.Callback = function(a, d)
+			local d = e(a, d)
+			a:SetValueText(d)
+			b.Value = d;
+			return c(a, d)
+		end;
+		e(b, d)
+		return a:SliderBase(b)
+	end
+})
+a:DefineElement('SliderInt', {
+	Base = {
+		Label = 'Slider Int',
+		ColorTag = 'Frame'
+	},
+	Create = b.SliderBase
+})
+a:DefineElement('SliderFloat', {
+	Base = {
+		Label = 'Slider Float',
+		Format = '%.3f',
+		ColorTag = 'Frame'
+	},
+	Create = b.SliderBase
+})
+a:DefineElement('DragInt', {
+	Base = {
+		Format = '%.f',
+		Label = 'Drag Int',
+		Callback = l,
+		Minimum = 0,
+		Maximum = 100,
+		ColorTag = 'Frame',
+		Disabled = false
+	},
+	Create = function(b, c)
+		local d, e, f, g, h = c.Value or c.Minimum, c.Format, c.Label, c.Disabled, a:InsertPrefab'Slider'
+		local i, j = a:MergeMetatables(c, h), h.Track;
+		local k, l = j.ValueText, j.Grab;
+		l.Visible = false;
+		local f, l, m, n, o, p = b:Label{
+			Parent = h,
+			Text = f,
+			Position = UDim2.new(1, 7),
+			Size = UDim2.fromScale(0, 1)
+		}, 0, 0, a:SetAnimation(h, 'Inputs'), function(...)
+			local a = c.Callback;
+			return a(i, ...)
+		end;
+		function c:SetValue(a, b)
+			local c, d = self.Minimum, self.Maximum;
+			local f = d - c;
+			if not b then
+				l = ((a - c) / f) * 100
+			else
+				a = c + (f * (l / 100))
+			end;
+			a = math.clamp(a, c, d)
+			self.Value = a;
+			k.Text = e:format(a, d)
+			o(a)
+			return self
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			b:SetColorTags({
+				[f] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		local e, f = function(a)
+			b:SetColorTags({
+				[h] = a and 'FrameActive' or 'Frame'
+			}, true)
+			b:SetElementFocused(h, {
+				Focused = a,
+				Animation = n
+			})
+		end, function()
+			if c.Disabled then
+				return
+			end;
+			if c.ReadOnly then
+				return
+			end;
+			return true
+		end;
+		local e, f, l = function(a)
+			if not f() then
+				return
+			end;
+			e(true)
+			p = a;
+			m = l
+		end, function(a)
+			if not f() then
+				return
+			end;
+			local a = a.X - p.X;
+			local a = m + (a / 2)
+			l = math.clamp(a, 0, 100)
+			c:SetValue(l, true)
+		end, function()
+			e(false)
+		end;
+		c:SetValue(d)
+		c:SetDisabled(g)
+		a:ConnectDrag(j, {
+			DragStart = e,
+			DragEnd = l,
+			DragMovement = f
+		})
+		b:TagElements{
+			[k] = 'Label'
+		}
+		return i, h
+	end
+})
+a:DefineElement('DragFloat', {
+	Base = {
+		Format = '%.3f',
+		Label = 'Drag Float',
+		ColorTag = 'Frame'
+	},
+	Create = b.DragInt
+})
+a:DefineElement('MultiElement', {
+	Base = {
+		Callback = l,
+		Label = '',
+		Disabled = false,
+		BaseInputConfig = {},
+		InputConfigs = {},
+		Value = {},
+		Minimum = {},
+		Maximum = {},
+		MultiCallback = l
+	},
+	Create = function(b, c)
+		local f, g, h, i, j, k, l, m = c.Label, c.BaseInputConfig, c.InputConfigs, c.InputType, c.Disabled, c.Value, c.Minimum, c.Maximum;
+		assert(i, 'No input type provided for MultiElement')
+		local n, o = b:Row{
+			Spacing = 4
+		}
+		local f, n, p, q, r = n:Row{
+			Size = UDim2.fromScale(0.65, 0),
+			Expanded = true
+		}, n:Label{
+			Size = UDim2.fromScale(0.35, 0),
+			LayoutOrder = 2,
+			Text = f
+		}, a:MergeMetatables(c, n), {}, false;
+		local s = function()
+			local a = {}
+			for b, c in q do
+				a[b] = c:GetValue()
+			end;
+			c.Value = a;
+			return a
+		end;
+		local function t(...)
+			local a = c.MultiCallback;
+			a(p, ...)
+		end;
+		local s = function()
+			if # q ~= # h then
+				return
+			end;
+			if not r then
+				return
+			end;
+			local a = s()
+			t(a)
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			b:SetColorTags({
+				[n] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			for b, b in q do
+				b:SetDisabled(a)
+			end
+		end;
+		function c:SetValue(a)
+			r = false;
+			for a, b in a do
+				local a = q[a]
+				assert(a, "2334613614")
+				a:SetValue(b)
+			end;
+			r = true;
+			t(a)
+		end;
+		g = e(g, {
+			Size = UDim2.new(1, 0, 0, 19),
+			Label = '',
+			Callback = s
+		})
+		for b, c in h do
+			local c = e(g, c)
+			a:CheckConfig(c, {
+				Minimum = l[b],
+				Maximum = m[b]
+			})
+			local a = f[i](f, c)
+			table.insert(q, a)
+		end;
+		d(c, {
+			Row = f,
+			Inputs = q
+		})
+		r = true;
+		c:SetDisabled(j)
+		c:SetValue(k)
+		return p, o
+	end
+})
+local c = function(b, c, e, f)
+	a:DefineElement(b, {
+		Base = {
+			Label = b,
+			Callback = l,
+			InputType = c,
+			InputConfigs = table.create(e, {}),
+			BaseInputConfig = {}
+		},
+		Create = function(b, c)
+			local e = (c.BaseInputConfig)
+			if f then
+				d(e, f)
+			end;
+			a:CheckConfig(e, {
+				ReadOnly = c.ReadOnly,
+				Format = c.Format
+			})
+			c.MultiCallback = function(...)
+				local a = c.Callback;
+				a(...)
+			end;
+			return b:MultiElement(c)
+		end
+	})
+end;
+local f = function(b, c)
+	a:DefineElement(b, {
+		Base = {
+			Label = b,
+			Callback = l,
+			Value = a.Accent.Light,
+			Disabled = false,
+			Minimum = {
+				0,
+				0,
+				0
+			},
+			Maximum = {
+				255,
+				255,
+				255,
+				100
+			},
+			BaseInputConfig = {},
+			InputConfigs = {
+				[1] = {
+					Format = 'R: %.f'
+				},
+				[2] = {
+					Format = 'G: %.f'
+				},
+				[3] = {
+					Format = 'B: %.f'
+				}
+			}
+		},
+		Create = function(b, d)
+			local e, f = d.Value, e(d, {
+				Value = {
+					1,
+					1,
+					1
+				},
+				Callback = function(a, ...)
+					if d.ValueChanged then
+						d:ValueChanged(...)
+					end
+				end
+			})
+			local b, c = b[c](b, f)
+			local a, f = a:MergeMetatables(d, b), b.Row;
+			local f, g = f:Button{
+				BackgroundTransparency = 0,
+				Size = UDim2.fromOffset(19, 19),
+				UiPadding = 0,
+				Text = '',
+				Ratio = 1,
+				ColorTag = '',
+				ElementStyle = ''
+			}, function(...)
+				local b = d.Callback;
+				return b(a, ...)
+			end;
+			local f = function(a)
+				f.BackgroundColor3 = a;
+				g(a)
+			end;
+			function d:ValueChanged(a)
+				local a, b, c = a[1], a[2], a[3]
+				local a = Color3.fromRGB(a, b, c)
+				self.Value = a;
+				f(a)
+			end;
+			function d:SetValue(a)
+				self.Value = a;
+				f(a)
+				b:SetValue{
+					math.round(a.R * 255),
+					math.round(a.G * 255),
+					math.round(a.B * 255)
+				}
+			end;
+			d:SetValue(e)
+			return a, c
+		end
+	})
+end;
+local g = function(b, c)
+	a:DefineElement(b, {
+		Base = {
+			Label = b,
+			Callback = l,
+			Disabled = false,
+			Value = CFrame.new(10, 10, 10),
+			Minimum = CFrame.new(0, 0, 0),
+			Maximum = CFrame.new(100, 100, 100),
+			BaseInputConfig = {},
+			InputConfigs = {
+				[1] = {
+					Format = 'X: %.f'
+				},
+				[2] = {
+					Format = 'Y: %.f'
+				},
+				[3] = {
+					Format = 'Z: %.f'
+				}
+			}
+		},
+		Create = function(b, d)
+			local f, g, h = d.Value, d.Maximum, d.Minimum;
+			local e = e(d, {
+				Maximum = {
+					g.X,
+					g.Y,
+					g.Z
+				},
+				Minimum = {
+					h.X,
+					h.Y,
+					h.Z
+				},
+				Value = {
+					f.X,
+					f.Y,
+					f.Z
+				},
+				Callback = function(a, ...)
+					if d.ValueChanged then
+						d:ValueChanged(...)
+					end
+				end
+			})
+			local b, c = b[c](b, e)
+			local a = a:MergeMetatables(d, b)
+			local e = function(...)
+				local b = d.Callback;
+				return b(a, ...)
+			end;
+			function d:ValueChanged(a)
+				local a, b, c = a[1], a[2], a[3]
+				local a = CFrame.new(a, b, c)
+				self.Value = a;
+				e(a)
+			end;
+			function d:SetValue(a)
+				self.Value = a;
+				b:SetValue{
+					math.round(a.X),
+					math.round(a.Y),
+					math.round(a.Z)
+				}
+			end;
+			d:SetValue(f)
+			return a, c
+		end
+	})
+end;
+a:DefineElement('SliderProgress', {
+	Base = {
+		Label = 'Slider Progress',
+		Type = 'Progress',
+		ColorTag = 'Frame'
+	},
+	Create = b.SliderBase
+})
+a:DefineElement('ProgressBar', {
+	Base = {
+		Label = 'Progress Bar',
+		Type = 'Progress',
+		ReadOnly = true,
+		MinValue = 0,
+		MaxValue = 100,
+		Format = '% i%%',
+		Interactable = false,
+		ColorTag = 'Frame'
+	},
+	Create = function(a, b)
+		function b:SetPercentage(a)
+			b:SetValue(a)
+		end;
+		local b, c = a:SliderBase(b)
+		local d = b.Grab;
+		a:TagElements{
+			[d] = {
+				BackgroundColor3 = 'ProgressBar'
+			}
+		}
+		return b, c
+	end
+})
+a:DefineElement('Combo', {
+	Base = {
+		Value = '',
+		Placeholder = '',
+		Callback = l,
+		Items = {},
+		Disabled = false,
+		WidthFitPreview = false,
+		Label = 'Combo'
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i, k = c.Placeholder, c.NoAnimation, c.Selected, c.Label, c.Disabled, c.WidthFitPreview, a:InsertPrefab('Combo', c)
+		local l, m, n = a:MergeMetatables(c, k), (k.Combo)
+		local d, g, o = b:Label{
+			Text = tostring(d),
+			Parent = m,
+			Name = 'ValueText'
+		}, b:ArrowButton{
+			Parent = m,
+			Interactable = false,
+			Size = UDim2.fromOffset(19, 19),
+			LayoutOrder = 2
+		}, b:Label{
+			Text = g,
+			Parent = k,
+			LayoutOrder = 2
+		}
+		if i then
+			a:SetProperties(k, {
+				AutomaticSize = Enum.AutomaticSize.XY,
+				Size = UDim2.new(0, 0, 0, 0)
+			})
+			a:SetProperties(m, {
+				AutomaticSize = Enum.AutomaticSize.XY,
+				Size = UDim2.fromScale(0, 1)
+			})
+		end;
+		local g, i = function(a, ...)
+			c:SetOpen(false)
+			return c.Callback(l, a, ...)
+		end, function(a, c)
+			local b = b:GetThemeKey'AnimationTweenInfo'
+			k.Interactable = not a;
+			j:HeaderCollapseToggle{
+				Tweeninfo = b,
+				NoAnimation = c,
+				Collapsed = not a,
+				Toggle = g.Icon
+			}
+		end;
+		local function j()
+			local a, b = c.GetItems, c.Items;
+			if a then
+				return a()
+			end;
+			return b
+		end;
+		function c:SetValueText(a)
+			d.Text = tostring(a)
+		end;
+		function c:ClosePopup()
+			if not n then
+				return
+			end;
+			n:ClosePopup(true)
+		end;
+		function c:SetDisabled(a)
+			self.Disabled = a;
+			k.Interactable = not a;
+			b:SetColorTags({
+				[o] = a and 'LabelDisabled' or 'Label'
+			}, true)
+			return self
+		end;
+		function c:SetValue(a)
+			local b = j()
+			local b = b[a]
+			local b = b or a;
+			self.Selected = a;
+			self.Value = b;
+			self:ClosePopup()
+			if typeof(a) == 'number' then
+				self:SetValueText(b)
+			else
+				self:SetValueText(a)
+			end;
+			g(a, b)
+			return self
+		end;
+		function c:SetOpen(a)
+			local d = self.Selected;
+			self.Open = a;
+			i(a, e)
+			if not a then
+				self:ClosePopup()
+				return
+			end;
+			n = b:Dropdown{
+				RelativeTo = m,
+				Items = j(),
+				Selected = d,
+				OnSelected = function(...)
+					c:SetValue(...)
+				end,
+				OnClosed = function()
+					self:SetOpen(false)
+				end
+			}
+			return self
+		end;
+		local d = function()
+			local a = c.Open;
+			c:SetOpen(not a)
+		end;
+		m.Activated:Connect(d)
+		i(false, true)
+		c:SetDisabled(h)
+		if f then
+			c:SetValue(f)
+		end;
+		a:SetAnimation(m, 'Inputs')
+		b:TagElements{
+			[m] = 'Frame'
+		}
+		return l, k
+	end
+})
+local h = {
+	TileBarConfig = {
+		Close = {
+			Image = a.Icons.Close,
+			IconPadding = UDim.new(0, 3)
+		},
+		Collapse = {
+			Image = a.Icons.Arrow,
+			IconPadding = UDim.new(0, 3)
+		}
+	},
+	CloseCallback = l,
+	Collapsible = true,
+	Open = true,
+	Focused = false
+}
+function h:Tween(b)
+	a:CheckConfig(b, {
+		Tweeninfo = self:GetThemeKey'AnimationTweenInfo'
+	})
+	return j:Tween(b)
+end;
+function h:TagElements(b)
+	local c, d = self.TagsList, self.Theme;
+	a:MultiUpdateColors{
+		Theme = d,
+		TagsList = c,
+		Objects = b
+	}
+end;
+function h:MakeTitleBarCanvas()
+	local b = self.TitleBar;
+	local a = a:MakeCanvas{
+		WindowClass = self,
+		Element = b
+	}
+	self.TitleBarCanvas = a;
+	return a
+end;
+function h:AddDefaultTitleButtons()
+	local b = self.TileBarConfig;
+	local b, c, d = b.Collapse, b.Close, self.TitleBarCanvas;
+	if not d then
+		d = self:MakeTitleBarCanvas()
+	end;
+	a:CheckConfig(self, {
+		Toggle = d:RadioButton{
+			Icon = b.Image,
+			IconPadding = b.IconPadding,
+			LayoutOrder = 1,
+			Ratio = 1,
+			Size = UDim2.new(0, 0),
+			Callback = function()
+				self:ToggleCollapsed()
+			end
+		},
+		CloseButton = d:RadioButton{
+			Icon = c.Image,
+			IconPadding = c.IconPadding,
+			LayoutOrder = 3,
+			Ratio = 1,
+			Size = UDim2.new(0, 0),
+			Callback = function()
+				self:SetVisible(false)
+			end
+		},
+		TitleLabel = d:Label{
+			ColorTag = 'Title',
+			LayoutOrder = 2,
+			Size = UDim2.new(1, 0),
+			Active = false,
+			Fill = true,
+			ClipsDescendants = true,
+			AutomaticSize = Enum.AutomaticSize.XY
+		}
+	})
+	self:TagElements{
+		[self.TitleLabel] = 'WindowTitle'
+	}
+end;
+function h:Close()
+	local a = self.CloseCallback;
+	if a then
+		local a = a(self)
+		if a == false then
+			return
+		end
+	end;
+	self:Remove()
+end;
+function h:SetVisible(b)
+	local c, d = self.WindowFrame, self.NoFocusOnAppearing;
+	self.Visible = b;
+	c.Visible = b;
+	if b and not d then
+		a:SetFocusedWindow(self)
+	end;
+	return self
+end;
+function h:ToggleVisibility(a)
+	local a = self.Visible;
+	self:SetVisible(not a)
+end;
+function h:GetWindowSize()
+	return self.WindowFrame.AbsoluteSize
+end;
+function h:GetTitleBarSizeY()
+	local a = self.TitleBar;
+	return a.Visible and a.AbsoluteSize.Y or 0
+end;
+function h:SetTitle(a)
+	self.TitleLabel.Text = tostring(a)
+	return self
+end;
+function h:SetPosition(a)
+	self.WindowFrame.Position = a;
+	return self
+end;
+function h:SetSize(a, b)
+	local b = self.WindowFrame;
+	if typeof(a) == 'Vector2' then
+		a = UDim2.fromOffset(a.X, a.Y)
+	end;
+	b.Size = a;
+	self.Size = a;
+	return self
+end;
+function h:SetCanvasInteractable(a)
+	local b = self.Body;
+	b.Interactable = a
+end;
+function h:Center()
+	local a = self:GetWindowSize() / 2;
+	local a = UDim2.new(0.5, - a.X, 0.5, - a.Y)
+	self:SetPosition(a)
+	return self
+end;
+function h:LoadStylesIntoElement(a)
+	local a, b, c = a.Flags, a.Object, a.Canvas;
+	local a = {
+		FrameRounding = function()
+			if a.CornerRadius then
+				return
+			end;
+			if not c then
+				return
+			end;
+			local a = b:FindFirstChild('FrameRounding', true)
+			if not a then
+				return
+			end;
+			c:TagElements{
+				[a] = 'FrameRounding'
+			}
+		end
+	}
+	for a, b in a do
+		local a = self:GetThemeKey(a)
+		if a == nil then
+			continue
+		end;
+		task.spawn(b, a)
+	end
+end;
+function h:SetTheme(b)
+	local c, d, e = a.ThemeConfigs, self.TagsList, self.WindowState;
+	b = b or self.Theme;
+	assert(c[b], "835119882")
+	self.Theme = b;
+	a:MultiUpdateColors{
+		Animate = false,
+		Theme = b,
+		Objects = d
+	}
+	self:SetFocusedColors(e)
+	return self
+end;
+function h:SetFocusedColors(b)
+	local c, d, e, f, g = self.WindowFrame, self.TitleBar, self.Theme, self.TitleLabel, self:GetThemeKey'AnimationTweenInfo'
+	local c = c:FindFirstChildOfClass'UIStroke'
+	local c = {
+		Focused = {
+			[c] = 'BorderActive',
+			[d] = 'TitleBarBgActive',
+			[f] = {
+				TextColor3 = 'TitleActive'
+			}
+		},
+		UnFocused = {
+			[c] = 'Border',
+			[d] = 'TitleBarBg',
+			[f] = {
+				TextColor3 = 'Title'
+			}
+		},
+		Collapsed = {
+			[c] = 'Border',
+			[d] = 'TitleBarBgCollapsed',
+			[f] = {
+				TextColor3 = 'Title'
+			}
+		}
+	}
+	a:MultiUpdateColors{
+		Tweeninfo = g,
+		Animate = true,
+		Objects = c[b],
+		Theme = e
+	}
+end;
+function h:SetFocused(b)
+	b = b == nil and true or b;
+	local c, d = self.Collapsed, self.WindowState;
+	if b then
+		a:SetFocusedWindow(self)
+	end;
+	local a = c and 'Collapsed' or b and 'Focused' or 'UnFocused'
+	if a == d then
+		return
+	end;
+	self.Focused = b;
+	self.WindowState = a;
+	self:SetFocusedColors(a)
+end;
+function h:GetThemeKey(b)
+	return a:GetThemeKey(self.Theme, b)
+end;
+function h:SetCollapsible(a)
+	self.Collapsible = a;
+	return self
+end;
+function h:ToggleCollapsed(a)
+	local b, c = self.Collapsed, self.Collapsible;
+	if not a and not c then
+		return self
+	end;
+	self:SetCollapsed(not b)
+	return self
+end;
+function h:SetCollapsed(a, b)
+	local c, d, e, f, g, h, i, k, l = self.WindowFrame, self.Body, self.Toggle, self.ResizeGrab, self.Size, self.AutoSize, self:GetThemeKey'AnimationTweenInfo', self:GetWindowSize(), self:GetTitleBarSizeY()
+	local e, k = e.Icon, UDim2.fromOffset(k.X, l)
+	self.Collapsed = a;
+	self:SetCollapsible(false)
+	self:SetFocused(not a)
+	j:HeaderCollapse{
+		Tweeninfo = i,
+		NoAnimation = b,
+		Collapsed = a,
+		Toggle = e,
+		Resize = c,
+		NoAutomaticSize = not h,
+		Hide = d,
+		ClosedSize = k,
+		OpenSize = g,
+		Completed = function()
+			self:SetCollapsible(true)
+		end
+	}
+	self:Tween{
+		Object = f,
+		NoAnimation = b,
+		EndProperties = {
+			TextTransparency = a and 1 or 0.6,
+			Interactable = not a
+		}
+	}
+	return self
+end;
+function h:UpdateConfig(a)
+	local b = {
+		NoTitleBar = function(a)
+			local b = self.TitleBar;
+			b.Visible = not a
+		end,
+		NoClose = function(a)
+			local b = self.CloseButton;
+			b.Visible = not a
+		end,
+		NoCollapse = function(a)
+			local b = self.Toggle;
+			b.Visible = not a
+		end,
+		NoTabsBar = function(a)
+			local b = self.WindowTabSelector;
+			if not b then
+				return
+			end;
+			local b = b.TabsBar;
+			b.Visible = not a
+		end,
+		NoScrollBar = function(a)
+			local a, b, c, d = a and 0 or 9, self.NoScroll, self.WindowTabSelector, self.ContentCanvas;
+			if c then
+				c.Body.ScrollBarThickness = a
+			end;
+			if not b then
+				d.ScrollBarThickness = a
+			end
+		end,
+		NoScrolling = function(a)
+			local b, c, d = self.NoScroll, self.WindowTabSelector, self.ContentCanvas;
+			if c then
+				c.Body.ScrollingEnabled = not a
+			end;
+			if not b then
+				d.ScrollingEnabled = not a
+			end
+		end,
+		NoMove = function(a)
+			local b = self.DragConnection;
+			b:SetEnabled(not a)
+		end,
+		NoResize = function(a)
+			local b = self.ResizeConnection;
+			b:SetEnabled(not a)
+		end,
+		NoBackground = function(a)
+			local b, c = self:GetThemeKey'WindowBgTransparency', self.CanvasFrame;
+			c.BackgroundTransparency = a and 1 or b
+		end
+	}
+	d(self, a)
+	for a, c in a do
+		local a = b[a]
+		if a then
+			a(c)
+		end
+	end;
+	return self
+end;
+function h:Remove()
+	local a, b, c = self.WindowFrame, self.WindowClass, a.Windows;
+	local b = table.find(c, b)
+	if b then
+		table.remove(c, b)
+	end;
+	a:Destroy()
+end;
+function h:MenuBar(a, ...)
+	local b, c = self.ContentCanvas, self.ContentFrame;
+	a = a or {}
+	d(a, {
+		Parent = c,
+		Layout = -1
+	})
+	return b:MenuBar(a, ...)
+end;
+a:DefineElement('Window', {
+	Export = true,
+	Base = {
+		Theme = 'DarkTheme',
+		NoSelect = false,
+		NoTabs = true,
+		NoScroll = false,
+		Collapsed = false,
+		Visible = true,
+		AutoSize = false,
+		MinimumSize = Vector2.new(160, 90),
+		OpenOnDoubleClick = true,
+		NoAutoTheme = true,
+		NoWindowRegistor = false,
+		NoBringToFrontOnFocus = false,
+		IsDragging = false
+	},
+	Create = function(c, c)
+		a:CheckImportState()
+		local f, g = a.Windows, a.Container.Windows;
+		a:CheckConfig(c, {
+			Parent = g,
+			Title = a.DefaultTitle
+		})
+		local g, k, l, m, n, o, p, q, r, s, t = c.NoDefaultTitleBarButtons, c.Collapsed, c.MinimumSize, c.Title, c.NoTabs, c.NoScroll, c.Theme, c.AutomaticSize, c.NoWindowRegistor, c.AutoSelectNewTabs, c.Parent ~= g;
+		local o = {
+			Scroll = not o,
+			Fill = not q and true or nil,
+			UiPadding = UDim.new(0, n and 8 or 0),
+			AutoSelectNewTabs = s
+		}
+		if q then
+			d(o, {
+				AutomaticSize = q,
+				Size = UDim2.new(1, 0)
+			})
+		end;
+		local q = a:InsertPrefab('Window', c)
+		local s = q.Content;
+		local h, i = s.TitleBar, i:NewClass(h)
+		local u, v, w, x = (a:MakeCanvas{
+			Element = s,
+			WindowClass = i,
+			Class = i
+		})
+		local e, u = u:Canvas(e(o, {
+			Parent = s,
+			CornerRadius = UDim.new(0, 0)
+		}))
+		local l = a:MakeResizable{
+			MinimumSize = l,
+			Resize = q,
+			OnUpdate = function(a)
+				i:SetSize(a, true)
+			end
+		}
+		d(i, c)
+		d(i, {
+			WindowFrame = q,
+			ContentFrame = s,
+			CanvasFrame = u,
+			ResizeGrab = l.Grab,
+			TitleBar = h,
+			Elements = b,
+			TagsList = {},
+			_SelectDisabled = t,
+			ResizeConnection = l,
+			HoverConnection = a:DetectHover(s),
+			DragConnection = a:MakeDraggable{
+				Grab = s,
+				Move = q,
+				SetPosition = function(a, b)
+					local c = v:GetThemeKey'AnimationTweenInfo'
+					j:Tween{
+						Tweeninfo = c,
+						Object = a.Move,
+						EndProperties = {
+							Position = b
+						}
+					}
+				end,
+				OnDragStateChange = function(b)
+					i.IsDragging = b;
+					u.Interactable = not b;
+					if b then
+						a:SetFocusedWindow(x)
+					end;
+					a:SetWindowFocusesEnabled(not b)
+				end
+			}
+		})
+		if n then
+			v, w = e, u
+		else
+			v, w = e:TabSelector(o)
+			i.WindowTabSelector = v
+		end;
+		x = a:MergeMetatables(i, v)
+		d(i, {
+			ContentCanvas = v,
+			WindowClass = x,
+			Body = w
+		})
+		a:ConnectMouseEvent(s, {
+			DoubleClick = true,
+			OnlyMouseHovering = h,
+			Callback = function(...)
+				if not i.OpenOnDoubleClick then
+					return
+				end;
+				if i.NoCollapse then
+					return
+				end;
+				i:ToggleCollapsed()
+			end
+		})
+		if not g then
+			i:AddDefaultTitleButtons()
+		end;
+		i:SetTitle(m)
+		i:SetCollapsed(k, true)
+		i:SetTheme(p)
+		i:UpdateConfig(c)
+		i:SetFocused()
+		if not r then
+			table.insert(f, x)
+		end;
+		local b = l.Grab;
+		a:SetAnimation(b, 'TextButtons')
+		a:SetFocusedWindow(x)
+		x:TagElements{
+			[b] = 'ResizeGrab',
+			[h] = 'TitleBar',
+			[u] = 'Window'
+		}
+		return x, q
+	end
+})
+a:DefineElement('TabsWindow', {
+	Export = true,
+	Base = {
+		NoTabs = false,
+		AutoSelectNewTabs = true
+	},
+	Create = function(a, b)
+		return a:Window(b)
+	end
+})
+a:DefineElement('PopupCanvas', {
+	Base = {
+		AutoClose = false,
+		Scroll = false,
+		Visible = true,
+		Spacing = UDim.new(0, 1),
+		AutomaticSize = Enum.AutomaticSize.XY,
+		MaxSizeY = 150,
+		MinSizeX = 100,
+		MaxSizeX = math.huge,
+		OnClosed = l
+	},
+	Create = function(b, c)
+		local d, e, f, g, h, i, k = c.RelativeTo, c.MaxSizeY, c.MinSizeX, c.MaxSizeX, c.Visible, c.AutoClose, c.NoAnimation;
+		c.Parent = a.Container.Overlays;
+		local b, l = b:OverlayScroll(c)
+		local m = l.UIStroke;
+		local a, m, n, o, p, q, r = m.Thickness, l.Parent.AbsolutePosition, (a:DetectHover(l, {
+			MouseOnly = true,
+			OnInput = function(a, b)
+				if a then
+					return
+				end;
+				if not l.Visible then
+					return
+				end;
+				c:OnFocusLost()
+			end
+		}))
+		function c:FetchScales()
+			local a = b:GetCanvasSize()
+			o = d.AbsolutePosition;
+			p = d.AbsoluteSize;
+			q = math.clamp(a.Y, p.Y, e)
+			r = math.clamp(p.X, f, g)
+		end;
+		function c:UpdatePosition()
+			l.Position = UDim2.fromOffset(o.X - m.X + a, o.Y - m.Y + p.Y)
+		end;
+		function c:GetScale(a)
+			local b, c = UDim2.fromOffset(r, q), UDim2.fromOffset(r, 0)
+			return a and b or c
+		end;
+		function c:IsMouseHovering()
+			return n.Hovering
+		end;
+		function c:OnFocusLost()
+			local a = self.OnClosed;
+			self:SetPopupVisible(false)
+			a(self)
+			if i then
+				self:ClosePopup()
+			end
+		end;
+		function c:ClosePopup(a)
+			self:SetPopupVisible(false, k, a)
+			n:Disconnect()
+			l:Remove()
+		end;
+		function c:SetPopupVisible(a, b)
+			if l.Visible == a then
+				return
+			end;
+			d.Interactable = not a;
+			self:UpdateScales(a, k, b)
+			self.Visible = a
+		end;
+		function c:UpdateScales(a, d, e)
+			local b = b:GetThemeKey'AnimationTweenInfo'
+			a = a == nil and l.Visible or a;
+			c:FetchScales()
+			c:UpdatePosition()
+			local a = j:Tween{
+				Tweeninfo = b,
+				Object = l,
+				NoAnimation = d,
+				EndProperties = {
+					Size = c:GetScale(a),
+					Visible = a
+				}
+			}
+			if a and e then
+				a.Completed:Wait()
+			end
+		end;
+		c:UpdateScales(false, true)
+		c:SetPopupVisible(h)
+		b.OnChildChange:Connect(c.UpdateScales)
+		return b, l
+	end
+})
+a:DefineElement('PopupModal', {
+	Export = true,
+	Base = {
+		NoAnimation = false,
+		NoCollapse = true,
+		NoClose = true,
+		NoResize = true,
+		NoSelect = true,
+		NoAutoFlags = true,
+		NoWindowRegistor = true,
+		NoScroll = true
+	},
+	Create = function(b, c)
+		local d, f, g = b.WindowClass, (c.NoAnimation)
+		c.Parent = a.Container.Overlays;
+		if d then
+			g = d:GetThemeKey'ModalWindowDimTweenInfo'
+			c.Theme = d.Theme
+		end;
+		local d = a:InsertPrefab('ModalEffect', c)
+		local e = b:Window(e(c, {
+			NoAutoFlags = false,
+			Parent = d,
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.fromScale(0.5, 0.5),
+			Size = UDim2.fromOffset(372, 38),
+			AutomaticSize = Enum.AutomaticSize.Y
+		}))
+		function c:ClosePopup()
+			j:Tween{
+				Object = d,
+				Tweeninfo = g,
+				NoAnimation = f,
+				EndProperties = {
+					BackgroundTransparency = 1
+				},
+				Completed = function()
+					d:Destroy()
+				end
+			}
+			e:Close()
+		end;
+		j:Tween{
+			Object = d,
+			Tweeninfo = g,
+			NoAnimation = f,
+			StartProperties = {
+				BackgroundTransparency = 1
+			},
+			EndProperties = {
+				BackgroundTransparency = 0.8
+			}
+		}
+		b:TagElements{
+			[d] = 'ModalWindowDim'
+		}
+		local a = a:MergeMetatables(c, e)
+		return a, d
+	end
+})
+c('InputInt2', 'InputInt', 2, {
+	NoButtons = true
+})
+c('InputInt3', 'InputInt', 3, {
+	NoButtons = true
+})
+c('InputInt4', 'InputInt', 4, {
+	NoButtons = true
+})
+c('SliderInt2', 'SliderInt', 2)
+c('SliderInt3', 'SliderInt', 3)
+c('SliderInt4', 'SliderInt', 4)
+c('SliderFloat2', 'SliderFloat', 2)
+c('SliderFloat3', 'SliderFloat', 3)
+c('SliderFloat4', 'SliderFloat', 4)
+c('DragInt2', 'DragInt', 2)
+c('DragInt3', 'DragInt', 3)
+c('DragInt4', 'DragInt', 4)
+c('DragFloat2', 'DragFloat', 2)
+c('DragFloat3', 'DragFloat', 3)
+c('DragFloat4', 'DragFloat', 4)
+f('InputColor3', 'InputInt3')
+f('SliderColor3', 'SliderInt3')
+f('DragColor3', 'DragInt3')
+g('InputCFrame', 'InputInt3')
+g('SliderCFrame', 'SliderInt3')
+g('DragCFrame', 'DragInt3')
+return a
